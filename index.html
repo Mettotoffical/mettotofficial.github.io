@@ -25,9 +25,9 @@ body{
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
     url('background.jpg');
     background-size:cover;
-    /* DÜZELTME: Sayfa ilk açıldığında kafanın görünmesi için en üstten (top) hizalandı */
     background-position:center top; 
-    background-attachment:fixed;
+    /* DÜZELTME: Fotoğrafın sayfa ile birlikte yukarı kayması sağlandı */
+    background-attachment:scroll;
     overflow-x:hidden;
 }
 
@@ -143,7 +143,7 @@ nav{
     margin-bottom:5px;
 }
 
-/* ILETISIM — Masaüstünde de tam ortada toplanması sağlandı */
+/* ILETISIM */
 .iletisim-section {
     padding: 100px 20px;
 }
@@ -179,6 +179,7 @@ footer{
 
     body{
         background-position: center top;
+        background-attachment: scroll;
     }
 
     nav{
