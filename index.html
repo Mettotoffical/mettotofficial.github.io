@@ -25,7 +25,8 @@ body{
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),
     url('background.jpg');
     background-size:cover;
-    background-position:center;
+    /* DÜZELTME: Geniş bilgisayar ekranlarında yüzün görünmesi için üstten hizalandı */
+    background-position:center top; 
     background-attachment:fixed;
     overflow-x:hidden;
 }
@@ -163,19 +164,24 @@ footer{
     text-align:center;
 }
 
-/* MOBIL - OPTIMIZE EDILDI */
+/* MOBIL */
 
 @media(max-width:768px){
 
+    body{
+        /* Mobilde de resmin en doğru açıda durması garantiye alındı */
+        background-position: center top;
+    }
+
     nav{
-        flex-direction: row; /* Alt alta binmek yerine şık bir şekilde yan yana kalsınlar */
+        flex-direction: row;
         justify-content: space-between;
         padding: 15px 20px;
-        background: rgba(0,0,0,.80); /* Mobilde okunurluk için hafif koyulaştırıldı */
+        background: rgba(0,0,0,.80);
     }
 
     .logo{
-        font-size: 22px; /* Ekranı kaplamayacak kibar bir logo boyutu */
+        font-size: 22px;
         letter-spacing: 1px;
     }
 
@@ -184,17 +190,17 @@ footer{
     }
 
     .menu a{
-        font-size: 13px; /* Mobilde daha minimalist ve şık durması için küçültüldü */
+        font-size: 13px;
         font-weight: 600;
     }
 
     .hero{
-        min-height: 85vh; /* İçeriğin dikeyde tam oturması sağlandı */
-        padding-top: 100px; 
+        min-height: 85vh;
+        padding-top: 100px;
     }
 
     .hero-content h1{
-        font-size: 64px; /* Ekran görüntüsündeki devasa taşma düzeltildi */
+        font-size: 64px;
         letter-spacing: 2px;
     }
 
@@ -206,17 +212,16 @@ footer{
     }
 
     .albumler{
-        padding: 50px 0px 50px 20px; /* Kaydırma efekti için sağ padding sıfırlandı */
+        padding: 50px 0px 50px 20px;
     }
 
     .albumler h2{
         font-size: 32px;
-        text-align: left; /* Sol kenara yaslanarak modern bir görünüm kazandı */
+        text-align: left;
         margin-bottom: 30px;
         letter-spacing: 1px;
     }
 
-    /* Spotify tarzı lüks yatay kaydırma düzeni */
     .grid{
         display: flex;
         overflow-x: auto;
@@ -227,12 +232,12 @@ footer{
     }
     
     .grid::-webkit-scrollbar {
-        display: none; /* Çirkin kaydırma çubuğunu gizler */
+        display: none;
     }
 
     .kart{
-        flex: 0 0 260px; /* Kartların mobildeki ideal genişliği */
-        height: 380px;   /* Telefonlar için ideal yükseklik */
+        flex: 0 0 260px;
+        height: 380px;
         scroll-snap-align: start;
         border-radius: 15px;
     }
@@ -318,7 +323,7 @@ footer{
 
 <h2>İLETİŞİM</h2>
 
-<div class="iletisim">
+<div class="grid iletisim">
 
 <p>
 Instagram:
