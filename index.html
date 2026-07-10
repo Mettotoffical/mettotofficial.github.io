@@ -4,180 +4,307 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>METTOT | Resmi Web Sitesi</title>
-    <!-- Tailwind CSS ve FontAwesome İkonları -->
+    <!-- Tailwind CSS, FontAwesome İkonları ve Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
-        body { background-color: #0b0f19; font-family: 'Inter', sans-serif; color: white; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@1,500;1,700&display=swap');
+        
+        body { 
+            background-color: #060913; 
+            font-family: 'Inter', sans-serif; 
+            color: white; 
+            overflow-x: hidden;
+        }
         
         /* Premium Cam Efekti */
         .glass { 
-            background: rgba(255, 255, 255, 0.04); 
-            backdrop-filter: blur(20px); 
-            border: 1px solid rgba(255, 255, 255, 0.06); 
+            background: rgba(10, 15, 26, 0.45); 
+            backdrop-filter: blur(30px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
         }
-        .text-glow { text-shadow: 0 0 25px rgba(255, 255, 255, 0.25); }
         
-        /* Çalan şarkı kartının aktif yeşil çerçevesi */
+        .text-glow { 
+            text-shadow: 0 0 35px rgba(255, 255, 255, 0.2); 
+        }
+        
+        /* Çalan şarkı kartının aktif yeşil parlaması */
         .active-track { 
             border-color: #10b981 !important; 
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.18); 
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.15); 
         }
         
-        /* Bilgisayar ekranında kafa ve omuz hizasını kusursuz gösteren arka plan ayarı */
-        .premium-banner {
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center 18%; /* Sanatçının kafa ve omuz hizasını ortalar */
+        /* Ses Dalgaları Animasyonu */
+        .wave-bar {
+            width: 3px;
+            height: 15px;
+            background-color: #10b981;
+            margin: 0 2px;
+            border-radius: 2px;
+            transition: height 0.2s ease;
+        }
+
+        .playing .wave-bar:nth-child(1) { animation: wave 1.2s infinite alternate; }
+        .playing .wave-bar:nth-child(2) { animation: wave 0.8s infinite alternate 0.2s; }
+        .playing .wave-bar:nth-child(3) { animation: wave 1.5s infinite alternate 0.4s; }
+        .playing .wave-bar:nth-child(4) { animation: wave 1.0s infinite alternate 0.1s; }
+        .playing .wave-bar:nth-child(5) { animation: wave 1.3s infinite alternate 0.3s; }
+
+        @keyframes wave {
+            0% { height: 5px; }
+            100% { height: 28px; }
         }
         
+        /* Özelleştirilmiş Scrollbar */
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+<body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black custom-scrollbar">
 
     <!-- Yerel Müzik Çalar Elementi -->
     <audio id="main-audio"></audio>
 
-    <!-- 1. Hero Banner (Geliştirilmiş Masaüstü Boyutu ve Konumlandırma) -->
-    <header class="relative w-full h-[320px] md:h-[450px] lg:h-[480px] premium-banner">
-        <!-- Karanlık Yumuşak Geçiş Katmanı -->
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/40 to-black/50"></div>
-    </header>
+    <!-- Masaüstü Arka Plan Resmi Görseli (Sağ üstten omuz hizalı degrade ile birleşen yapı) -->
+    <div class="absolute top-0 right-0 w-full lg:w-2/3 h-[500px] lg:h-[700px] pointer-events-none z-0">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#060913] via-[#060913]/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#060913] via-[#060913]/30 to-transparent"></div>
+        <div class="w-full h-full bg-cover bg-no-repeat opacity-40 lg:opacity-70" style="background-image: url('background.jpg'); background-position: center 18%;"></div>
+    </div>
 
-    <!-- 2. Ana Alan (Masaüstü için Kusursuzca Ölçeklenmiş Sol %65 / Sağ %35 Grid Düzeni) -->
-    <main class="max-w-[1300px] w-full mx-auto px-6 -mt-32 md:-mt-44 lg:-mt-48 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start flex-grow pb-24">
-        
-        <!-- Sol Bölüm (Geniş Kolon) -->
-        <section class="lg:col-span-8 space-y-10">
-            <!-- Başlık, Slogan ve Yeni Albüm Rozeti -->
-            <div class="space-y-4">
-                <!-- Rozet - METTOT Başlığının Tam Üstünde Ortalı ve Düzgün Hizalı -->
-                <div class="flex items-center space-x-2 bg-black/55 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-500/35 text-emerald-400 w-fit">
-                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-[10px] md:text-xs uppercase tracking-widest font-bold">Yeni Albüm "Zarı Yuvarla" Yayında</span>
-                </div>
-                <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-glow select-none leading-none">METTOT</h1>
-                <p class="text-xl md:text-2xl text-gray-400 italic border-l-4 border-emerald-500 pl-6 mt-2">El Sueño del Niño</p>
-            </div>
-
-            <!-- Sosyal Medya Butonları -->
-            <div class="flex flex-wrap gap-4">
-                <a href="https://open.spotify.com/artist/enessjordan" target="_blank" rel="noopener noreferrer" class="px-7 py-3 rounded-full bg-[#1DB954] text-black font-bold tracking-wider hover:scale-105 active:scale-95 transition flex items-center gap-2">
-                    <i class="fab fa-spotify text-lg"></i> SPOTIFY
-                </a>
-                <a href="https://youtube.com/@mettot-sx?si=IDqEQuNHZumbMCYJ" target="_blank" rel="noopener noreferrer" class="px-7 py-3 rounded-full bg-[#FF0000] text-white font-bold tracking-wider hover:scale-105 active:scale-95 transition flex items-center gap-2">
-                    <i class="fab fa-youtube text-lg"></i> YOUTUBE
-                </a>
-                <a href="https://www.instagram.com/enessjordan?igsh=ZWZsdjNrOWxxNTNt" target="_blank" rel="noopener noreferrer" class="px-7 py-3 rounded-full bg-[#E1306C] text-white font-bold tracking-wider hover:scale-105 active:scale-95 transition flex items-center gap-2">
-                    <i class="fab fa-instagram text-lg"></i> INSTAGRAM
-                </a>
-            </div>
-
-            <!-- Premium Müzik Oynatıcısı -->
-            <div class="glass rounded-[2rem] p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-center gap-8">
-                <!-- Albüm Kapağı -->
-                <div class="relative w-36 h-36 rounded-2xl overflow-hidden flex-shrink-0 shadow-2xl bg-slate-800 border border-white/10">
-                    <img id="player-cover" src="zariyuvarla.jpg" alt="Albüm Kapağı" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="flex-grow w-full space-y-4">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 id="current-title" class="text-2xl md:text-3xl font-bold tracking-tight">Zarı Yuvarla</h3>
-                            <p class="text-sm md:text-base text-gray-400">METTOT — <span id="status-text">Albüm Çalınıyor</span></p>
-                        </div>
-                        <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3.5 py-1.5 rounded-full border border-emerald-500/20 font-bold uppercase tracking-widest opacity-0 transition-opacity duration-300">MÜZİK ÇALIYOR</span>
-                    </div>
-
-                    <!-- İlerleme Çubuğu (Süre Göstergeli) -->
-                    <div class="space-y-2">
-                        <div class="flex justify-between text-xs text-gray-400 font-mono">
-                            <span id="current-time">00:00</span>
-                            <span id="total-time">03:32</span>
-                        </div>
-                        <div id="progress-container" class="w-full h-2 bg-white/10 rounded-full cursor-pointer relative group">
-                            <div id="progress-bar" class="absolute h-full bg-emerald-500 rounded-full w-0 transition-all duration-100"></div>
-                            <div id="progress-handle" class="absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg" style="left: 0%"></div>
-                        </div>
-                    </div>
-
-                    <!-- Oynatıcı Kontrolleri -->
-                    <div class="flex items-center gap-8 text-sm font-bold text-gray-400 pt-2">
-                        <button onclick="prevTrack()" class="hover:text-white transition flex items-center gap-2">
-                            <i class="fas fa-backward-step text-xl"></i> GERİ
-                        </button>
-                        <button onclick="togglePlay()" id="play-btn" class="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition shadow-xl">
-                            <i id="play-icon" class="fas fa-play text-base ml-1"></i>
-                        </button>
-                        <button onclick="nextTrack()" class="hover:text-white transition flex items-center gap-2">
-                            İLERİ <i class="fas fa-forward-step text-xl"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Diskografi Bölümü (2 Sütunlu Yatay ve Daha Büyük Cam Kartlar) -->
-            <div class="space-y-6">
-                <h2 class="text-3xl font-bold tracking-tight">Diskografi</h2>
-                <div id="track-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <!-- JavaScript buraya dinamik ve büyük cam kartları basacak -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Sağ Bölüm (İstatistik Alanı) -->
-        <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-10">
-            <!-- Toplam Şarkı Sayısı Kartı -->
-            <div class="glass p-8 rounded-[2rem] relative overflow-hidden group">
-                <div class="absolute -right-4 -bottom-4 text-white/5 group-hover:text-emerald-500/5 group-hover:scale-110 transition duration-500">
-                    <i class="fas fa-music text-9xl"></i>
-                </div>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-gray-400 text-xs font-bold uppercase tracking-wider">Toplam Diskografi</h3>
-                        <p class="text-4xl lg:text-5xl font-black mt-2">12 Şarkı</p>
-                        <p class="text-gray-500 text-xs mt-1">Tüm resmi platformlarda</p>
-                    </div>
-                    <span class="text-emerald-400 text-2xl"><i class="fas fa-music"></i></span>
-                </div>
-            </div>
-
-            <!-- Aylık Dinleyici Kartı -->
-            <div class="glass p-8 rounded-[2rem] relative overflow-hidden group">
-                <div class="absolute -right-4 -bottom-4 text-white/5 group-hover:text-emerald-500/5 group-hover:scale-110 transition duration-500">
-                    <i class="fas fa-chart-line text-9xl"></i>
-                </div>
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-gray-400 text-xs font-bold uppercase tracking-wider">Aylık Dinleyici</h3>
-                        <p class="text-4xl lg:text-5xl font-black mt-2 flex items-center gap-2">
-                            142.520 <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-                        </p>
-                        <p class="text-gray-500 text-xs mt-1">Anlık aktif dinleyici</p>
-                    </div>
-                    <span class="text-emerald-400 text-2xl"><i class="fas fa-chart-line"></i></span>
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <!-- Footer -->
-    <footer class="max-w-[1300px] w-full mx-auto px-6 py-8 border-t border-white/5 flex justify-between text-gray-500 text-xs">
-        <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
-        <div class="flex gap-6">
-            <a href="#" class="hover:text-white transition">Gizlilik</a>
-            <a href="#" class="hover:text-white transition">İletişim</a>
+    <!-- SOL DİKEY MENÜ (Sidebar) -->
+    <aside class="fixed left-0 top-0 h-full w-16 md:w-20 bg-[#04060d]/80 border-r border-white/5 flex flex-col justify-between items-center py-8 z-50 hidden md:flex">
+        <!-- Logo / Üst İkon -->
+        <div class="text-emerald-400 text-2xl hover:scale-110 transition cursor-pointer">
+            <i class="fas fa-wave-square"></i>
         </div>
-    </footer>
+        
+        <!-- Dikey Slogan Yazısı -->
+        <div class="transform -rotate-90 origin-center whitespace-nowrap tracking-[0.25em] text-[10px] uppercase font-bold text-gray-500 select-none">
+            EL SUEÑO DEL NIÑO
+        </div>
+        
+        <!-- Alt Menü / Telif -->
+        <div class="flex flex-col gap-6 text-gray-500 text-sm">
+            <a href="https://www.instagram.com/enessjordan" target="_blank" class="hover:text-emerald-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@mettot-sx" target="_blank" class="hover:text-emerald-400 transition"><i class="fab fa-youtube"></i></a>
+            <a href="https://open.spotify.com/artist/enessjordan" target="_blank" class="hover:text-emerald-400 transition"><i class="fab fa-spotify"></i></a>
+        </div>
+    </aside>
+
+    <!-- ANA İÇERİK ALANI (Dikey Sol Bara Göre Hizalı pl-20) -->
+    <div class="flex-grow md:pl-20 relative z-10">
+        
+        <!-- ÜST NAVİGASYON (Horizontal Navbar) -->
+        <nav class="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 flex items-center justify-between select-none">
+            <!-- Marka / Logo -->
+            <div class="flex items-center space-x-3">
+                <span class="text-xl font-black tracking-widest text-glow">METTOT</span>
+            </div>
+            
+            <!-- Linkler (Görseldeki gibi) -->
+            <div class="hidden lg:flex items-center space-x-10 text-xs tracking-widest font-semibold text-gray-400">
+                <a href="#" class="text-white hover:text-emerald-400 transition">ANA SAYFA</a>
+                <a href="#music-section" class="hover:text-emerald-400 transition">MÜZİK</a>
+                <a href="#diskografi-section" class="hover:text-emerald-400 transition">DİSKOGRAFİ</a>
+                <a href="#hakkimda-section" class="hover:text-emerald-400 transition">HAKKIMDA</a>
+                <a href="#iletisim-section" class="hover:text-emerald-400 transition">İLETİŞİM</a>
+            </div>
+
+            <!-- Sağ Mini Sosyal İkonlar (Nav) -->
+            <div class="flex items-center space-x-4 text-sm text-gray-400">
+                <a href="https://www.instagram.com/enessjordan" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@mettot-sx" target="_blank" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/enessjordan" target="_blank" class="hover:text-white transition"><i class="fab fa-spotify"></i></a>
+            </div>
+        </nav>
+
+        <!-- KUSURSUZ 12'Lİ GRID SİSTEMİ -->
+        <main class="max-w-[1400px] mx-auto px-6 lg:px-12 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <!-- SOL KOLON (Müzik Oynatıcısı, Başlıklar, Diskografi) - %65 Genişlik -->
+            <section class="lg:col-span-8 space-y-12">
+                
+                <!-- Başlık & Slogan Alanı -->
+                <div class="space-y-4">
+                    <h1 class="text-8xl md:text-[10rem] font-black tracking-tighter text-glow select-none leading-none">METTOT</h1>
+                    <p class="text-2xl md:text-3xl text-emerald-400 font-serif italic tracking-wide pl-2">El Sueño del Niño</p>
+                </div>
+
+                <!-- Butonlar (Spotify'da Dinle & Youtube Kanalı) -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="https://open.spotify.com/artist/enessjordan" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-lg bg-emerald-500 text-black font-bold tracking-wider hover:bg-emerald-400 hover:scale-[1.02] transition duration-300 flex items-center justify-between gap-4 w-60">
+                        <span class="flex items-center gap-2 text-xs"><i class="fab fa-spotify text-base"></i> SPOTIFY'DA DİNLE</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="https://youtube.com/@mettot-sx?si=IDqEQuNHZumbMCYJ" target="_blank" rel="noopener noreferrer" class="px-6 py-3.5 rounded-lg bg-[#141a29]/80 text-white border border-white/10 font-bold tracking-wider hover:bg-[#1f293d] hover:scale-[1.02] transition duration-300 flex items-center justify-between gap-4 w-60">
+                        <span class="flex items-center gap-2 text-xs"><i class="fab fa-youtube text-base text-red-500"></i> YOUTUBE KANALI</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Oynatıcı Alanı (Şu An Çalınıyor) -->
+                <div id="music-section" class="space-y-3">
+                    <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest pl-1">ŞU AN ÇALINIYOR</span>
+                    
+                    <div class="glass rounded-2xl p-6 md:p-8 shadow-2xl flex flex-col md:flex-row items-center gap-6 relative overflow-hidden">
+                        <!-- Albüm Kapağı -->
+                        <div class="relative w-32 h-32 rounded-xl overflow-hidden flex-shrink-0 shadow-2xl bg-slate-800 border border-white/5">
+                            <img id="player-cover" src="zariyuvarla.jpg" alt="Albüm Kapağı" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="flex-grow w-full space-y-4">
+                            <!-- Şarkı Bilgisi & Ses Dalgası -->
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 id="current-title" class="text-xl md:text-2xl font-bold tracking-tight">Zarı Yuvarla</h3>
+                                    <p class="text-xs md:text-sm text-gray-400">METTOT — <span id="status-text">Albüm Çalınıyor</span></p>
+                                </div>
+                                
+                                <!-- Ses Dalgaları (Müzik çalarken aktifleşir) -->
+                                <div id="wave-visualizer" class="flex items-end h-8">
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                    <div class="wave-bar"></div>
+                                </div>
+                            </div>
+
+                            <!-- İlerleme Çubuğu -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[10px] text-gray-500 font-mono">
+                                    <span id="current-time">00:00</span>
+                                    <span id="total-time">03:32</span>
+                                </div>
+                                <div id="progress-container" class="w-full h-1 bg-white/10 rounded-full cursor-pointer relative group">
+                                    <div id="progress-bar" class="absolute h-full bg-emerald-500 rounded-full w-0 transition-all duration-100"></div>
+                                    <div id="progress-handle" class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-lg" style="left: 0%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Oynatıcı Kontrolleri -->
+                            <div class="flex items-center justify-between pt-2">
+                                <div class="flex items-center gap-6">
+                                    <button onclick="prevTrack()" class="text-gray-400 hover:text-white transition">
+                                        <i class="fas fa-step-backward text-sm"></i>
+                                    </button>
+                                    <button onclick="togglePlay()" id="play-btn" class="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center hover:scale-105 transition shadow-xl">
+                                        <i id="play-icon" class="fas fa-play text-sm ml-0.5"></i>
+                                    </button>
+                                    <button onclick="nextTrack()" class="text-gray-400 hover:text-white transition">
+                                        <i class="fas fa-step-forward text-sm"></i>
+                                    </button>
+                                </div>
+                                
+                                <!-- Beğeni / Kalp İkonu (Sadece dekoratif tasarım için) -->
+                                <button class="text-gray-500 hover:text-red-500 transition">
+                                    <i class="far fa-heart text-base"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diskografi Alanı (2 Sütunlu Yatay Büyük Kartlar) -->
+                <div id="diskografi-section" class="space-y-6">
+                    <div class="flex justify-between items-end border-b border-white/5 pb-2">
+                        <h2 class="text-2xl font-bold tracking-tight">DİSKOGRAFİ</h2>
+                        <a href="#diskografi-section" class="text-[10px] text-emerald-400 hover:text-white font-bold uppercase tracking-widest transition">TÜMÜNÜ GÖR</a>
+                    </div>
+                    <div id="track-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <!-- JavaScript buraya dinamik ve büyük yatay cam kartları basacak -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SAĞ KOLON (İstatistik ve Hakkımda/İletişim Alanı) - %35 Genişlik -->
+            <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-8">
+                
+                <!-- Toplam Şarkı Kartı -->
+                <div class="glass p-6 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-gray-400 text-[10px] font-bold uppercase tracking-wider">TOPLAM ŞARKI</h3>
+                            <p class="text-3xl font-black mt-2">12 <span class="text-xs text-gray-400 font-normal">ŞARKI</span></p>
+                            <p class="text-gray-500 text-[10px] mt-1">Tüm resmi platformlarda aktif</p>
+                        </div>
+                        <div class="text-emerald-500 text-2xl bg-emerald-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-music"></i>
+                        </div>
+                    </div>
+                    <!-- Alt Çizgi Dekoratif Grafik Simülasyonu -->
+                    <div class="mt-4 h-1 w-full bg-emerald-500/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-emerald-500 rounded-full w-2/3"></div>
+                    </div>
+                </div>
+
+                <!-- Aylık Dinleyici Kartı -->
+                <div class="glass p-6 rounded-2xl relative overflow-hidden group">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-gray-400 text-[10px] font-bold uppercase tracking-wider">AYLIK DİNLEYİCİ</h3>
+                            <p class="text-3xl font-black mt-2 flex items-center gap-2">
+                                142.520 
+                                <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                            </p>
+                            <p class="text-gray-500 text-[10px] mt-1">Canlı güncelleniyor</p>
+                        </div>
+                        <div class="text-emerald-500 text-2xl bg-emerald-500/10 w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <!-- Alt Grafik Simülasyonu -->
+                    <div class="mt-4 h-1 w-full bg-emerald-500/10 rounded-full overflow-hidden">
+                        <div class="h-full bg-emerald-500 rounded-full w-4/5 animate-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- HAKKIMDA BÖLÜMÜ -->
+                <div id="hakkimda-section" class="glass p-6 rounded-2xl space-y-4">
+                    <h3 class="text-gray-400 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 pb-2">HAKKIMDA</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed font-light">
+                        METTOT, çocukluk düşlerinin peşinden sürüklenen melankolik ezgileri ve çağdaş ritimleri "El Sueño del Niño" projesinde harmanlıyor. Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.
+                    </p>
+                    <div class="flex justify-end pt-2">
+                        <span class="font-serif italic text-emerald-400 text-sm select-none">Mettot Official</span>
+                    </div>
+                </div>
+
+                <!-- İLETİŞİM BÖLÜMÜ -->
+                <div id="iletisim-section" class="glass p-6 rounded-2xl space-y-4">
+                    <h3 class="text-gray-400 text-[10px] font-bold uppercase tracking-wider border-b border-white/5 pb-2">İLETİŞİM</h3>
+                    <div class="space-y-3 text-xs text-gray-300">
+                        <div class="flex items-center gap-3">
+                            <i class="fab fa-instagram text-emerald-400 text-sm w-4"></i>
+                            <span>@mettotofficial</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="far fa-envelope text-emerald-400 text-sm w-4"></i>
+                            <span>mettotiletisim@gmail.com</span>
+                        </div>
+                        <p class="text-[10px] text-gray-500 pt-1 leading-normal">
+                            İş birlikleri ve etkinlik talepleri için iletişime geçin.
+                        </p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="max-w-[1400px] w-full mx-auto px-6 lg:px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
+            <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Gizlilik</a>
+                <a href="#" class="hover:text-white transition">İletişim</a>
+            </div>
+        </footer>
+    </div>
 
     <!-- Müzik Sistemi JavaScript Motoru -->
     <script>
-        // Orijinal dosya adları ve güncellenmiş resimler
+        // Orijinal parça listesi ve kapakları
         const playlist = [
             { id: "01", title: "Zarı Yuvarla", type: "Albüm • 2026", duration: "3:32", url: "./Zarı Yuvarla.mp4", cover: "zariyuvarla.jpg" },
             { id: "02", title: "İstediğin Olsun", type: "Single • 2025", duration: "3:45", url: "./İstediğin olsun.mp4", cover: "gecemesaisi.jpg" },
@@ -189,34 +316,34 @@
         const audio = document.getElementById('main-audio');
         const playBtn = document.getElementById('play-btn');
         const playIcon = document.getElementById('play-icon');
-        const playingBadge = document.getElementById('playing-badge');
+        const waveVisualizer = document.getElementById('wave-visualizer');
         const progressBar = document.getElementById('progress-bar');
         const progressHandle = document.getElementById('progress-handle');
 
-        // Diskografi Kartlarını Büyütülmüş Yatay Cam Kart Tasarımına Dönüştüren Fonksiyon
+        // Görseldeki gibi Premium Büyük Yatay Cam Kartları Oluşturup Basan Fonksiyon
         function initDiskografi() {
             const list = document.getElementById('track-list');
             list.innerHTML = playlist.map((track, i) => `
-                <div id="track-card-${i}" onclick="selectTrack(${i})" class="glass p-5 md:p-6 rounded-[22px] flex items-center justify-between hover:scale-[1.03] hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group">
+                <div id="track-card-${i}" onclick="selectTrack(${i})" class="glass p-5 rounded-xl flex items-center justify-between hover:scale-[1.03] hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group">
                     <div class="flex items-center gap-5">
-                        <!-- Numara -->
+                        <!-- Sıra Numarası -->
                         <span class="text-gray-500 font-mono text-sm w-4">${track.id}</span>
-                        <!-- Albüm Kapağı (Daha Büyük) -->
-                        <img src="${track.cover}" alt="${track.title}" class="w-16 h-16 rounded-[14px] object-cover shadow-lg border border-white/5">
-                        <!-- Şarkı Adı ve Bilgisi -->
+                        <!-- Büyük Şık Kapak Görseli -->
+                        <img src="${track.cover}" alt="${track.title}" class="w-14 h-14 rounded-lg object-cover shadow-lg border border-white/5">
+                        <!-- Şarkı Bilgileri -->
                         <div class="flex flex-col">
-                            <h4 class="font-bold text-base md:text-lg group-hover:text-emerald-400 transition line-clamp-1">${track.title}</h4>
-                            <span class="text-xs text-gray-400 mt-1">${track.type}</span>
+                            <h4 class="font-bold text-sm md:text-base group-hover:text-emerald-400 transition line-clamp-1">${track.title}</h4>
+                            <span class="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">${track.type}</span>
                         </div>
                     </div>
                     <!-- Şarkı Süresi -->
-                    <span class="text-gray-400 font-mono text-sm pl-2">${track.duration}</span>
+                    <span class="text-gray-400 font-mono text-xs pl-2">${track.duration}</span>
                 </div>
             `).join('');
             updateActiveCard();
         }
 
-        // Çalan şarkı kartını yeşil çerçeveye alan fonksiyon
+        // Çalan şarkı kartını yeşil çerçeve ile vurgulayan fonksiyon
         function updateActiveCard() {
             playlist.forEach((_, i) => {
                 const card = document.getElementById(`track-card-${i}`);
@@ -230,7 +357,7 @@
             });
         }
 
-        // Parça yükleme işlemi
+        // Parçayı yükleme
         function loadTrack(i) {
             currentIdx = i;
             audio.src = playlist[i].url;
@@ -241,36 +368,33 @@
             updateActiveCard();
         }
 
-        // Şarkı seçme ve oynatma tetikleyici
+        // Şarkı seçme ve çalma
         function selectTrack(i) {
             loadTrack(i);
             audio.play();
             playIcon.className = "fas fa-pause";
-            playingBadge.classList.remove('opacity-0');
-            playingBadge.classList.add('opacity-100');
+            waveVisualizer.classList.add('playing');
         }
 
-        // Play/Pause durum kontrolü
+        // Başlat / Duraklat mekanizması
         function togglePlay() {
             if (!audio.src) { loadTrack(0); }
             if (audio.paused) {
                 audio.play();
                 playIcon.className = "fas fa-pause";
-                playingBadge.classList.remove('opacity-0');
-                playingBadge.classList.add('opacity-100');
+                waveVisualizer.classList.add('playing');
             } else {
                 audio.pause();
                 playIcon.className = "fas fa-play";
-                playingBadge.classList.remove('opacity-100');
-                playingBadge.classList.add('opacity-0');
+                waveVisualizer.classList.remove('playing');
             }
         }
 
-        // İleri ve Geri şarkı geçişleri
+        // İleri ve Geri alma mekanizmaları
         function nextTrack() { selectTrack((currentIdx + 1) % playlist.length); }
         function prevTrack() { selectTrack((currentIdx - 1 + playlist.length) % playlist.length); }
 
-        // Gerçek zamanlı ilerleme çubuğu ve süre sayacı güncelleme
+        // Anlık oynatma süresi ve ilerleme barı
         audio.ontimeupdate = () => {
             if (!audio.duration) return;
             const percentage = (audio.currentTime / audio.duration) * 100;
@@ -282,17 +406,17 @@
             document.getElementById('current-time').innerText = `${m}:${s.toString().padStart(2, '0')}`;
         };
 
-        // Şarkı bitiminde sonraki şarkıya geçiş
+        // Otomatik sonraki şarkıya geçiş
         audio.onended = nextTrack;
 
-        // İlerleme çubuğuna tıklanıldığında şarkıyı sarma
+        // İlerleme çubuğuna tıklanıldığında sarma
         document.getElementById('progress-container').onclick = (e) => {
             if (audio.duration) {
                 audio.currentTime = (e.offsetX / e.target.offsetWidth) * audio.duration;
             }
         };
 
-        // Başlangıç Kurulumları
+        // Başlangıç kurulumları
         window.onload = () => {
             initDiskografi();
             loadTrack(0);
