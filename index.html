@@ -19,14 +19,14 @@
 </head>
 <body class="min-h-screen text-white overflow-x-hidden">
 
-    <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5">
+    <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5 bg-[#050505]">
         <div class="text-[#67d6b8] text-3xl"><i class="fa-solid fa-wave-square"></i></div>
         <div class="flex flex-col gap-8 text-2xl text-gray-400">
             <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
-            <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify text-2xl"></i></a>
+            <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify text-2xl"></i></a>
             <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube text-2xl"></i></a>
         </div>
-        <div class="vertical-text text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180 mb-12" style="writing-mode: vertical-rl;">
+        <div class="text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180 mb-12" style="writing-mode: vertical-rl;">
             EL SUEÑO DEL NIÑO
         </div>
     </aside>
@@ -43,7 +43,7 @@
             <div class="flex gap-6 text-xl">
                 <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
                 <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
             </div>
         </nav>
 
@@ -56,7 +56,7 @@
                 </div>
                 
                 <div class="flex flex-wrap gap-4 mb-16">
-                    <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
+                    <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
                         <i class="fa-brands fa-spotify"></i> SPOTIFY'DA DİNLE
                     </a>
                     <a href="https://youtube.com/@mettotofficial" target="_blank" class="bg-white/10 px-8 py-3 rounded-full flex items-center gap-2 hover:bg-white/20 transition">
@@ -64,9 +64,8 @@
                     </a>
                 </div>
 
-                <!-- Oynatıcı -->
                 <div class="glass p-6 rounded-2xl w-full">
-                    <p class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
+                    <p class="text-lg text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
                         <img id="current-cover" src="zariyuvarla.jpg" class="rounded-xl w-[100px] h-[100px] object-cover" alt="Album Art">
                         <div class="flex-1">
@@ -77,10 +76,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center mt-6 gap-6 text-2xl text-white">
-                        <i class="fa-solid fa-backward-step cursor-pointer hover:text-[#67d6b8]"></i>
-                        <i id="play-btn" class="fa-solid fa-circle-play text-4xl cursor-pointer hover:text-[#67d6b8]" onclick="togglePlay()"></i>
-                        <i class="fa-solid fa-forward-step cursor-pointer hover:text-[#67d6b8]"></i>
+                    <div class="flex justify-center mt-6 gap-8 text-2xl text-white">
+                        <button onclick="prevSong()" class="hover:text-[#67d6b8] transition"><i class="fa-solid fa-backward-step"></i></button>
+                        <button id="play-btn" onclick="togglePlay()" class="hover:text-[#67d6b8] transition"><i id="play-icon" class="fa-solid fa-circle-play text-4xl"></i></button>
+                        <button onclick="nextSong()" class="hover:text-[#67d6b8] transition"><i class="fa-solid fa-forward-step"></i></button>
                     </div>
                 </div>
             </div>
@@ -113,7 +112,7 @@
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
             <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- JavaScript ile yüklenecek -->
+                <!-- JS ile yüklenecek -->
             </div>
         </section>
     </main>
@@ -126,6 +125,7 @@
             { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png" }
         ];
 
+        let currentSongIndex = 0;
         let isPlaying = false;
 
         function renderDiskography() {
@@ -142,22 +142,29 @@
         }
 
         function playSong(index) {
+            currentSongIndex = index;
             const song = songs[index];
             document.getElementById('current-cover').src = song.cover;
             document.getElementById('current-title').innerText = song.title;
             document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
             isPlaying = true;
-            document.getElementById('play-btn').className = "fa-solid fa-circle-pause text-4xl cursor-pointer hover:text-[#67d6b8]";
+            document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
         }
 
         function togglePlay() {
-            const btn = document.getElementById('play-btn');
             isPlaying = !isPlaying;
-            if (isPlaying) {
-                btn.className = "fa-solid fa-circle-pause text-4xl cursor-pointer hover:text-[#67d6b8]";
-            } else {
-                btn.className = "fa-solid fa-circle-play text-4xl cursor-pointer hover:text-[#67d6b8]";
-            }
+            const icon = document.getElementById('play-icon');
+            icon.className = isPlaying ? "fa-solid fa-circle-pause text-4xl" : "fa-solid fa-circle-play text-4xl";
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            playSong(currentSongIndex);
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentSongIndex);
         }
 
         renderDiskography();
