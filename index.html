@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -52,7 +53,7 @@
 
     <!-- ÜST ARKA PLAN EKRAN RESMİ (BANNER) -->
     <header class="relative w-full h-[35vh] overflow-hidden">
-        <!-- Güncellenen Arka Plan Görsel Adı: background.jpg -->
+        <!-- Arka Plan Görsel Adı: background.jpg -->
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('background.jpg');">
             <!-- Görselin üzerine karartma ve yumuşak geçiş efektleri -->
             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-black/40"></div>
@@ -82,7 +83,8 @@
 
             <!-- Spotify ve YouTube Bağlantı Butonları -->
             <div class="flex flex-wrap gap-4">
-                <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" 
+                <!-- Kendi doğrudan linkini buraya yapıştırabilirsin. Şimdilik arama linki eklendi. -->
+                <a href="https://open.spotify.com/search/METTOT" target="_blank" rel="noopener noreferrer" 
                    class="flex items-center space-x-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-[#1DB954]/20">
                     <!-- Spotify Logo -->
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -90,7 +92,8 @@
                     </svg>
                     <span>Spotify'da Dinle</span>
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+                <!-- Kendi doğrudan YouTube kanal linkini buraya yapıştırabilirsin. Şimdilik arama linki eklendi. -->
+                <a href="https://www.youtube.com/results?search_query=METTOT" target="_blank" rel="noopener noreferrer" 
                    class="flex items-center space-x-3 bg-[#FF0000] hover:bg-[#ff1a1a] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-[#FF0000]/20">
                     <!-- YouTube Logo -->
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -103,7 +106,7 @@
             <!-- "ZARI YUVARLA" OYNAT / BAŞLAT BÖLÜMÜ -->
             <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl">
                 <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <!-- Dinamik Değişen Albüm Kapağı (Güncellenen ad: zariyuvarla.jpg) -->
+                    <!-- Dinamik Değişen Albüm Kapağı -->
                     <div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 shadow-md bg-slate-800">
                         <img id="player-cover" src="zariyuvarla.jpg" 
                              alt="Albüm Kapağı" class="w-full h-full object-cover transition duration-300">
@@ -172,7 +175,6 @@
                     <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Zarı Yuvarla', '03:32', 'zariyuvarla.jpg')">
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500 font-mono text-sm group-hover:text-emerald-400 transition">01</span>
-                            <!-- Güncellenen dosya adı: zariyuvarla.jpg -->
                             <img src="zariyuvarla.jpg" alt="Zarı Yuvarla" class="w-10 h-10 object-cover rounded shadow">
                             <div>
                                 <h4 class="font-semibold text-white">Zarı Yuvarla</h4>
@@ -339,14 +341,14 @@
 
         // UI Güncelleme (Bar genişliği ve Süre)
         function updateUI() {
-            progressBar.style.width = ${progress}%;
-            progressHandle.style.left = ${progress}%;
+            progressBar.style.width = `${progress}%`;
+            progressHandle.style.left = `${progress}%`;
             
             let totalSeconds = 212; // 3 dakika 32 saniye varsayılan
             let currentSeconds = Math.floor((progress / 100) * totalSeconds);
             let mins = Math.floor(currentSeconds / 60);
             let secs = currentSeconds % 60;
-            currentTimeEl.innerText = ${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')};
+            currentTimeEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
 
         // Tıklanan Şarkıyı Çalma Listesinden Seçme ve Görselini Değiştirme
@@ -390,3 +392,5 @@
     </script>
 </body>
 </html>
+
+```
