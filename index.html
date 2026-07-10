@@ -11,12 +11,15 @@
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .cormorant { font-family: 'Cormorant Garamond', serif; }
-        .active-card { border-color: #67d6b8 !important; }
+        /* Özel Kaydırma Çubuğu Tasarımı */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #67d6b8; }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <!-- Sidebar -->
     <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5 bg-[#050505]">
         <div class="text-[#67d6b8] text-3xl"><i class="fa-solid fa-wave-square"></i></div>
         <div class="flex flex-col gap-8 text-2xl text-gray-400">
@@ -46,13 +49,13 @@
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
-            <!-- Background Image -->
+            <!-- Arka Plan Resmi -->
             <div class="absolute inset-0 z-0">
-                <img src="background.jpg" class="w-full h-full object-cover object-[50%_75%] opacity-25" alt="Background">
+                <img src="background.jpg" class="w-full h-full object-cover object-[75%_50%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
-            <!-- Left Content -->
+            <!-- Sol İçerik -->
             <div class="relative z-10 lg:col-span-8">
                 <div class="mb-12">
                     <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
@@ -64,11 +67,9 @@
                     <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
                         <i class="fa-brands fa-spotify"></i> SPOTIFY'DA DİNLE
                     </a>
-                    <a href="https://youtube.com/@mettotofficial" target="_blank" class="bg-white/10 px-8 py-3 rounded-full flex items-center gap-2 hover:bg-white/20 transition">
-                        <i class="fa-brands fa-youtube"></i> YOUTUBE KANALI
-                    </a>
                 </div>
 
+                <!-- Müzik Oynatıcı -->
                 <div class="glass p-6 rounded-2xl w-full">
                     <p id="current-meta" class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
@@ -88,11 +89,11 @@
                 </div>
             </div>
 
-            <!-- Right Content -->
+            <!-- Sağ İçerik -->
             <div class="relative z-10 lg:col-span-4 flex flex-col gap-6">
                 <div id="hakkimda" class="glass p-8 rounded-2xl">
                     <p class="text-sm uppercase text-gray-400 mb-2">TOPLAM DİSKOGRAFİ</p>
-                    <h3 class="text-3xl font-bold mb-4">4 RESMÎ YAYIN</h3>
+                    <h3 class="text-3xl font-bold mb-4">4 Resmî Yayın</h3>
                     <div class="w-full bg-[#67d6b8] h-1 rounded-full"></div>
                 </div>
 
@@ -106,9 +107,14 @@
 
                 <div id="iletisim" class="glass p-8 rounded-2xl">
                     <h3 class="text-xl font-bold mb-4">İLETİŞİM</h3>
-                    <div class="flex flex-col gap-3 text-gray-300">
+                    <div class="flex flex-col gap-3 text-gray-300 mb-6">
                         <p><i class="fa-brands fa-instagram mr-2 text-[#67d6b8]"></i> @mettotofficial</p>
                         <p><i class="fa-regular fa-envelope mr-2 text-[#67d6b8]"></i> mettotiletisim@gmail.com</p>
+                    </div>
+                    <div class="flex gap-4 text-xl">
+                        <a href="https://instagram.com/mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" class="hover:text-[#67d6b8]"><i class="fa-brands fa-spotify"></i></a>
+                        <a href="https://youtube.com/@mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -117,7 +123,7 @@
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
             <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- JS Load -->
+                <!-- JS tarafından doldurulacak -->
             </div>
         </section>
     </main>
