@@ -26,28 +26,24 @@
     <audio id="main-audio"></audio>
 
     <!-- 1. Hero Banner (Üst Alan) -->
-    <header class="relative w-full h-[320px] bg-cover bg-center" style="background-image: url('background.jpg');">
+    <header class="relative w-full h-[400px] bg-cover bg-center" style="background-image: url('background.jpg');">
         <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/30 to-black/50"></div>
     </header>
 
     <!-- 2. Ana Alan (Sol %65 / Sağ %35) -->
-    <main class="max-w-7xl w-full mx-auto px-6 -mt-28 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start flex-grow pb-20">
+    <main class="max-w-7xl w-full mx-auto px-6 -mt-36 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start flex-grow pb-20">
         
         <!-- Sol Bölüm -->
         <section class="lg:col-span-8 space-y-10">
-            <!-- Hizalanmış Yeni Albüm Rozeti ve Başlık -->
-            <div class="flex flex-col space-y-4">
-                <!-- Rozet: Mettot yazısının tam üstüne hizalı şekilde yerleştirildi -->
-                <div class="flex items-center space-x-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-500/30 text-emerald-400 w-fit">
+            <!-- Başlık ve Slogan -->
+            <div>
+                <!-- Yeni Albüm Rozeti - METTOT Başlığının Tam Üstünde Ortalı ve Düzgün Hizalı -->
+                <div class="flex items-center space-x-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-emerald-500/30 text-emerald-400 w-fit mb-4">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span class="text-[11px] uppercase tracking-widest font-bold">Yeni Albüm "Zarı Yuvarla" Yayında</span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold">Yeni Albüm "Zarı Yuvarla" Yayında</span>
                 </div>
-                
-                <!-- Başlık ve Slogan -->
-                <div>
-                    <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-glow select-none leading-none">METTOT</h1>
-                    <p class="text-xl md:text-2xl text-gray-400 italic border-l-4 border-emerald-500 pl-6 mt-4">el sueno del nino</p>
-                </div>
+                <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-glow select-none leading-none">METTOT</h1>
+                <p class="text-xl md:text-2xl text-gray-400 italic border-l-4 border-emerald-500 pl-6 mt-4">el sueno del nino</p>
             </div>
 
             <!-- Sosyal Medya Butonları -->
@@ -76,7 +72,7 @@
                             <h3 id="current-title" class="text-2xl font-bold">Zarı Yuvarla</h3>
                             <p class="text-sm text-gray-400">METTOT — <span id="status-text">Albüm Çalınıyor</span></p>
                         </div>
-                        <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-bold uppercase tracking-widest opacity-0 transition-opacity duration-300">MÜZİK ÇALIYOR</span>
+                        <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20 font-bold uppercase tracking-widest opacity-0 transition-opacity duration-300 font-sans">MÜZİK ÇALIYOR</span>
                     </div>
 
                     <!-- İlerleme Çubuğu (Süre Göstergeli) -->
@@ -106,11 +102,11 @@
                 </div>
             </div>
 
-            <!-- Diskografi Bölümü (Daha Büyük Kartlar ve Düzen) -->
+            <!-- Diskografi Bölümü (Görseldeki Gibi 2 Sütunlu Yatay Cam Kartlar) -->
             <div class="space-y-6">
                 <h2 class="text-3xl font-bold tracking-tight">Diskografi</h2>
-                <div id="track-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- JavaScript kartları buraya dinamik olarak basacak -->
+                <div id="track-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- JavaScript yatay cam kartları buraya dinamik olarak basacak -->
                 </div>
             </div>
         </section>
@@ -162,7 +158,6 @@
 
     <!-- Müzik Sistemi JavaScript Motoru -->
     <script>
-        // Dosya adları senin GitHub depondaki görsel ve müzik adlarıyla birebir eşlenmiştir
         const playlist = [
             { id: "01", title: "Zarı Yuvarla", type: "Albüm • 2026", duration: "3:32", url: "./Zarı Yuvarla.mp4", cover: "zariyuvarla.jpg" },
             { id: "02", title: "İstediğin Olsun", type: "Single • 2025", duration: "3:45", url: "./İstediğin olsun.mp4", cover: "gecemesaisi.jpg" },
@@ -178,27 +173,30 @@
         const progressBar = document.getElementById('progress-bar');
         const progressHandle = document.getElementById('progress-handle');
 
-        // Diskografi Kartlarını Yan Yana 4 Adet Olacak ve Daha Büyük Duracak Şekilde Başlatır
+        // Diskografi Kartlarını Görseldeki (image_79f6f7.jpg) Yatay Cam Kart Tasarımına Dönüştüren Fonksiyon
         function initDiskografi() {
             const list = document.getElementById('track-list');
             list.innerHTML = playlist.map((track, i) => `
-                <div id="track-card-${i}" onclick="selectTrack(${i})" class="glass p-5 rounded-[24px] aspect-square flex flex-col justify-between hover:scale-[1.05] hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group">
-                    <div class="w-full">
-                        <!-- Daha büyük kapak görseli: w-16 yerine w-20 ve mb-4 -->
-                        <img src="${track.cover}" alt="${track.title}" class="w-20 h-20 rounded-xl object-cover shadow-md mb-4">
-                        <!-- Daha büyük şarkı ismi: text-lg -->
-                        <h4 class="font-bold text-lg group-hover:text-emerald-400 transition line-clamp-1">${track.title}</h4>
+                <div id="track-card-${i}" onclick="selectTrack(${i})" class="glass p-4 rounded-2xl flex items-center justify-between hover:scale-[1.02] hover:border-emerald-500/50 transition-all duration-300 cursor-pointer group">
+                    <div class="flex items-center gap-4">
+                        <!-- Numara -->
+                        <span class="text-gray-500 font-mono text-xs w-4">${track.id}</span>
+                        <!-- Albüm Kapağı -->
+                        <img src="${track.cover}" alt="${track.title}" class="w-12 h-12 rounded-xl object-cover shadow-md">
+                        <!-- Şarkı Adı ve Bilgisi -->
+                        <div class="flex flex-col">
+                            <h4 class="font-bold text-sm md:text-base group-hover:text-emerald-400 transition line-clamp-1">${track.title}</h4>
+                            <span class="text-xs text-gray-400 mt-0.5">${track.type}</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center text-xs text-gray-400 font-mono mt-auto pt-2">
-                        <span>${track.type}</span>
-                        <span>${track.duration}</span>
-                    </div>
+                    <!-- Şarkı Süresi -->
+                    <span class="text-gray-400 font-mono text-xs md:text-sm pl-2">${track.duration}</span>
                 </div>
             `).join('');
             updateActiveCard();
         }
 
-        // Seçilen kartın etrafını yeşil çerçeve yapar
+        // Çalan şarkı kartını yeşil çerçeveye alan fonksiyon
         function updateActiveCard() {
             playlist.forEach((_, i) => {
                 const card = document.getElementById(`track-card-${i}`);
