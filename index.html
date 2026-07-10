@@ -93,37 +93,37 @@
         </div>
     </aside>
 
-    <!-- ANA İÇERİK ALANI (Dikey Sol Bara Göre Hizalı pl-20) -->
+    <!-- ANA İÇERIK ALANI (Dikey Sol Bara Göre Hizalı pl-16 / pl-20) -->
     <div class="flex-grow md:pl-20 relative z-10">
         
-        <!-- ÜST NAVİGASYON (Horizontal Navbar - Kenarlara Yaslanmış 1850px Limitli) -->
-        <nav class="max-w-[1850px] mx-auto px-4 lg:px-6 py-6 flex items-center justify-between select-none">
+        <!-- ÜST NAVİGASYON (Horizontal Navbar) -->
+        <nav class="max-w-[1850px] mx-auto px-4 lg:px-8 py-6 flex items-center justify-between select-none">
             <!-- Marka / Logo -->
             <div class="flex items-center space-x-3">
-                <span class="text-xl font-black tracking-widest text-glow">METTOT</span>
+                <span class="text-xl md:text-2xl font-black tracking-widest text-glow">METTOT</span>
             </div>
             
-            <!-- Linkler -->
-            <div class="hidden lg:flex items-center space-x-10 text-xs tracking-widest font-semibold text-gray-400">
-                <a href="#" class="text-white hover:text-emerald-400 transition">ANA SAYFA</a>
-                <a href="#music-section" class="hover:text-emerald-400 transition">MÜZİK</a>
-                <a href="#diskografi-section" class="hover:text-emerald-400 transition">DİSKOGRAFİ</a>
-                <a href="#hakkimda-section" class="hover:text-emerald-400 transition">HAKKIMDA</a>
-                <a href="#iletisim-section" class="hover:text-emerald-400 transition">İLETİŞİM</a>
+            <!-- Linkler (BÜYÜTÜLMÜŞ SÜRÜM - text-sm'den text-[15px]'e ve daha kalın font ağırlığına çekildi) -->
+            <div class="hidden lg:flex items-center space-x-12 text-[15px] tracking-[0.18em] font-bold text-gray-300">
+                <a href="#" class="text-white hover:text-emerald-400 transition duration-300">ANA SAYFA</a>
+                <a href="#music-section" class="hover:text-emerald-400 transition duration-300">MÜZİK</a>
+                <a href="#diskografi-section" class="hover:text-emerald-400 transition duration-300">DİSKOGRAFİ</a>
+                <a href="#hakkimda-section" class="hover:text-emerald-400 transition duration-300">HAKKIMDA</a>
+                <a href="#iletisim-section" class="hover:text-emerald-400 transition duration-300">İLETİŞİM</a>
             </div>
 
-            <!-- Sağ Mini Sosyal İkonlar (Nav) -->
-            <div class="flex items-center space-x-4 text-sm text-gray-400">
-                <a href="https://www.instagram.com/enessjordan" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@mettot-sx" target="_blank" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
-                <a href="https://open.spotify.com/artist/enessjordan" target="_blank" class="hover:text-white transition"><i class="fab fa-spotify"></i></a>
+            <!-- Sağ Mini Sosyal İkonlar (Nav) - Orantılı Büyütüldü -->
+            <div class="flex items-center space-x-5 text-base text-gray-400">
+                <a href="https://www.instagram.com/enessjordan" target="_blank" class="hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@mettot-sx" target="_blank" class="hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/enessjordan" target="_blank" class="hover:text-white transition duration-300"><i class="fab fa-spotify"></i></a>
             </div>
         </nav>
 
-        <!-- KUSURSUZ 12'Lİ GRID SİSTEMİ (Kenarlara Yaslanmış, Ortası Maksimum Açık) -->
-        <main class="max-w-[1850px] mx-auto px-4 lg:px-6 py-10 grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-36 items-start">
+        <!-- KUSURSUZ 12'Lİ GRID SİSTEMİ (Sol Kolon En Sola, Sağ Kolon En Sağa İtilmiş) -->
+        <main class="max-w-[1850px] mx-auto px-4 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
             
-            <!-- SOL KOLON (Müzik Oynatıcısı, Başlıklar, Diskografi) - Sol Teğet -->
+            <!-- SOL KOLON (Müzik Oynatıcısı, Başlıklar, Diskografi) - %65 Genişlik -->
             <section class="lg:col-span-8 space-y-12">
                 
                 <!-- Başlık & Slogan Alanı -->
@@ -154,7 +154,7 @@
                             <img id="player-cover" src="zariyuvarla.jpg" alt="Albüm Kapağı" class="w-full h-full object-cover">
                         </div>
                         
-                        <div class="flex-grow w-full space-y-4">
+                        <div class="flex-grow w-full space-y-4 relative min-h-[100px]">
                             <!-- Şarkı Bilgisi & Ses Dalgası -->
                             <div class="flex justify-between items-center">
                                 <div>
@@ -162,7 +162,7 @@
                                     <p class="text-xs md:text-sm text-gray-400">METTOT — <span id="status-text">Albüm Çalınıyor</span></p>
                                 </div>
                                 
-                                <!-- Ses Dalgaları (Müzik çalarken aktifleşir) -->
+                                <!-- Ses Dalgaları -->
                                 <div id="wave-visualizer" class="flex items-end h-8">
                                     <div class="wave-bar"></div>
                                     <div class="wave-bar"></div>
@@ -184,13 +184,9 @@
                                 </div>
                             </div>
 
-                            <!-- Oynatıcı Kontrolleri (Kusursuz Ortalı) -->
-                            <div class="flex items-center justify-between pt-2 relative">
-                                <!-- Dengeleyici görünmez kutu -->
-                                <div class="w-4"></div>
-
-                                <!-- Merkezi Kontrol Grubu -->
-                                <div class="flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+                            <!-- Oynatıcı Kontrolleri (Tepeden/Yandan Bağımsız Tam Ortalanmış Tasarım) -->
+                            <div class="flex items-center justify-between pt-2">
+                                <div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-6">
                                     <button onclick="prevTrack()" class="text-gray-400 hover:text-white transition">
                                         <i class="fas fa-step-backward text-sm"></i>
                                     </button>
@@ -202,8 +198,8 @@
                                     </button>
                                 </div>
                                 
-                                <!-- Beğeni / Kalp İkonu -->
-                                <button class="text-gray-500 hover:text-red-500 transition relative z-10">
+                                <!-- Beğeni / Kalp İkonu (Sağ uca yaslı) -->
+                                <button class="text-gray-500 hover:text-red-500 transition ml-auto">
                                     <i class="far fa-heart text-base"></i>
                                 </button>
                             </div>
@@ -218,12 +214,12 @@
                         <a href="#diskografi-section" class="text-[10px] text-emerald-400 hover:text-white font-bold uppercase tracking-widest transition">TÜMÜNÜ GÖR</a>
                     </div>
                     <div id="track-list" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <!-- JavaScript buraya dinamik ve büyük yatay cam kartları basacak -->
+                        <!-- JavaScript buraya dinamik kartları yerleştirecek -->
                     </div>
                 </div>
             </section>
 
-            <!-- SAĞ KOLON (İstatistik ve Hakkımda/İletişim Alanı) - Sağ Teğet -->
+            <!-- SAĞ KOLON (İstatistik ve Hakkımda/İletişim Alanı) - %35 Genişlik -->
             <aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-8">
                 
                 <!-- Toplam Şarkı Kartı -->
@@ -238,7 +234,7 @@
                             <i class="fas fa-music"></i>
                         </div>
                     </div>
-                    <!-- Alt Çizgi Grafik Simülasyonu -->
+                    <!-- Alt Çizgi Dekoratif Grafik Simülasyonu -->
                     <div class="mt-4 h-1 w-full bg-emerald-500/10 rounded-full overflow-hidden">
                         <div class="h-full bg-emerald-500 rounded-full w-2/3"></div>
                     </div>
@@ -296,8 +292,8 @@
             </aside>
         </main>
 
-        <!-- FOOTER (Yaslanmış Tasarım) -->
-        <footer class="max-w-[1850px] w-full mx-auto px-4 lg:px-6 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
+        <!-- FOOTER -->
+        <footer class="max-w-[1850px] w-full mx-auto px-4 lg:px-8 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
             <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
             <div class="flex gap-6">
                 <a href="#" class="hover:text-white transition">Gizlilik</a>
@@ -308,6 +304,7 @@
 
     <!-- Müzik Sistemi JavaScript Motoru -->
     <script>
+        // Orijinal parça listesi ve kapakları
         const playlist = [
             { id: "01", title: "Zarı Yuvarla", type: "Albüm • 2026", duration: "3:32", url: "./Zarı Yuvarla.mp4", cover: "zariyuvarla.jpg" },
             { id: "02", title: "İstediğin Olsun", type: "Single • 2025", duration: "3:45", url: "./İstediğin olsun.mp4", cover: "gecemesaisi.jpg" },
