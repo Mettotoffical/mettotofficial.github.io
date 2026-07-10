@@ -29,8 +29,13 @@
         .premium-banner {
             background-image: url('background.jpg');
             background-size: cover;
+            background-repeat: no-repeat;
             background-position: center 18%; /* Sanatçının kafa ve omuz hizasını ortalar */
         }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
