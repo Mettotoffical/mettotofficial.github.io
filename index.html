@@ -97,7 +97,7 @@
     <div class="flex-grow md:pl-20 relative z-10">
         
         <!-- ÜST NAVİGASYON (Horizontal Navbar) -->
-        <nav class="max-w-[1400px] mx-auto px-6 lg:px-12 py-6 flex items-center justify-between select-none">
+        <nav class="max-w-[1600px] mx-auto px-6 lg:px-12 py-6 flex items-center justify-between select-none">
             <!-- Marka / Logo -->
             <div class="flex items-center space-x-3">
                 <span class="text-xl font-black tracking-widest text-glow">METTOT</span>
@@ -121,7 +121,7 @@
         </nav>
 
         <!-- KUSURSUZ 12'Lİ GRID SİSTEMİ -->
-        <main class="max-w-[1400px] mx-auto px-6 lg:px-12 py-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <main class="max-w-[1600px] mx-auto px-6 lg:px-12 py-10 grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 items-start">
             
             <!-- SOL KOLON (Müzik Oynatıcısı, Başlıklar, Diskografi) - %65 Genişlik -->
             <section class="lg:col-span-8 space-y-12">
@@ -185,8 +185,12 @@
                             </div>
 
                             <!-- Oynatıcı Kontrolleri -->
-                            <div class="flex items-center justify-between pt-2">
-                                <div class="flex items-center gap-6">
+                            <div class="flex items-center justify-between pt-2 relative">
+                                <!-- Dengeleyici görünmez kutu -->
+                                <div class="w-4"></div>
+
+                                <!-- Merkezi Kontrol Grubu -->
+                                <div class="flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
                                     <button onclick="prevTrack()" class="text-gray-400 hover:text-white transition">
                                         <i class="fas fa-step-backward text-sm"></i>
                                     </button>
@@ -199,7 +203,7 @@
                                 </div>
                                 
                                 <!-- Beğeni / Kalp İkonu (Sadece dekoratif tasarım için) -->
-                                <button class="text-gray-500 hover:text-red-500 transition">
+                                <button class="text-gray-500 hover:text-red-500 transition relative z-10">
                                     <i class="far fa-heart text-base"></i>
                                 </button>
                             </div>
@@ -293,7 +297,7 @@
         </main>
 
         <!-- FOOTER -->
-        <footer class="max-w-[1400px] w-full mx-auto px-6 lg:px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
+        <footer class="max-w-[1600px] w-full mx-auto px-6 lg:px-12 py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs gap-4">
             <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
             <div class="flex gap-6">
                 <a href="#" class="hover:text-white transition">Gizlilik</a>
