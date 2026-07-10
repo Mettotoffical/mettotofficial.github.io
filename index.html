@@ -48,9 +48,9 @@
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
-            <!-- Arka Plan Resmi - Güncellenmiş Kadraj (72% 3%) -->
+            <!-- Arka Plan Resmi - Kadraj Düzeltildi -->
             <div class="absolute inset-0 z-0">
-                <img src="background.jpg" class="w-full h-full object-cover object-[72%_3%] opacity-25" alt="Background">
+                <img src="background.jpg" class="w-full h-full object-cover object-[72%_25%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
@@ -140,6 +140,9 @@
         let currentSongIndex = 0;
         let isPlaying = false;
         const audio = document.getElementById('audio-player');
+
+        // İlk açılışta Play tuşuna basıldığında çalması için ilk şarkıyı tanımlıyoruz
+        audio.src = songs[0].url;
 
         function renderDiskography() {
             const grid = document.getElementById('diskography-grid');
