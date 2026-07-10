@@ -48,13 +48,11 @@
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
-            <!-- Arka Plan Resmi - Kadraj Düzeltildi -->
             <div class="absolute inset-0 z-0">
                 <img src="background.jpg" class="w-full h-full object-cover object-[72%_25%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
-            <!-- Sol İçerik -->
             <div class="relative z-10 lg:col-span-8">
                 <div class="mb-12">
                     <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
@@ -68,7 +66,6 @@
                     </a>
                 </div>
 
-                <!-- Müzik Oynatıcı -->
                 <div class="glass p-6 rounded-2xl w-full">
                     <p id="current-meta" class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
@@ -88,7 +85,6 @@
                 </div>
             </div>
 
-            <!-- Sağ İçerik -->
             <div class="relative z-10 lg:col-span-4 flex flex-col gap-6">
                 <div id="hakkimda" class="glass p-8 rounded-2xl">
                     <p class="text-sm uppercase text-gray-400 mb-2">TOPLAM DİSKOGRAFİ</p>
@@ -111,9 +107,9 @@
                         <p><i class="fa-regular fa-envelope mr-2 text-[#67d6b8]"></i> mettotiletisim@gmail.com</p>
                     </div>
                     <div class="flex gap-4 text-xl">
-                        <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8]"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="hover:text-[#67d6b8]"><i class="fa-brands fa-spotify"></i></a>
-                        <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8]"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://instagram.com/mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" class="hover:text-[#67d6b8]"><i class="fa-brands fa-spotify"></i></a>
+                        <a href="https://youtube.com/@mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
@@ -121,9 +117,7 @@
 
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
-            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- JS tarafından doldurulacak -->
-            </div>
+            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
     </main>
 
@@ -141,8 +135,11 @@
         let isPlaying = false;
         const audio = document.getElementById('audio-player');
 
-        // İlk açılışta Play tuşuna basıldığında çalması için ilk şarkıyı tanımlıyoruz
-        audio.src = songs[0].url;
+        // İlk şarkıyı yükle
+        function initPlayer() {
+            audio.src = songs[0].url;
+        }
+        initPlayer();
 
         function renderDiskography() {
             const grid = document.getElementById('diskography-grid');
