@@ -52,15 +52,15 @@
 
     <!-- ÜST ARKA PLAN EKRAN RESMİ (BANNER) -->
     <header class="relative w-full h-[35vh] overflow-hidden">
-        <!-- GitHub deponuzdaki "arka plan.jpg" dosyası (Boşluk karakteri %20 olarak kodlanmıştır) -->
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('arka plan.jpg');">
+        <!-- Güncellenen Arka Plan Görsel Adı: background.jpg -->
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('background.jpg');">
             <!-- Görselin üzerine karartma ve yumuşak geçiş efektleri -->
             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-black/40"></div>
             <div class="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/90 via-[#0b0f19]/40 to-transparent"></div>
         </div>
         <div class="absolute bottom-6 left-6 md:left-12 flex items-center space-x-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs text-emerald-400">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Yeni Albüm "Zarı Yuvarlar" Yayında</span>
+            <span>Yeni Albüm "Zarı Yuvarla" Yayında</span>
         </div>
     </header>
 
@@ -100,12 +100,12 @@
                 </a>
             </div>
 
-            <!-- "ZARI YUVARLAR" OYNAT / BAŞLAT BÖLÜMÜ -->
+            <!-- "ZARI YUVARLA" OYNAT / BAŞLAT BÖLÜMÜ -->
             <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl">
                 <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <!-- Dinamik Değişen Albüm Kapağı -->
+                    <!-- Dinamik Değişen Albüm Kapağı (Güncellenen ad: zariyuvarla.jpg) -->
                     <div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 shadow-md bg-slate-800">
-                        <img id="player-cover" src="zariyuvarlar.jpg" 
+                        <img id="player-cover" src="zariyuvarla.jpg" 
                              alt="Albüm Kapağı" class="w-full h-full object-cover transition duration-300">
                     </div>
                     
@@ -113,7 +113,7 @@
                     <div class="flex-grow w-full space-y-3">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="font-bold text-lg text-white" id="current-title">Zarı Yuvarlar</h3>
+                                <h3 class="font-bold text-lg text-white" id="current-title">Zarı Yuvarla</h3>
                                 <p class="text-sm text-gray-400" id="player-artist">METTOT — Albüm Çalınıyor</p>
                             </div>
                             <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold uppercase tracking-wider">MÜZİK ÇALAR</span>
@@ -168,14 +168,14 @@
                 <h2 class="text-xl font-bold tracking-tight text-white border-b border-white/10 pb-2">Diskografi</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 custom-scrollbar overflow-y-auto max-h-[280px] pr-2">
                     
-                    <!-- Şarkı 1 (Zarı Yuvarlar) -->
-                    <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Zarı Yuvarlar', '03:32', 'zariyuvarlar.jpg')">
+                    <!-- Şarkı 1 (Zarı Yuvarla) -->
+                    <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Zarı Yuvarla', '03:32', 'zariyuvarla.jpg')">
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500 font-mono text-sm group-hover:text-emerald-400 transition">01</span>
-                            <!-- Küçük Görsel Önizlemesi -->
-                            <img src="zariyuvarlar.jpg" alt="Zarı Yuvarlar" class="w-10 h-10 object-cover rounded">
+                            <!-- Güncellenen dosya adı: zariyuvarla.jpg -->
+                            <img src="zariyuvarla.jpg" alt="Zarı Yuvarla" class="w-10 h-10 object-cover rounded shadow">
                             <div>
-                                <h4 class="font-semibold text-white">Zarı Yuvarlar</h4>
+                                <h4 class="font-semibold text-white">Zarı Yuvarla</h4>
                                 <p class="text-xs text-gray-400">Albüm • 2026</p>
                             </div>
                         </div>
@@ -186,7 +186,7 @@
                     <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Gece Mesaisi', '03:45', 'gecemesaisi.jpg')">
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500 font-mono text-sm group-hover:text-emerald-400 transition">02</span>
-                            <img src="gecemesaisi.jpg" alt="Gece Mesaisi" class="w-10 h-10 object-cover rounded">
+                            <img src="gecemesaisi.jpg" alt="Gece Mesaisi" class="w-10 h-10 object-cover rounded shadow">
                             <div>
                                 <h4 class="font-semibold text-white">Gece Mesaisi</h4>
                                 <p class="text-xs text-gray-400">Single • 2025</p>
@@ -199,7 +199,7 @@
                     <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Suistimal', '04:12', 'suistimal.jpg')">
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500 font-mono text-sm group-hover:text-emerald-400 transition">03</span>
-                            <img src="suistimal.jpg" alt="Suistimal" class="w-10 h-10 object-cover rounded">
+                            <img src="suistimal.jpg" alt="Suistimal" class="w-10 h-10 object-cover rounded shadow">
                             <div>
                                 <h4 class="font-semibold text-white">Suistimal</h4>
                                 <p class="text-xs text-gray-400">Single • 2025</p>
@@ -212,7 +212,7 @@
                     <div class="bg-white/5 border border-white/5 hover:border-white/10 hover:bg-white/10 p-4 rounded-xl transition flex items-center justify-between group cursor-pointer" onclick="selectTrack('Unutmadım', '02:58', 'unutmadim.png')">
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-500 font-mono text-sm group-hover:text-emerald-400 transition">04</span>
-                            <img src="unutmadim.png" alt="Unutmadım" class="w-10 h-10 object-cover rounded">
+                            <img src="unutmadim.png" alt="Unutmadım" class="w-10 h-10 object-cover rounded shadow">
                             <div>
                                 <h4 class="font-semibold text-white">Unutmadım</h4>
                                 <p class="text-xs text-gray-400">Single • 2025</p>
