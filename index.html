@@ -125,21 +125,16 @@
 
     <script>
         const songs = [
-            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg", url: "zariyuvarla.mp4" },
-            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg", url: "istediğinolsun.mp4" },
-            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg", url: "suistimal.mp4" },
-            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png", url: "unutmadim.mp4" }
+            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg", url: "Zari Yuvarla.mp4" },
+            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg", url: "İstediğin olsun.mp4" },
+            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg", url: "Suistimal.mp4" },
+            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png", url: "Unutmadım.mp4" }
         ];
 
         let currentSongIndex = 0;
-        let isPlaying = false;
         const audio = document.getElementById('audio-player');
-
-        // İlk şarkıyı yükle
-        function initPlayer() {
-            audio.src = songs[0].url;
-        }
-        initPlayer();
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
 
         function renderDiskography() {
             const grid = document.getElementById('diskography-grid');
@@ -162,19 +157,17 @@
             document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
             audio.src = song.url;
             audio.play();
-            isPlaying = true;
-            document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
+            playIcon.className = "fa-solid fa-circle-pause text-4xl";
         }
 
         function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                document.getElementById('play-icon').className = "fa-solid fa-circle-play text-4xl";
-            } else {
+            if (audio.paused) {
                 audio.play();
-                document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
+                playIcon.className = "fa-solid fa-circle-pause text-4xl";
+            } else {
+                audio.pause();
+                playIcon.className = "fa-solid fa-circle-play text-4xl";
             }
-            isPlaying = !isPlaying;
         }
 
         function prevSong() {
@@ -191,6 +184,11 @@
             const progress = (audio.currentTime / audio.duration) * 100 || 0;
             document.getElementById('progress-bar').style.width = `${progress}%`;
         });
+
+        audio.addEventListener('ended', nextSong);
+
+        // Init player with first song without playing
+        audio.src = songs[0].url;
 
         renderDiskography();
     </script>
