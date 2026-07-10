@@ -19,50 +19,49 @@
 </head>
 <body class="min-h-screen text-white overflow-x-hidden">
 
-    <aside class="fixed left-0 top-0 h-full w-20 flex flex-col justify-between items-center py-8 z-50 border-r border-white/5">
-        <div class="text-[#67d6b8] text-2xl"><i class="fa-solid fa-wave-square"></i></div>
+    <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5">
+        <div class="text-[#67d6b8] text-3xl"><i class="fa-solid fa-wave-square"></i></div>
         <div class="flex flex-col gap-8 text-2xl text-gray-400">
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify text-2xl"></i></a>
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube text-2xl"></i></a>
+            <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
+            <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify text-2xl"></i></a>
+            <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube text-2xl"></i></a>
         </div>
         <div class="vertical-text text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180 mb-12" style="writing-mode: vertical-rl;">
             EL SUEÑO DEL NIÑO
         </div>
     </aside>
 
-    <main class="ml-20 p-8 max-w-[1850px] mx-auto">
-        <nav class="flex justify-between items-center mb-12">
+    <main class="lg:ml-20 p-6 lg:p-12 max-w-[1850px] mx-auto">
+        <nav class="flex flex-wrap justify-between items-center mb-12 gap-6">
             <h1 class="text-3xl font-bold tracking-tighter">METTOT</h1>
-            <div class="flex gap-10 text-[15px] font-semibold tracking-[0.15em] uppercase">
+            <div class="hidden md:flex gap-10 text-[15px] font-semibold tracking-[0.15em] uppercase">
                 <a href="#" class="hover:text-[#67d6b8] transition">Ana Sayfa</a>
-                <a href="#" class="hover:text-[#67d6b8] transition">Müzik</a>
                 <a href="#" class="hover:text-[#67d6b8] transition">Diskografi</a>
                 <a href="#" class="hover:text-[#67d6b8] transition">Hakkımda</a>
                 <a href="#" class="hover:text-[#67d6b8] transition">İletişim</a>
             </div>
-            <div class="flex gap-4 text-xl">
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-                <i class="fa-brands fa-spotify"></i>
+            <div class="flex gap-6 text-xl">
+                <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
             </div>
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
             <div class="lg:col-span-8">
                 <div class="mb-12">
-                    <h2 class="text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
-                    <p class="text-xl tracking-[0.3em] uppercase mb-4 opacity-80">Artist • Producer • Songwriter</p>
-                    <p class="cormorant italic text-[#67d6b8] text-7xl font-light">El Sueño del Niño</p>
+                    <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
+                    <p class="text-lg md:text-xl tracking-[0.3em] uppercase mb-4 opacity-80">Artist • Producer • Songwriter</p>
+                    <p class="cormorant italic text-[#67d6b8] text-5xl md:text-7xl font-light">El Sueño del Niño</p>
                 </div>
                 
-                <div class="flex gap-4 mb-16">
-                    <button class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
+                <div class="flex flex-wrap gap-4 mb-16">
+                    <a href="https://open.spotify.com/artist/0b9hT21R71k51a87nU893t" target="_blank" class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
                         <i class="fa-brands fa-spotify"></i> SPOTIFY'DA DİNLE
-                    </button>
-                    <button class="bg-white/10 px-8 py-3 rounded-full flex items-center gap-2 hover:bg-white/20 transition">
+                    </a>
+                    <a href="https://youtube.com/@mettotofficial" target="_blank" class="bg-white/10 px-8 py-3 rounded-full flex items-center gap-2 hover:bg-white/20 transition">
                         <i class="fa-brands fa-youtube"></i> YOUTUBE KANALI
-                    </button>
+                    </a>
                 </div>
 
                 <!-- Oynatıcı -->
@@ -71,16 +70,16 @@
                     <div class="flex items-center gap-6">
                         <img id="current-cover" src="zariyuvarla.jpg" class="rounded-xl w-[100px] h-[100px] object-cover" alt="Album Art">
                         <div class="flex-1">
-                            <h3 id="current-title" class="text-2xl font-bold">Zarı Yuvarla</h3>
+                            <h3 id="current-title" class="text-xl md:text-2xl font-bold">Zarı Yuvarla</h3>
                             <p id="current-meta" class="text-gray-400">METTOT — Albüm Çalınıyor</p>
                             <div class="w-full bg-gray-800 h-2.5 rounded-full mt-4">
-                                <div class="bg-[#67d6b8] h-2.5 rounded-full w-[65%]"></div>
+                                <div id="progress-bar" class="bg-[#67d6b8] h-2.5 rounded-full w-[65%]"></div>
                             </div>
                         </div>
                     </div>
                     <div class="flex justify-center mt-6 gap-6 text-2xl text-white">
                         <i class="fa-solid fa-backward-step cursor-pointer hover:text-[#67d6b8]"></i>
-                        <i class="fa-solid fa-circle-play text-4xl cursor-pointer hover:text-[#67d6b8]"></i>
+                        <i id="play-btn" class="fa-solid fa-circle-play text-4xl cursor-pointer hover:text-[#67d6b8]" onclick="togglePlay()"></i>
                         <i class="fa-solid fa-forward-step cursor-pointer hover:text-[#67d6b8]"></i>
                     </div>
                 </div>
@@ -107,11 +106,6 @@
                         <p><i class="fa-brands fa-instagram mr-2 text-[#67d6b8]"></i> @mettotofficial</p>
                         <p><i class="fa-regular fa-envelope mr-2 text-[#67d6b8]"></i> mettotiletisim@gmail.com</p>
                     </div>
-                    <div class="flex gap-4 mt-6 text-xl">
-                        <i class="fa-brands fa-instagram hover:text-[#67d6b8] cursor-pointer"></i>
-                        <i class="fa-brands fa-spotify hover:text-[#67d6b8] cursor-pointer"></i>
-                        <i class="fa-brands fa-youtube hover:text-[#67d6b8] cursor-pointer"></i>
-                    </div>
                 </div>
             </div>
         </section>
@@ -132,6 +126,8 @@
             { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png" }
         ];
 
+        let isPlaying = false;
+
         function renderDiskography() {
             const grid = document.getElementById('diskography-grid');
             grid.innerHTML = songs.map((song, index) => `
@@ -150,6 +146,18 @@
             document.getElementById('current-cover').src = song.cover;
             document.getElementById('current-title').innerText = song.title;
             document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
+            isPlaying = true;
+            document.getElementById('play-btn').className = "fa-solid fa-circle-pause text-4xl cursor-pointer hover:text-[#67d6b8]";
+        }
+
+        function togglePlay() {
+            const btn = document.getElementById('play-btn');
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                btn.className = "fa-solid fa-circle-pause text-4xl cursor-pointer hover:text-[#67d6b8]";
+            } else {
+                btn.className = "fa-solid fa-circle-play text-4xl cursor-pointer hover:text-[#67d6b8]";
+            }
         }
 
         renderDiskography();
