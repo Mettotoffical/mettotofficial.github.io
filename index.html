@@ -52,10 +52,13 @@
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
 
     <!-- ÜST ARKA PLAN EKRAN RESMİ (BANNER) -->
-    <header class="relative w-full h-[35vh] overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('background.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-black/40"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/90 via-[#0b0f19]/40 to-transparent"></div>
+    <!-- h-[35vh] mobilde korunur, md:h-[50vh] ve lg:h-[55vh] ile bilgisayarda geniş açılı muazzam bir sahne oluşturulur -->
+    <header class="relative w-full h-[35vh] md:h-[50vh] lg:h-[55vh] overflow-hidden transition-all duration-300">
+        <!-- background.jpg konumlandırması md:bg-[center_28%] yapılarak bilgisayarda odak noktasının tam görünmesi sağlanır -->
+        <div class="absolute inset-0 bg-cover bg-[center_35%] md:bg-[center_28%]" style="background-image: url('background.jpg');">
+            <!-- Alttaki koyu arka plana eriyerek yumuşak geçiş sağlayan degradeler -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-[#0b0f19]/30 to-black/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/95 via-[#0b0f19]/20 to-transparent"></div>
         </div>
         <div class="absolute bottom-6 left-6 md:left-12 flex items-center space-x-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs text-emerald-400">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -77,16 +80,18 @@
                 <p class="text-lg md:text-xl font-light text-gray-400 italic tracking-wider mt-1 border-l-2 border-emerald-500 pl-3">
                     el sueno del nino
                 </p>
-            <!-- Spotify ve YouTube Bağlantı Butonları -->
+            </div>
+
+            <!-- Sosyal Medya ve Müzik Bağlantı Butonları -->
             <div class="flex flex-wrap gap-4">
-                <!-- Spotify Butonu (Zarı Yuvarla Linki) -->
-                <a href="https://open.spotify.com/intl-tr/album/2MXuLTDj8Zi44CJs9tQYjz?si=CynPDweQR3-qeD0Oo8YjBw" target="_blank" rel="noopener noreferrer" 
+                <!-- Spotify Sanatçı Butonu -->
+                <a id="main-spotify-btn" href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736?si=tUVfM-_TSCWolRO1E4NKaw" target="_blank" rel="noopener noreferrer" 
                    class="flex items-center space-x-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-[#1DB954]/20">
                     <!-- Spotify Logo -->
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.438-5.305-1.764-8.786-.97-.333.075-.664-.135-.74-.467-.075-.333.136-.665.468-.742 3.818-.872 7.08-.5 9.71 1.11.294.18.385.563.205.862zm1.224-2.724c-.226.367-.707.487-1.074.26-2.69-1.654-6.793-2.135-9.972-1.17-.413.125-.845-.107-.97-.522-.125-.413.107-.847.522-.97 3.637-1.104 8.158-.567 11.233 1.328.367.227.487.708.26 1.074zm.106-2.833C14.444 8.712 8.7 8.523 5.372 9.533c-.51.156-1.047-.133-1.202-.644-.156-.51.132-1.048.643-1.203 3.812-1.157 10.15-.94 14.168 1.444.46.273.61.87.337 1.33-.273.46-.87.61-1.33.337z"/>
                     </svg>
-                    <span>Spotify'da Dinle</span>
+                    <span id="spotify-btn-text">METTOT Dinle</span>
                 </a>
 
                 <!-- YouTube Butonu (PC/Mobil Akıllı Uyumlu Link) -->
@@ -102,6 +107,7 @@
                 <!-- Instagram Butonu -->
                 <a href="https://www.instagram.com/enessjordan?igsh=ZWZsdjNrOWxxNTNt" target="_blank" rel="noopener noreferrer" 
                    class="flex items-center space-x-3 bg-gradient-to-r from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg shadow-purple-500/20">
+                    <!-- Instagram Logo -->
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
                     </svg>
@@ -313,25 +319,25 @@
                 title: "Zarı Yuvarla",
                 duration: "03:32",
                 cover: "zariyuvarla.jpg",
-                spotifyUrl: "https://open.spotify.com/track/2TKln43n9wlO5aIxkephHN?si=7aDlE8VKQfiOxu_3S1SPfQ&utm_source=copy-link"
+                spotifyUrl: "https://open.spotify.com/intl-tr/album/2MXuLTDj8Zi44CJs9tQYjz?si=CynPDweQR3-qeD0Oo8YjBw"
             },
             {
                 title: "İstediğin Olsun",
                 duration: "03:45",
                 cover: "gecemesaisi.jpg",
-                spotifyUrl: "https://open.spotify.com/track/1Gft7Mw39rPwFQI3qJrgYy?si=DxSMwSdpSkaNSPXT5PtvBw&utm_source=copy-link"
+                spotifyUrl: "https://open.spotify.com/intl-tr/album/7eDly06wKNkY248MdnG2KA?si=YYN42CLlS-KPetEjISocfw"
             },
             {
                 title: "Suistimal",
                 duration: "04:12",
                 cover: "suistimal.jpg",
-                spotifyUrl: "https://open.spotify.com/track/3gh04cDOFyUqZGJiQdHEsy?si=0b_O6nIYTOiJ79VspZRxoQ&utm_source=copy-link"
+                spotifyUrl: "https://open.spotify.com/intl-tr/album/597V1uG5Nz4L97qEKZmiZk?si=kaFu8EtZTsyl_1Lu0yEJiA"
             },
             {
                 title: "Unutmadım",
                 duration: "02:58",
                 cover: "unutmadim.png",
-                spotifyUrl: "https://open.spotify.com/track/0POjGkSC3zLCIoos8G0eEd?si=8kBc-QQrQjeGsILs-HBPIQ&utm_source=copy-link"
+                spotifyUrl: "https://open.spotify.com/intl-tr/album/68sO74MJklZP3K6dFVPcak?si=3feOF-poSX6cyY-EZFGzVg"
             }
         ];
 
@@ -350,7 +356,10 @@
         const currentTitleEl = document.getElementById('current-title');
         const progressContainer = document.getElementById('progress-container');
         const playerCover = document.getElementById('player-cover');
+        const mainSpotifyBtn = document.getElementById('main-spotify-btn');
+        const spotifyBtnText = document.getElementById('spotify-btn-text');
 
+        // Cihaz algılama tabanlı YouTube akıllı yönlendirmesi
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         const youtubeBtn = document.getElementById('youtube-btn');
         if (youtubeBtn) {
@@ -361,6 +370,17 @@
                 // Bilgisayardan girenler için hatasız açılan resmi YouTube adresi
                 youtubeBtn.href = "https://www.youtube.com/@METTOT-SX";
             }
+        }
+
+        // Pop-up engelleyiciyi aşan modern güvenli yönlendirme algoritması
+        function safeRedirect(url) {
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.target = '_blank';
+            anchor.rel = 'noopener noreferrer';
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
         }
 
         // Play - Pause Kontrolü
