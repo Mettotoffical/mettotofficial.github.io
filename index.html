@@ -11,7 +11,6 @@
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .cormorant { font-family: 'Cormorant Garamond', serif; }
-        /* Özel Kaydırma Çubuğu Tasarımı */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
@@ -49,13 +48,11 @@
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
-            <!-- Arka Plan Resmi -->
             <div class="absolute inset-0 z-0">
-                <img src="background.jpg" class="w-full h-full object-cover object-[75%_50%] opacity-25" alt="Background">
+                <img src="background.jpg" class="w-full h-full object-cover object-[72%_25%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
-            <!-- Sol İçerik -->
             <div class="relative z-10 lg:col-span-8">
                 <div class="mb-12">
                     <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
@@ -69,7 +66,6 @@
                     </a>
                 </div>
 
-                <!-- Müzik Oynatıcı -->
                 <div class="glass p-6 rounded-2xl w-full">
                     <p id="current-meta" class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
@@ -89,7 +85,6 @@
                 </div>
             </div>
 
-            <!-- Sağ İçerik -->
             <div class="relative z-10 lg:col-span-4 flex flex-col gap-6">
                 <div id="hakkimda" class="glass p-8 rounded-2xl">
                     <p class="text-sm uppercase text-gray-400 mb-2">TOPLAM DİSKOGRAFİ</p>
@@ -122,9 +117,7 @@
 
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
-            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- JS tarafından doldurulacak -->
-            </div>
+            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </section>
     </main>
 
@@ -132,15 +125,16 @@
 
     <script>
         const songs = [
-            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg", url: "zariyuvarla.mp4" },
-            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg", url: "istediğinolsun.mp4" },
-            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg", url: "suistimal.mp4" },
-            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png", url: "unutmadim.mp4" }
+            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg", url: "Zari Yuvarla.mp4" },
+            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg", url: "İstediğin olsun.mp4" },
+            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg", url: "Suistimal.mp4" },
+            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png", url: "Unutmadım.mp4" }
         ];
 
         let currentSongIndex = 0;
-        let isPlaying = false;
         const audio = document.getElementById('audio-player');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
 
         function renderDiskography() {
             const grid = document.getElementById('diskography-grid');
@@ -163,19 +157,17 @@
             document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
             audio.src = song.url;
             audio.play();
-            isPlaying = true;
-            document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
+            playIcon.className = "fa-solid fa-circle-pause text-4xl";
         }
 
         function togglePlay() {
-            if (isPlaying) {
-                audio.pause();
-                document.getElementById('play-icon').className = "fa-solid fa-circle-play text-4xl";
-            } else {
+            if (audio.paused) {
                 audio.play();
-                document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
+                playIcon.className = "fa-solid fa-circle-pause text-4xl";
+            } else {
+                audio.pause();
+                playIcon.className = "fa-solid fa-circle-play text-4xl";
             }
-            isPlaying = !isPlaying;
         }
 
         function prevSong() {
@@ -192,6 +184,11 @@
             const progress = (audio.currentTime / audio.duration) * 100 || 0;
             document.getElementById('progress-bar').style.width = `${progress}%`;
         });
+
+        audio.addEventListener('ended', nextSong);
+
+        // Init player with first song without playing
+        audio.src = songs[0].url;
 
         renderDiskography();
     </script>
