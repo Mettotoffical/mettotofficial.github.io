@@ -36,8 +36,8 @@
             </div>
 
             <div class="flex flex-wrap gap-4">
-                <a href="#" class="flex items-center space-x-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold px-6 py-3 rounded-full transition-all">Spotify</a>
-                <a href="#" class="flex items-center space-x-3 bg-[#FF0000] hover:bg-[#ff1a1a] text-white font-semibold px-6 py-3 rounded-full transition-all">YouTube</a>
+                <a href="https://open.spotify.com" class="flex items-center space-x-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold px-6 py-3 rounded-full transition-all">Spotify</a>
+                <a href="https://youtube.com" class="flex items-center space-x-3 bg-[#FF0000] hover:bg-[#ff1a1a] text-white font-semibold px-6 py-3 rounded-full transition-all">YouTube</a>
             </div>
 
             <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl">
@@ -51,7 +51,7 @@
                                 <h3 class="font-bold text-lg text-white" id="current-title">Zarı Yuvarla</h3>
                                 <p class="text-sm text-gray-400" id="player-artist">METTOT</p>
                             </div>
-                            <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold uppercase opacity-0 transition-opacity">MÜZİK ÇALIYOR</span>
+                            <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold uppercase opacity-0 transition-opacity">ÇALINIYOR</span>
                         </div>
                         <div class="relative h-1.5 w-full bg-white/10 rounded-full cursor-pointer" id="progress-container">
                             <div class="absolute h-full bg-emerald-500 rounded-full" id="progress-bar" style="width: 0%"></div>
@@ -66,8 +66,76 @@
                     </div>
                 </div>
             </div>
+
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-6">Diskografi</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
+                        <img src="zariyuvarla.jpg" alt="Zarı Yuvarla" class="w-full h-40 object-cover rounded-lg mb-3">
+                        <h3 class="font-semibold text-white">Zarı Yuvarla</h3>
+                        <p class="text-sm text-gray-400">2024</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
+                        <img src="istediğinolsun.jpg" alt="İstediğin olsun" class="w-full h-40 object-cover rounded-lg mb-3">
+                        <h3 class="font-semibold text-white">İstediğin olsun</h3>
+                        <p class="text-sm text-gray-400">2023</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
+                        <img src="suistimal.jpg" alt="Suistimal" class="w-full h-40 object-cover rounded-lg mb-3">
+                        <h3 class="font-semibold text-white">Suistimal</h3>
+                        <p class="text-sm text-gray-400">2023</p>
+                    </div>
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
+                        <img src="unutmadım.jpg" alt="Unutmadım" class="w-full h-40 object-cover rounded-lg mb-3">
+                        <h3 class="font-semibold text-white">Unutmadım</h3>
+                        <p class="text-sm text-gray-400">2022</p>
+                    </div>
+                </div>
+            </div>
         </section>
+
+        <aside class="lg:col-span-5 xl:col-span-4 space-y-6">
+            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl sticky top-8">
+                <h3 class="text-2xl font-bold text-white mb-4">Toplam Diskografi</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center py-2 border-b border-white/10">
+                        <span class="text-gray-400">Toplam Şarkı</span>
+                        <span class="font-semibold text-white">4</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-white/10">
+                        <span class="text-gray-400">Toplam Albüm</span>
+                        <span class="font-semibold text-white">4</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                        <span class="text-gray-400">Toplam Süre</span>
+                        <span class="font-semibold text-white">~24 dakika</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl sticky top-32">
+                <h3 class="text-2xl font-bold text-white mb-4">Aylık Dinleyici</h3>
+                <div class="text-center">
+                    <div class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 mb-2">2.4K</div>
+                    <p class="text-sm text-gray-400">Son 30 gün</p>
+                </div>
+                <div class="mt-6 h-24 bg-white/5 rounded-lg flex items-end justify-around p-2">
+                    <div class="w-2 bg-emerald-500" style="height: 40%"></div>
+                    <div class="w-2 bg-emerald-500" style="height: 60%"></div>
+                    <div class="w-2 bg-emerald-500" style="height: 80%"></div>
+                    <div class="w-2 bg-emerald-500" style="height: 100%"></div>
+                    <div class="w-2 bg-emerald-500" style="height: 70%"></div>
+                </div>
+            </div>
+        </aside>
     </main>
+
+    <footer class="w-full border-t border-white/10 bg-black/40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-8 text-center text-gray-400 text-sm">
+            <p>&copy; 2024 METTOT. All rights reserved.</p>
+            <p class="mt-2">el sueno del nino</p>
+        </div>
+    </footer>
 
     <script>
         const playlist = [
