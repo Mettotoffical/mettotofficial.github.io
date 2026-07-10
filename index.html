@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap');
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .cormorant { font-family: 'Cormorant Garamond', serif; }
         .active-card { border-color: #67d6b8 !important; }
@@ -16,6 +16,7 @@
 </head>
 <body class="min-h-screen">
 
+    <!-- Sidebar -->
     <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5 bg-[#050505]">
         <div class="text-[#67d6b8] text-3xl"><i class="fa-solid fa-wave-square"></i></div>
         <div class="flex flex-col gap-8 text-2xl text-gray-400">
@@ -28,14 +29,14 @@
         </div>
     </aside>
 
-    <main class="lg:ml-20 p-6 lg:p-12 max-w-[1850px] mx-auto">
-        <nav class="flex flex-wrap justify-between items-center mb-12 gap-6">
+    <main class="lg:ml-20 p-6 lg:p-12 max-w-[1850px] mx-auto relative">
+        <nav class="flex flex-wrap justify-between items-center mb-12 gap-6 relative z-10">
             <h1 class="text-3xl font-bold tracking-tighter">METTOT</h1>
             <div class="hidden md:flex gap-10 text-[15px] font-semibold tracking-[0.15em] uppercase">
                 <a href="#" class="hover:text-[#67d6b8] transition">Ana Sayfa</a>
-                <a href="#" class="hover:text-[#67d6b8] transition">Diskografi</a>
-                <a href="#" class="hover:text-[#67d6b8] transition">Hakkımda</a>
-                <a href="#" class="hover:text-[#67d6b8] transition">İletişim</a>
+                <a href="#diskography-grid" class="hover:text-[#67d6b8] transition">Diskografi</a>
+                <a href="#hakkimda" class="hover:text-[#67d6b8] transition">Hakkımda</a>
+                <a href="#iletisim" class="hover:text-[#67d6b8] transition">İletişim</a>
             </div>
             <div class="flex gap-6 text-xl">
                 <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
@@ -47,7 +48,7 @@
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
-                <img src="background.jpg" class="w-full h-full object-cover opacity-25">
+                <img src="background.jpg" class="w-full h-full object-cover object-[50%_75%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
@@ -55,7 +56,7 @@
             <div class="relative z-10 lg:col-span-8">
                 <div class="mb-12">
                     <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
-                    <p class="text-sm tracking-[0.3em] uppercase mb-4 opacity-80 text-[#67d6b8]">Artist • Producer • Songwriter</p>
+                    <p class="text-base tracking-[0.3em] uppercase mb-4 opacity-80 text-[#67d6b8]">Artist • Producer • Songwriter</p>
                     <p class="cormorant italic text-[#67d6b8] text-5xl md:text-7xl font-light">El Sueño del Niño</p>
                 </div>
                 
@@ -74,8 +75,8 @@
                         <img id="current-cover" src="zariyuvarla.jpg" class="rounded-xl w-[100px] h-[100px] object-cover" alt="Album Art">
                         <div class="flex-1">
                             <h3 id="current-title" class="text-xl md:text-2xl font-bold">Zarı Yuvarla</h3>
-                            <div class="w-full bg-gray-800 h-2.5 rounded-full mt-4">
-                                <div id="progress-bar" class="bg-[#67d6b8] h-2.5 rounded-full w-[0%]"></div>
+                            <div class="w-full bg-gray-800 h-2.5 rounded-full mt-4 overflow-hidden">
+                                <div id="progress-bar" class="bg-[#67d6b8] h-2.5 rounded-full w-[0%] transition-all duration-300"></div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
 
             <!-- Right Content -->
             <div class="relative z-10 lg:col-span-4 flex flex-col gap-6">
-                <div class="glass p-8 rounded-2xl">
+                <div id="hakkimda" class="glass p-8 rounded-2xl">
                     <p class="text-sm uppercase text-gray-400 mb-2">TOPLAM DİSKOGRAFİ</p>
                     <h3 class="text-3xl font-bold mb-4">4 RESMÎ YAYIN</h3>
                     <div class="w-full bg-[#67d6b8] h-1 rounded-full"></div>
@@ -103,7 +104,7 @@
                     </p>
                 </div>
 
-                <div class="glass p-8 rounded-2xl">
+                <div id="iletisim" class="glass p-8 rounded-2xl">
                     <h3 class="text-xl font-bold mb-4">İLETİŞİM</h3>
                     <div class="flex flex-col gap-3 text-gray-300">
                         <p><i class="fa-brands fa-instagram mr-2 text-[#67d6b8]"></i> @mettotofficial</p>
@@ -182,7 +183,7 @@
         }
 
         audio.addEventListener('timeupdate', () => {
-            const progress = (audio.currentTime / audio.duration) * 100;
+            const progress = (audio.currentTime / audio.duration) * 100 || 0;
             document.getElementById('progress-bar').style.width = `${progress}%`;
         });
 
