@@ -11,115 +11,189 @@
         body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .glass { background: rgba(18, 18, 18, 0.7); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .cormorant { font-family: 'Cormorant Garamond', serif; }
+        /* Özel Kaydırma Çubuğu Tasarımı */
         ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #67d6b8; }
     </style>
 </head>
 <body class="min-h-screen">
 
-    <main class="p-6 lg:p-12 max-w-[1850px] mx-auto relative">
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 relative overflow-hidden">
+    <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5 bg-[#050505]">
+        <div class="text-[#67d6b8] text-3xl"><i class="fa-solid fa-wave-square"></i></div>
+        <div class="flex flex-col gap-8 text-2xl text-gray-400">
+            <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
+            <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180 mb-12" style="writing-mode: vertical-rl;">
+            EL SUEÑO DEL NIÑO
+        </div>
+    </aside>
+
+    <main class="lg:ml-20 p-6 lg:p-12 max-w-[1850px] mx-auto relative">
+        <nav class="flex flex-wrap justify-between items-center mb-12 gap-6 relative z-10">
+            <h1 class="text-3xl font-bold tracking-tighter">METTOT</h1>
+            <div class="hidden md:flex gap-10 text-[15px] font-semibold tracking-[0.15em] uppercase">
+                <a href="#" class="hover:text-[#67d6b8] transition">Ana Sayfa</a>
+                <a href="#diskography-grid" class="hover:text-[#67d6b8] transition">Diskografi</a>
+                <a href="#hakkimda" class="hover:text-[#67d6b8] transition">Hakkımda</a>
+                <a href="#iletisim" class="hover:text-[#67d6b8] transition">İletişim</a>
+            </div>
+            <div class="flex gap-6 text-xl">
+                <a href="https://instagram.com/mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://youtube.com/@mettotofficial" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
+            </div>
+        </nav>
+
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24 relative overflow-hidden">
+            <!-- Arka Plan Resmi -->
             <div class="absolute inset-0 z-0">
-                <img src="background.jpg" class="w-full h-full object-cover object-[72%_3%] opacity-25" alt="Background">
+                <img src="background.jpg" class="w-full h-full object-cover object-[75%_50%] opacity-25" alt="Background">
                 <div class="absolute inset-0 bg-black/55"></div>
             </div>
 
+            <!-- Sol İçerik -->
             <div class="relative z-10 lg:col-span-8">
-                <h2 class="text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
-                <p class="cormorant italic text-[#67d6b8] text-5xl mb-12">El Sueño del Niño</p>
+                <div class="mb-12">
+                    <h2 class="text-6xl md:text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
+                    <p class="text-base tracking-[0.3em] uppercase mb-4 opacity-80 text-[#67d6b8]">Artist • Producer • Songwriter</p>
+                    <p class="cormorant italic text-[#67d6b8] text-5xl md:text-7xl font-light">El Sueño del Niño</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 mb-16">
+                    <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="bg-[#67d6b8] text-black font-bold px-8 py-3 rounded-full flex items-center gap-2 hover:opacity-90 transition">
+                        <i class="fa-brands fa-spotify"></i> SPOTIFY'DA DİNLE
+                    </a>
+                </div>
 
-                <div class="glass p-8 rounded-3xl w-full">
-                    <p class="text-sm text-[#67d6b8] font-bold uppercase mb-4">ŞU AN ÇALINIYOR</p>
+                <!-- Müzik Oynatıcı -->
+                <div class="glass p-6 rounded-2xl w-full">
+                    <p id="current-meta" class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
                         <img id="current-cover" src="zariyuvarla.jpg" class="rounded-xl w-[100px] h-[100px] object-cover" alt="Album Art">
                         <div class="flex-1">
-                            <h3 id="current-title" class="text-2xl font-bold">Zarı Yuvarla</h3>
-                            <div class="w-full bg-gray-700 h-2 rounded-full mt-4">
-                                <div id="progress-bar" class="bg-[#67d6b8] h-2 rounded-full w-0"></div>
+                            <h3 id="current-title" class="text-xl md:text-2xl font-bold">Zarı Yuvarla</h3>
+                            <div class="w-full bg-gray-800 h-2.5 rounded-full mt-4 overflow-hidden">
+                                <div id="progress-bar" class="bg-[#67d6b8] h-2.5 rounded-full w-[0%] transition-all duration-300"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center mt-8 gap-10 text-3xl">
-                        <button onclick="prevTrack()"><i class="fa-solid fa-backward-step"></i></button>
-                        <button onclick="togglePlay()"><i id="play-pause-icon" class="fa-solid fa-circle-play text-5xl"></i></button>
-                        <button onclick="nextTrack()"><i class="fa-solid fa-forward-step"></i></button>
+                    <div class="flex justify-center mt-6 gap-8 text-2xl text-white">
+                        <button onclick="prevSong()" class="hover:text-[#67d6b8] transition"><i class="fa-solid fa-backward-step"></i></button>
+                        <button id="play-btn" onclick="togglePlay()" class="hover:text-[#67d6b8] transition"><i id="play-icon" class="fa-solid fa-circle-play text-4xl"></i></button>
+                        <button onclick="nextSong()" class="hover:text-[#67d6b8] transition"><i class="fa-solid fa-forward-step"></i></button>
                     </div>
                 </div>
             </div>
 
+            <!-- Sağ İçerik -->
             <div class="relative z-10 lg:col-span-4 flex flex-col gap-6">
+                <div id="hakkimda" class="glass p-8 rounded-2xl">
+                    <p class="text-sm uppercase text-gray-400 mb-2">TOPLAM DİSKOGRAFİ</p>
+                    <h3 class="text-3xl font-bold mb-4">4 Resmî Yayın</h3>
+                    <div class="w-full bg-[#67d6b8] h-1 rounded-full"></div>
+                </div>
+
                 <div class="glass p-8 rounded-2xl">
-                    <h3 class="text-3xl font-bold">4 Resmî Yayın</h3>
+                    <h3 class="text-xl font-bold mb-4">HAKKIMDA</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        Çocukluk düşlerinden ilham alan melankolik hip-hop sanatçısı. 
+                        Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.
+                    </p>
+                </div>
+
+                <div id="iletisim" class="glass p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-4">İLETİŞİM</h3>
+                    <div class="flex flex-col gap-3 text-gray-300 mb-6">
+                        <p><i class="fa-brands fa-instagram mr-2 text-[#67d6b8]"></i> @mettotofficial</p>
+                        <p><i class="fa-regular fa-envelope mr-2 text-[#67d6b8]"></i> mettotiletisim@gmail.com</p>
+                    </div>
+                    <div class="flex gap-4 text-xl">
+                        <a href="https://instagram.com/mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" class="hover:text-[#67d6b8]"><i class="fa-brands fa-spotify"></i></a>
+                        <a href="https://youtube.com/@mettotofficial" class="hover:text-[#67d6b8]"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
-            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- JS tarafından doldurulacak -->
+            </div>
         </section>
     </main>
 
     <audio id="audio-player"></audio>
 
     <script>
-        const playlist = [
-            { title: "Zarı Yuvarla", cover: "zariyuvarla.jpg", url: "zariyuvarla.mp4" },
-            { title: "İstediğin Olsun", cover: "gecemesaisi.jpg", url: "olsun.mp4" },
-            { title: "Suistimal", cover: "suistimal.jpg", url: "Suistimal.mp4" },
-            { title: "Unutmadım", cover: "unutmadim.png", url: "Unutmadim.mp4" }
+        const songs = [
+            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg", url: "zariyuvarla.mp4" },
+            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg", url: "istediğinolsun.mp4" },
+            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg", url: "suistimal.mp4" },
+            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png", url: "unutmadim.mp4" }
         ];
 
-        let index = 0;
+        let currentSongIndex = 0;
+        let isPlaying = false;
         const audio = document.getElementById('audio-player');
-        const playIcon = document.getElementById('play-pause-icon');
 
-        function loadTrack(i) {
-            index = i;
-            audio.src = playlist[i].url;
-            document.getElementById('current-title').innerText = playlist[i].title;
-            document.getElementById('current-cover').src = playlist[i].cover;
+        function renderDiskography() {
+            const grid = document.getElementById('diskography-grid');
+            grid.innerHTML = songs.map((song, index) => `
+                <div class="glass p-4 rounded-2xl flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.65)] cursor-pointer hover:border-[#67d6b8] border border-transparent transition" onclick="playSong(${index})">
+                    <img src="${song.cover}" class="w-[100px] h-[100px] rounded-xl object-cover" alt="${song.title}">
+                    <div>
+                        <p class="font-bold text-lg">${song.title}</p>
+                        <p class="text-gray-400 uppercase text-xs tracking-wider mt-1">${song.type} • ${song.year}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function playSong(index) {
+            currentSongIndex = index;
+            const song = songs[index];
+            document.getElementById('current-cover').src = song.cover;
+            document.getElementById('current-title').innerText = song.title;
+            document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
+            audio.src = song.url;
+            audio.play();
+            isPlaying = true;
+            document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
         }
 
         function togglePlay() {
-            if (audio.paused) {
-                audio.play();
-                playIcon.className = "fa-solid fa-circle-pause text-5xl";
-            } else {
+            if (isPlaying) {
                 audio.pause();
-                playIcon.className = "fa-solid fa-circle-play text-5xl";
+                document.getElementById('play-icon').className = "fa-solid fa-circle-play text-4xl";
+            } else {
+                audio.play();
+                document.getElementById('play-icon').className = "fa-solid fa-circle-pause text-4xl";
             }
+            isPlaying = !isPlaying;
         }
 
-        function nextTrack() {
-            index = (index + 1) % playlist.length;
-            loadTrack(index);
-            audio.play();
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            playSong(currentSongIndex);
         }
 
-        function prevTrack() {
-            index = (index - 1 + playlist.length) % playlist.length;
-            loadTrack(index);
-            audio.play();
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentSongIndex);
         }
 
         audio.addEventListener('timeupdate', () => {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            document.getElementById('progress-bar').style.width = progress + "%";
+            const progress = (audio.currentTime / audio.duration) * 100 || 0;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
         });
 
-        audio.addEventListener('ended', nextTrack);
-
-        const grid = document.getElementById('diskography-grid');
-        playlist.forEach((track, i) => {
-            const card = document.createElement('div');
-            card.className = "glass p-4 rounded-2xl flex items-center gap-6 cursor-pointer";
-            card.innerHTML = `<img src="${track.cover}" class="w-[100px] h-[100px] rounded-lg object-cover"> <div><p class="font-bold">${track.title}</p></div>`;
-            card.onclick = () => { loadTrack(i); audio.play(); playIcon.className = "fa-solid fa-circle-pause text-5xl"; };
-            grid.appendChild(card);
-        });
-
-        loadTrack(0);
+        renderDiskography();
     </script>
 </body>
 </html>
