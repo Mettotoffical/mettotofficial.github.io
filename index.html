@@ -6,188 +6,141 @@
     <title>METTOT | Resmi Web Sitesi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; }
-        .text-glow { text-shadow: 0 0 15px rgba(255, 255, 255, 0.15); }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.02); }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+        body { background-color: #0b0f19; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-glow { text-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+        .animate-spin-slow { animation: spin 10s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+<body class="text-gray-100 min-h-screen">
 
     <audio id="main-audio"></audio>
 
-    <header class="relative w-full h-[35vh] overflow-hidden">
+    <!-- 1. Hero Banner -->
+    <header class="relative w-full h-[33vh] overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('background.jpg');">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-black/40"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/90 via-[#0b0f19]/40 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] to-transparent"></div>
         </div>
-        <div class="absolute bottom-6 left-6 md:left-12 flex items-center space-x-2 bg-black/50 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs text-emerald-400">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Yeni Albüm "Zarı Yuvarla" Yayında</span>
+        <div class="absolute bottom-8 left-8 md:left-20">
+            <div class="flex items-center space-x-2 bg-black/40 backdrop-blur-md px-4 py-1.5 rounded-full border border-emerald-500/30 text-[10px] text-emerald-400 mb-4 w-fit">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="uppercase tracking-widest font-bold">Yeni Albüm "Zarı Yuvarla" Yayında</span>
+            </div>
         </div>
     </header>
 
-    <main class="max-w-7xl w-full mx-auto px-4 md:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <section class="lg:col-span-7 xl:col-span-8 space-y-8">
+    <!-- 2. Ana Alan (65/35 Grid) -->
+    <main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Sol Taraf (%65) -->
+        <section class="lg:col-span-8 space-y-12">
             <div>
-                <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 font-display text-glow">METTOT</h1>
-                <p class="text-lg md:text-xl font-light text-gray-400 italic tracking-wider mt-1 border-l-2 border-emerald-500 pl-3">el sueno del nino</p>
+                <h1 class="text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 text-glow">METTOT</h1>
+                <p class="text-xl text-gray-400 italic border-l-2 border-emerald-500 pl-4 mt-2">el sueno del nino</p>
             </div>
 
-            <div class="flex flex-wrap gap-4">
-                <a href="https://open.spotify.com" class="flex items-center space-x-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold px-6 py-3 rounded-full transition-all">Spotify</a>
-                <a href="https://youtube.com" class="flex items-center space-x-3 bg-[#FF0000] hover:bg-[#ff1a1a] text-white font-semibold px-6 py-3 rounded-full transition-all">YouTube</a>
+            <!-- Sosyal Butonlar -->
+            <div class="flex gap-4">
+                <div class="px-6 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold hover:bg-emerald-500/20 transition cursor-pointer">SPOTIFY</div>
+                <div class="px-6 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 font-bold hover:bg-red-500/20 transition cursor-pointer">YOUTUBE</div>
+                <div class="px-6 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 font-bold hover:bg-purple-500/20 transition cursor-pointer">INSTAGRAM</div>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl">
-                <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <div class="relative w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 bg-slate-800">
-                        <img id="player-cover" src="zariyuvarla.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-grow w-full space-y-3">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-bold text-lg text-white" id="current-title">Zarı Yuvarla</h3>
-                                <p class="text-sm text-gray-400" id="player-artist">METTOT</p>
-                            </div>
-                            <span id="playing-badge" class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20 font-bold uppercase opacity-0 transition-opacity">ÇALINIYOR</span>
+            <!-- Müzik Oynatıcı -->
+            <div class="glass rounded-3xl p-8 shadow-2xl">
+                <div class="flex items-center gap-6">
+                    <img id="player-cover" src="zariyuvarla.jpg" class="w-24 h-24 rounded-2xl object-cover shadow-xl">
+                    <div class="flex-grow">
+                        <h3 id="current-title" class="text-2xl font-bold">Zarı Yuvarla</h3>
+                        <p class="text-gray-400 mb-4">METTOT — Müzik Çalıyor</p>
+                        <div id="progress-container" class="h-1.5 w-full bg-white/10 rounded-full cursor-pointer mb-4">
+                            <div id="progress-bar" class="h-full bg-emerald-500 rounded-full w-0 transition-all"></div>
                         </div>
-                        <div class="relative h-1.5 w-full bg-white/10 rounded-full cursor-pointer" id="progress-container">
-                            <div class="absolute h-full bg-emerald-500 rounded-full" id="progress-bar" style="width: 0%"></div>
-                        </div>
-                        <div class="flex items-center space-x-6">
-                            <button onclick="prevTrack()" class="text-gray-400 hover:text-white">Geri</button>
-                            <button onclick="togglePlay()" class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center">
-                                <span id="play-btn-text">PLAY</span>
-                            </button>
-                            <button onclick="nextTrack()" class="text-gray-400 hover:text-white">İleri</button>
+                        <div class="flex items-center gap-6">
+                            <button onclick="prevTrack()" class="text-gray-400 hover:text-white font-bold">GERİ</button>
+                            <button onclick="togglePlay()" id="play-btn" class="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center font-black hover:scale-105 transition">PLAY</button>
+                            <button onclick="nextTrack()" class="text-gray-400 hover:text-white font-bold">İLERİ</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Diskografi -->
             <div>
-                <h2 class="text-3xl font-bold text-white mb-6">Diskografi</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
-                        <img src="zariyuvarla.jpg" alt="Zarı Yuvarla" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="font-semibold text-white">Zarı Yuvarla</h3>
-                        <p class="text-sm text-gray-400">2024</p>
+                <h2 class="text-2xl font-bold mb-6">Diskografi</h2>
+                <div class="space-y-3">
+                    <div onclick="selectTrack(0)" class="glass p-5 rounded-2xl flex items-center justify-between hover:border-emerald-500/50 transition cursor-pointer">
+                        <span class="font-bold">01 - Zarı Yuvarla</span> <span>3:32</span>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
-                        <img src="istediğinolsun.jpg" alt="İstediğin olsun" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="font-semibold text-white">İstediğin olsun</h3>
-                        <p class="text-sm text-gray-400">2023</p>
+                    <div onclick="selectTrack(1)" class="glass p-5 rounded-2xl flex items-center justify-between hover:border-emerald-500/50 transition cursor-pointer">
+                        <span class="font-bold">02 - İstediğin Olsun</span> <span>3:45</span>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
-                        <img src="suistimal.jpg" alt="Suistimal" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="font-semibold text-white">Suistimal</h3>
-                        <p class="text-sm text-gray-400">2023</p>
+                    <div onclick="selectTrack(2)" class="glass p-5 rounded-2xl flex items-center justify-between hover:border-emerald-500/50 transition cursor-pointer">
+                        <span class="font-bold">03 - Suistimal</span> <span>4:12</span>
                     </div>
-                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 hover:border-emerald-500/50 transition-all cursor-pointer">
-                        <img src="unutmadım.jpg" alt="Unutmadım" class="w-full h-40 object-cover rounded-lg mb-3">
-                        <h3 class="font-semibold text-white">Unutmadım</h3>
-                        <p class="text-sm text-gray-400">2022</p>
+                    <div onclick="selectTrack(3)" class="glass p-5 rounded-2xl flex items-center justify-between hover:border-emerald-500/50 transition cursor-pointer">
+                        <span class="font-bold">04 - Unutmadım</span> <span>2:58</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <aside class="lg:col-span-5 xl:col-span-4 space-y-6">
-            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl sticky top-8">
-                <h3 class="text-2xl font-bold text-white mb-4">Toplam Diskografi</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center py-2 border-b border-white/10">
-                        <span class="text-gray-400">Toplam Şarkı</span>
-                        <span class="font-semibold text-white">4</span>
-                    </div>
-                    <div class="flex justify-between items-center py-2 border-b border-white/10">
-                        <span class="text-gray-400">Toplam Albüm</span>
-                        <span class="font-semibold text-white">4</span>
-                    </div>
-                    <div class="flex justify-between items-center py-2">
-                        <span class="text-gray-400">Toplam Süre</span>
-                        <span class="font-semibold text-white">~24 dakika</span>
-                    </div>
-                </div>
+        <!-- Sağ Taraf (%35) -->
+        <aside class="lg:col-span-4 space-y-8">
+            <div class="glass p-8 rounded-3xl">
+                <h3 class="text-gray-400 text-sm font-bold uppercase tracking-widest">Toplam Diskografi</h3>
+                <p class="text-4xl font-black mt-2">12 Şarkı</p>
+                <p class="text-gray-500 text-sm mt-1">Tüm resmi platformlarda</p>
             </div>
-
-            <div class="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-xl sticky top-32">
-                <h3 class="text-2xl font-bold text-white mb-4">Aylık Dinleyici</h3>
-                <div class="text-center">
-                    <div class="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600 mb-2">2.4K</div>
-                    <p class="text-sm text-gray-400">Son 30 gün</p>
-                </div>
-                <div class="mt-6 h-24 bg-white/5 rounded-lg flex items-end justify-around p-2">
-                    <div class="w-2 bg-emerald-500" style="height: 40%"></div>
-                    <div class="w-2 bg-emerald-500" style="height: 60%"></div>
-                    <div class="w-2 bg-emerald-500" style="height: 80%"></div>
-                    <div class="w-2 bg-emerald-500" style="height: 100%"></div>
-                    <div class="w-2 bg-emerald-500" style="height: 70%"></div>
-                </div>
+            <div class="glass p-8 rounded-3xl relative overflow-hidden">
+                <h3 class="text-gray-400 text-sm font-bold uppercase tracking-widest">Aylık Dinleyici</h3>
+                <p class="text-4xl font-black mt-2 flex items-center gap-3">142.520 <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span></p>
+                <p class="text-gray-500 text-sm mt-1">Anlık aktif dinleyici</p>
             </div>
         </aside>
     </main>
 
-    <footer class="w-full border-t border-white/10 bg-black/40 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 md:px-8 py-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2024 METTOT. All rights reserved.</p>
-            <p class="mt-2">el sueno del nino</p>
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5 text-center md:text-left md:flex justify-between items-center text-gray-500 text-sm">
+        <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-white">Gizlilik</a>
+            <a href="#" class="hover:text-white">İletişim</a>
         </div>
     </footer>
 
     <script>
         const playlist = [
             { title: "Zarı Yuvarla", url: "Zarı Yuvarla.mp4", cover: "zariyuvarla.jpg" },
-            { title: "İstediğin olsun", url: "İstediğin olsun.mp4", cover: "istediğinolsun.jpg" },
+            { title: "İstediğin Olsun", url: "İstediğin olsun.mp4", cover: "istediğinolsun.jpg" },
             { title: "Suistimal", url: "Suistimal.mp4", cover: "suistimal.jpg" },
             { title: "Unutmadım", url: "Unutmadım.mp4", cover: "unutmadım.jpg" }
         ];
 
         let currentIdx = 0;
         const audio = document.getElementById('main-audio');
-        const badge = document.getElementById('playing-badge');
-        const progressBar = document.getElementById('progress-bar');
-        const playBtnText = document.getElementById('play-btn-text');
+        const playBtn = document.getElementById('play-btn');
 
-        function loadTrack(i) {
+        function selectTrack(i) {
             currentIdx = i;
             audio.src = playlist[i].url;
             document.getElementById('current-title').innerText = playlist[i].title;
             document.getElementById('player-cover').src = playlist[i].cover;
+            audio.play();
+            playBtn.innerText = "PAUSE";
         }
 
         function togglePlay() {
-            if (audio.paused) { 
-                audio.play(); 
-                playBtnText.innerText = "PAUSE"; 
-                badge.classList.remove('opacity-0'); 
-            } else { 
-                audio.pause(); 
-                playBtnText.innerText = "PLAY"; 
-                badge.classList.add('opacity-0'); 
-            }
+            if (audio.paused) { audio.play(); playBtn.innerText = "PAUSE"; }
+            else { audio.pause(); playBtn.innerText = "PLAY"; }
         }
 
-        function nextTrack() {
-            currentIdx = (currentIdx + 1) % playlist.length;
-            loadTrack(currentIdx);
-            audio.play();
-            playBtnText.innerText = "PAUSE";
-            badge.classList.remove('opacity-0');
-        }
-
-        function prevTrack() {
-            currentIdx = (currentIdx - 1 + playlist.length) % playlist.length;
-            loadTrack(currentIdx);
-            audio.play();
-            playBtnText.innerText = "PAUSE";
-            badge.classList.remove('opacity-0');
-        }
+        function nextTrack() { selectTrack((currentIdx + 1) % playlist.length); }
+        function prevTrack() { selectTrack((currentIdx - 1 + playlist.length) % playlist.length); }
 
         audio.ontimeupdate = () => {
-            progressBar.style.width = ((audio.currentTime / audio.duration) * 100) + "%";
+            document.getElementById('progress-bar').style.width = ((audio.currentTime / audio.duration) * 100) + "%";
         };
 
         audio.onended = nextTrack;
