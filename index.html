@@ -14,19 +14,20 @@
         .cormorant { font-family: 'Cormorant Garamond', serif; }
         .text-accent { color: #67d6b8; }
         .bg-accent { background-color: #67d6b8; }
+        .album-card:hover { transform: scale(1.02); transition: all 0.3s ease; }
     </style>
 </head>
 <body class="min-h-screen text-white overflow-x-hidden">
 
-    <aside class="fixed left-0 top-0 h-full w-20 flex flex-col justify-between items-center py-8 z-50">
+    <aside class="fixed left-0 top-0 h-full w-20 flex flex-col justify-between items-center py-8 z-50 border-r border-white/5">
         <div class="text-[#67d6b8] text-2xl"><i class="fa-solid fa-wave-square"></i></div>
         <div class="flex flex-col gap-8 text-2xl text-gray-400">
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify"></i></a>
-            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-instagram text-2xl"></i></a>
+            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-spotify text-2xl"></i></a>
+            <a href="#" class="hover:text-[#67d6b8] transition"><i class="fa-brands fa-youtube text-2xl"></i></a>
         </div>
-        <div class="vertical-text text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180" style="writing-mode: vertical-rl;">
-            El Sueño del Niño
+        <div class="vertical-text text-[13px] tracking-[0.25em] font-light text-gray-500 uppercase rotate-180 mb-12" style="writing-mode: vertical-rl;">
+            EL SUEÑO DEL NIÑO
         </div>
     </aside>
 
@@ -48,11 +49,10 @@
         </nav>
 
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-24">
-            <!-- Sol Ana Blok -->
             <div class="lg:col-span-8">
                 <div class="mb-12">
                     <h2 class="text-[120px] font-black leading-none tracking-tighter mb-4">METTOT</h2>
-                    <p class="text-xl tracking-[0.3em] uppercase mb-6 opacity-80">Artist • Producer • Songwriter</p>
+                    <p class="text-xl tracking-[0.3em] uppercase mb-4 opacity-80">Artist • Producer • Songwriter</p>
                     <p class="cormorant italic text-[#67d6b8] text-7xl font-light">El Sueño del Niño</p>
                 </div>
                 
@@ -65,13 +65,14 @@
                     </button>
                 </div>
 
+                <!-- Oynatıcı -->
                 <div class="glass p-6 rounded-2xl w-full">
-                    <p class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">Şu an çalınıyor</p>
+                    <p class="text-sm text-[#67d6b8] font-bold uppercase tracking-widest mb-4">ŞU AN ÇALINIYOR</p>
                     <div class="flex items-center gap-6">
-                        <img src="https://placehold.co/100x100/333/fff?text=Art" class="rounded-xl w-[100px] h-[100px]" alt="Album Art">
+                        <img id="current-cover" src="zariyuvarla.jpg" class="rounded-xl w-[100px] h-[100px] object-cover" alt="Album Art">
                         <div class="flex-1">
-                            <h3 class="text-2xl font-bold">Zarı Yuvarla</h3>
-                            <p class="text-gray-400">METTOT — Albüm Çalınıyor</p>
+                            <h3 id="current-title" class="text-2xl font-bold">Zarı Yuvarla</h3>
+                            <p id="current-meta" class="text-gray-400">METTOT — Albüm Çalınıyor</p>
                             <div class="w-full bg-gray-800 h-2.5 rounded-full mt-4">
                                 <div class="bg-[#67d6b8] h-2.5 rounded-full w-[65%]"></div>
                             </div>
@@ -117,23 +118,41 @@
 
         <section class="mt-24">
             <h2 class="text-3xl font-bold mb-10">DİSKOGRAFİ</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass p-4 rounded-2xl flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.65)] hover:scale-[1.01] transition duration-300">
-                    <img src="https://placehold.co/100x100/111/fff?text=1" class="w-[100px] h-[100px] rounded-xl object-cover" alt="Album">
-                    <div>
-                        <p class="font-bold">Zarı Yuvarla</p>
-                        <p class="text-gray-400">ALBÜM • 2020</p>
-                    </div>
-                </div>
-                <div class="glass p-4 rounded-2xl flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.65)] hover:scale-[1.01] transition duration-300">
-                    <img src="https://placehold.co/100x100/111/fff?text=2" class="w-[100px] h-[100px] rounded-xl object-cover" alt="Album">
-                    <div>
-                        <p class="font-bold">İstediğin Olsun</p>
-                        <p class="text-gray-400">SINGLE • 2023</p>
-                    </div>
-                </div>
+            <div id="diskography-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- JavaScript ile yüklenecek -->
             </div>
         </section>
     </main>
+
+    <script>
+        const songs = [
+            { title: "Zarı Yuvarla", type: "Albüm", year: "2026", cover: "zariyuvarla.jpg" },
+            { title: "İstediğin Olsun", type: "Single", year: "2025", cover: "gecemesaisi.jpg" },
+            { title: "Suistimal", type: "Single", year: "2025", cover: "suistimal.jpg" },
+            { title: "Unutmadım", type: "Single", year: "2025", cover: "unutmadim.png" }
+        ];
+
+        function renderDiskography() {
+            const grid = document.getElementById('diskography-grid');
+            grid.innerHTML = songs.map((song, index) => `
+                <div class="glass p-4 rounded-2xl flex items-center gap-6 album-card shadow-[0_20px_50px_rgba(0,0,0,0.65)] cursor-pointer" onclick="playSong(${index})">
+                    <img src="${song.cover}" class="w-[100px] h-[100px] rounded-xl object-cover" alt="${song.title}">
+                    <div>
+                        <p class="font-bold text-lg">${song.title}</p>
+                        <p class="text-gray-400 uppercase text-xs tracking-wider mt-1">${song.type} • ${song.year}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function playSong(index) {
+            const song = songs[index];
+            document.getElementById('current-cover').src = song.cover;
+            document.getElementById('current-title').innerText = song.title;
+            document.getElementById('current-meta').innerText = `METTOT — ${song.type} Çalınıyor`;
+        }
+
+        renderDiskography();
+    </script>
 </body>
 </html>
