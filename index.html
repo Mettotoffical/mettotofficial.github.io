@@ -259,7 +259,7 @@
 
             grid.innerHTML = songs.map((song, index) => `
 
-                <div class="glass p-4 rounded-2xl flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.65)] cursor-pointer hover:border-[#67d6b8] border border-transparent transition" onclick="playSong(${index})">
+                <div class="glass p-4 rounded-2xl flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.65)] cursor-pointer hover:border-[#67d6b8] border border-transparent transition" onclick="window.open('${song.link}','_blank')">
 
                     <img src="${song.cover}" class="w-[100px] h-[100px] rounded-xl object-cover" alt="${song.title}">
 
