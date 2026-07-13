@@ -1,49 +1,85 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>METTOT</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-body{background:#050505;color:#fff;font-family:Inter,sans-serif}
-.glass{background:rgba(18,18,18,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METTOT | Artist • Producer • Songwriter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(18, 18, 18, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    </style>
 </head>
-<body class="p-6 max-w-6xl mx-auto">
-<h1 class="text-5xl font-black mb-8">METTOT</h1>
+<body>
 
-<section class="glass rounded-2xl p-6 mb-8">
-<h2 class="text-2xl font-bold mb-3">HAKKIMDA</h2>
-<p>Çocukluk düşlerinden ilham alan melankolik hip-hop sanatçısı. Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.</p>
-</section>
+    <!-- HERO SECTION -->
+    <section class="relative rounded-b-[3rem] overflow-hidden min-h-[70vh] flex items-center mb-16">
+        <img src="background.jpg" alt="METTOT" class="absolute inset-0 w-full h-full object-cover object-center opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-[#050505]"></div>
 
-<section class="glass rounded-2xl p-6 mb-10">
-<h2 class="text-2xl font-bold mb-3">İLETİŞİM</h2>
-<p><i class="fa-regular fa-envelope text-emerald-400"></i> enesjordanmarashi@gmail.com</p>
-<p><i class="fa-brands fa-instagram text-emerald-400"></i> @enessjordan</p>
-</section>
+        <div class="relative z-10 max-w-5xl mx-auto px-8 w-full">
+            <p class="uppercase tracking-[0.35em] text-[#67d6b8] mb-3 text-sm">Artist • Producer • Songwriter</p>
+            <h1 class="text-7xl md:text-9xl font-black leading-none mb-5">METTOT</h1>
+            <h2 class="text-3xl md:text-5xl italic font-light text-[#67d6b8] mb-8">El Sueño del Niño</h2>
+            
+            <div class="flex flex-wrap gap-4">
+                <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="bg-[#67d6b8] hover:opacity-90 transition text-black px-8 py-4 rounded-full font-bold flex items-center gap-3">
+                    <i class="fa-brands fa-spotify text-xl"></i> Spotify'da Dinle
+                </a>
+                <a href="#diskography" class="border border-white/20 hover:border-[#67d6b8] transition px-8 py-4 rounded-full font-semibold">
+                    Diskografi
+                </a>
+            </div>
+        </div>
+    </section>
 
-<h2 class="text-4xl font-black mb-6">DİSKOGRAFİ</h2>
-<div id="diskography" class="grid md:grid-cols-2 gap-6"></div>
+    <!-- MAIN CONTENT -->
+    <main class="max-w-5xl mx-auto px-8 pb-20">
+        
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <!-- HAKKIMDA -->
+            <section class="glass rounded-2xl p-8 md:col-span-2">
+                <h2 class="text-2xl font-bold mb-4 text-[#67d6b8]">Hakkında</h2>
+                <p class="text-gray-300 leading-relaxed">Çocukluk düşlerinden ilham alan melankolik hip-hop sanatçısı. Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.</p>
+            </section>
 
-<script>
-const songs=[
-{title:"Zarı Yuvarla",type:"Albüm",year:"2026",cover:"zariyuvarla.jpg",link:"https://open.spotify.com/track/2TKln43n9wlO5aIxkephHN?si=4UaqkQ9LQs64EsQxcygl-w&utm_source=copy-link"},
-{title:"İstediğin Olsun",type:"Single",year:"2025",cover:"gecemesaisi.jpg",link:"https://open.spotify.com/track/1Gft7Mw39rPwFQI3qJrgYy?si=HAoriitiTsasi-LpNdjuDQ&utm_source=copy-link"},
-{title:"Suistimal",type:"Single",year:"2025",cover:"suistimal.jpg",link:"https://open.spotify.com/track/3gh04cDOFyUqZGJiQdHEsy?si=xGbN9bOVR_KTUuT9kAI6VA&utm_source=copy-link"},
-{title:"Unutmadım",type:"Single",year:"2025",cover:"unutmadim.png",link:"https://open.spotify.com/track/0POjGkSC3zLCIoos8G0eEd?si=3wxnX91QTu-30usP_NEE2g&utm_source=copy-link"}
-];
+            <!-- İLETİŞİM -->
+            <section class="glass rounded-2xl p-8">
+                <h2 class="text-2xl font-bold mb-4 text-[#67d6b8]">İletişim</h2>
+                <div class="space-y-4">
+                    <a href="mailto:enesjordanmarashi@gmail.com" class="flex items-center gap-3 text-gray-300 hover:text-[#67d6b8] transition">
+                        <i class="fa-regular fa-envelope"></i> <span>E-posta</span>
+                    </a>
+                    <a href="#" class="flex items-center gap-3 text-gray-300 hover:text-[#67d6b8] transition">
+                        <i class="fa-brands fa-instagram"></i> <span>@enessjordan</span>
+                    </a>
+                </div>
+            </section>
+        </div>
 
-document.getElementById("diskography").innerHTML=songs.map(s=>`
-<a href="${s.link}" target="_blank" class="glass rounded-2xl p-4 flex gap-4 hover:border-emerald-400">
-<img src="${s.cover}" class="w-24 h-24 rounded-xl object-cover" alt="${s.title}">
-<div>
-<h3 class="font-bold text-xl">${s.title}</h3>
-<p class="text-gray-400">${s.type} • ${s.year}</p>
-</div>
-</a>`).join("");
-</script>
+        <!-- DİSKOGRAFİ -->
+        <h2 class="text-4xl font-black mb-8">Diskografi</h2>
+        <div id="diskography" class="grid md:grid-cols-2 gap-6"></div>
+
+    </main>
+
+    <script>
+        const songs = [
+            {title:"Zarı Yuvarla",type:"Albüm",year:"2026",cover:"zariyuvarla.jpg",link:"https://open.spotify.com/track/2TKln43n9wlO5aIxkephHN"},
+            {title:"İstediğin Olsun",type:"Single",year:"2025",cover:"gecemesaisi.jpg",link:"https://open.spotify.com/track/1Gft7Mw39rPwFQI3qJrgYy"},
+            {title:"Suistimal",type:"Single",year:"2025",cover:"suistimal.jpg",link:"https://open.spotify.com/track/3gh04cDOFyUqZGJiQdHEsy"},
+            {title:"Unutmadım",type:"Single",year:"2025",cover:"unutmadim.png",link:"https://open.spotify.com/track/0POjGkSC3zLCIoos8G0eEd"}
+        ];
+
+        document.getElementById("diskography").innerHTML = songs.map(s => `
+            <a href="${s.link}" target="_blank" class="glass rounded-2xl p-4 flex gap-4 hover:border-[#67d6b8] transition-all group">
+                <img src="${s.cover}" class="w-20 h-20 rounded-xl object-cover" alt="${s.title}">
+                <div class="flex flex-col justify-center">
+                    <h3 class="font-bold text-lg group-hover:text-[#67d6b8] transition">${s.title}</h3>
+                    <p class="text-gray-400 text-sm">${s.type} • ${s.year}</p>
+                </div>
+            </a>`).join("");
+    </script>
 </body>
 </html>
