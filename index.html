@@ -1,131 +1,188 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METTOT | Artist • Producer • Songwriter</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .glass { background: rgba(18, 18, 18, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    </style>
+    <title>METTOT | Independent Artist & Producer</title>
+    
+    <!-- SEO & Open Graph Etiketleri -->
+    <meta name="description" content="METTOT resmi web sitesi. Yeni albüm yayında, diskografi, müzikler ve iletişim bilgileri.">
+    <meta property="og:title" content="METTOT | Independent Artist">
+    <meta property="og:description" content="Modern sokak kültürünü elektronik altyapılarla harmanlayan özgün müzik.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/9d4edd/audio-wave.png">
+
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Harici CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <aside class="hidden lg:flex fixed left-0 top-0 h-full w-20 flex-col justify-between items-center py-8 z-50 border-r border-white/5 bg-[#050505]">
 
-    <div class="text-[#67d6b8] text-3xl">
-        <i class="fa-solid fa-wave-square"></i>
+    <!-- MOUSE IŞIĞI -->
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <!-- HEADER / NAVBAR -->
+    <header id="header">
+        <a href="#home" class="logo">METTOT</a>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active" data-section="home">HOME</a></li>
+            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+            <li><a href="#music" class="nav-link" data-section="music">MUSIC</a></li>
+            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+    <!-- MOBİL MENÜ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mob-link">HOME</a>
+        <a href="#about" class="mob-link">ABOUT</a>
+        <a href="#music" class="mob-link">MUSIC</a>
+        <a href="#contact" class="mob-link">CONTACT</a>
     </div>
 
-    <div class="flex flex-col gap-8 text-2xl">
+    <!-- HERO SECTION (Video Arka Plan & Detaylı İçerik) -->
+    <section id="home" class="hero">
 
-        <a href="https://instagram.com/mettotofficial" target="_blank">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank">
-            <i class="fa-brands fa-spotify"></i>
-        </a>
-
-        <a href="https://youtube.com/@mettotofficial" target="_blank">
-            <i class="fa-brands fa-youtube"></i>
-        </a>
-
-    </div>
-
-    <div class="text-xs text-gray-500 rotate-180 mb-10" style="writing-mode:vertical-rl">
-        EL SUEÑO DEL NIÑO
-    </div>
-
-</aside>
-
-    <!-- HERO SECTION -->
-   <section class="relative rounded-b-[3rem] overflow-hidden min-h-screen flex items-center mb-20">
-        <img src="background.jpg" alt="METTOT" class="absolute inset-0 w-full h-full object-cover object-center opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/20 to-[#050505]"></div>
-
-        <div class="relative z-10 max-w-5xl mx-auto px-8 w-full">
-            <p class="uppercase tracking-[0.35em] text-[#67d6b8] mb-3 text-sm">Artist • Producer • Songwriter</p>
-            <h1 class="text-7xl md:text-[140px] font-black tracking-tight leading-none mb-6">METTOT</h1>
-            <h2 class="text-3xl md:text-5xl italic font-light text-[#67d6b8] mb-8">El Sueño del Niño</h2>
-            <p class="text-gray-300 text-lg leading-8 max-w-xl mb-10">
-    Çocukluk düşlerinden ilham alan melankolik hip-hop sanatçısı.
-    Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.
-</p>
-            
-            <div class="flex flex-wrap gap-4">
-                <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736" target="_blank" class="bg-[#67d6b8] hover:opacity-90 transition text-black px-8 py-4 rounded-full font-bold flex items-center gap-3">
-                    <i class="fa-brands fa-spotify text-xl"></i> Spotify'da Dinle
-                </a>
-                <a href="#diskography" class="border border-white/20 hover:border-[#67d6b8] transition px-8 py-4 rounded-full font-semibold">
-                    Diskografi
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">YENİ ALBÜM • ÇIKIŞ TARİHİ: 2026</span>
+            <h1>METTOT</h1>
+            <p class="hero-album-name">"GECENİN RİTMİ" - DİNLEMEYE BAŞLA</p>
+            <div class="hero-buttons">
+                <a href="#music" class="btn btn-primary ripple-btn"><i class="fa-solid fa-play"></i> DİNLE</a>
+                <a href="#about" class="scroll-down-arrow">
+                    <i class="fa-solid fa-chevron-down"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- MAIN CONTENT -->
-    <main class="lg:ml-20 max-w-6xl mx-auto px-8 pb-20">
-        
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
-            <section class="glass rounded-2xl p-8">
-
-    <div class="mt-12 glass rounded-2xl p-6 max-w-sm">
-
-    <p class="uppercase text-xs tracking-widest text-gray-400">
-        TOPLAM DİSKOGRAFİ
-    </p>
-
-    <h2 class="text-4xl font-black mt-2">
-        4 Resmî Yayın
-    </h2>
-
-    <div class="w-full h-1 bg-[#67d6b8] rounded-full mt-5"></div>
-
-</div>
-            <!-- HAKKIMDA -->
-            <section class="glass rounded-2xl p-8 md:col-span-2">
-                <h2 class="text-2xl font-bold mb-4 text-[#67d6b8]">Hakkında</h2>
-                <p class="text-gray-300 leading-relaxed">Çocukluk düşlerinden ilham alan melankolik hip-hop sanatçısı. Gerçek duyguları, ham sözleri ve özgün sound'u ile yeni nesil hip-hop sahnesinde kendi yolunu çiziyor.</p>
-            </section>
-
-            <!-- İLETİŞİM -->
-            <section class="glass rounded-2xl p-8">
-                <h2 class="text-2xl font-bold mb-4 text-[#67d6b8]">İletişim</h2>
-                <div class="space-y-4">
-                    <a href="mailto:enesjordanmarashi@gmail.com" class="flex items-center gap-3 text-gray-300 hover:text-[#67d6b8] transition">
-                        <i class="fa-regular fa-envelope"></i> <span>E-posta</span>
-                    </a>
-                    <a href="#" class="flex items-center gap-3 text-gray-300 hover:text-[#67d6b8] transition">
-                        <i class="fa-brands fa-instagram"></i> <span>@enessjordan</span>
-                    </a>
-                </div>
-            </section>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="reveal">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <p>METTOT, modern sokak kültürünü elektronik altyapılarla harmanlayan özgün tarzıyla tanınan bağımsız bir müzik sanatçısı ve prodüktördür.</p>
+                <ul class="tags">
+                    <li>Rapçi</li>
+                    <li>Prodüktör</li>
+                    <li>Şarkı Yazarı</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline ripple-btn" style="display:inline-block;">İletişime Geç</a>
+            </div>
         </div>
+    </section>
 
-        <!-- DİSKOGRAFİ -->
-        <h2 class="text-4xl font-black mb-8">Diskografi</h2>
-        <div id="diskography" class="grid md:grid-cols-2 gap-6"></div>
-
-    </main>
-
-    <script>
-        const songs = [
-            {title:"Zarı Yuvarla",type:"Albüm",year:"2026",cover:"zariyuvarla.jpg",link:"https://open.spotify.com/track/2TKln43n9wlO5aIxkephHN"},
-            {title:"İstediğin Olsun",type:"Single",year:"2025",cover:"gecemesaisi.jpg",link:"https://open.spotify.com/track/1Gft7Mw39rPwFQI3qJrgYy"},
-            {title:"Suistimal",type:"Single",year:"2025",cover:"suistimal.jpg",link:"https://open.spotify.com/track/3gh04cDOFyUqZGJiQdHEsy"},
-            {title:"Unutmadım",type:"Single",year:"2025",cover:"unutmadim.png",link:"https://open.spotify.com/track/0POjGkSC3zLCIoos8G0eEd"}
-        ];
-
-        document.getElementById("diskography").innerHTML = songs.map(s => `
-            <a href="${s.link}" target="_blank" class="glass rounded-2xl p-4 flex gap-4 hover:border-[#67d6b8] transition-all group">
-                <img src="${s.cover}" class="w-20 h-20 rounded-xl object-cover" alt="${s.title}">
-                <div class="flex flex-col justify-center">
-                    <h3 class="font-bold text-lg group-hover:text-[#67d6b8] transition">${s.title}</h3>
-                    <p class="text-gray-400 text-sm">${s.type} • ${s.year}</p>
+    <!-- DISCOGRAPHY SECTION (Hover & Play Simge) -->
+    <section id="music" class="reveal">
+        <h2 class="section-title">DISKOGRAFİ</h2>
+        <div class="discography-grid">
+            <div class="album-card">
+                <div class="album-img" style="background: linear-gradient(45deg, #111, #3b0764);">
+                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
                 </div>
-            </a>`).join("");
-    </script>
+                <div class="album-info">
+                    <h3>Gecenin Ritmi</h3>
+                    <p>Stüdyo Albümü • 2026</p>
+                </div>
+            </div>
+            <div class="album-card">
+                <div class="album-img" style="background: linear-gradient(45deg, #222, #581c87);">
+                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="album-info">
+                    <h3>Karanlık Sokaklar</h3>
+                    <p>Single • 2026</p>
+                </div>
+            </div>
+            <div class="album-card">
+                <div class="album-img" style="background: linear-gradient(45deg, #151515, #6b21a8);">
+                    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="album-info">
+                    <h3>Yalnızlık</h3>
+                    <p>Single • 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÜZİK OYNATICI SECTION (Gerçek Çalışan HTML5 Audio) -->
+    <section class="reveal">
+        <h2 class="section-title">MÜZİK OYNATICI</h2>
+        <div class="player-container">
+            <audio id="audioPlayer" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+            <div class="player-track-info">
+                <div class="track-cover"></div>
+                <div>
+                    <h3 id="trackTitle">Gecenin Ritmi (Intro)</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">METTOT</p>
+                </div>
+            </div>
+            <div class="progress-area">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress" id="progress"></div>
+                </div>
+                <div class="time-stamps">
+                    <span id="currentTime">00:00</span>
+                    <span id="durationTime">03:00</span>
+                </div>
+            </div>
+            <div class="player-controls">
+                <i class="fa-solid fa-backward-step" id="prevBtn"></i>
+                <i class="fa-solid fa-play play-btn" id="playBtn"></i>
+                <i class="fa-solid fa-forward-step" id="nextBtn"></i>
+            </div>
+            <div class="platforms">
+                <span>Spotify</span> • 
+                <span>Apple Music</span> • 
+                <span>YouTube Music</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="reveal">
+        <h2 class="section-title">İLETİŞİM</h2>
+        <div class="contact-content">
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://spotify.com" target="_blank"><i class="fa-brands fa-spotify"></i></a>
+                <a href="https://youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <a href="mailto:info@mettot.com" class="email-link">info@mettot.com</a>
+        </div>
+    </section>
+
+    <!-- FOOTER (Düzeltilmiş font-size) -->
+    <footer>
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://spotify.com" target="_blank">Spotify</a></li>
+                <li><a href="https://apple.com" target="_blank">Apple Music</a></li>
+                <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
+                <li><a href="mailto:info@mettot.com">E-mail</a></li>
+            </ul>
+            <div class="footer-copy">
+                <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Harici JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
