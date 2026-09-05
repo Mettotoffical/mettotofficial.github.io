@@ -741,5 +741,5 @@ section {
     cursor: pointer;
 }
 .section-title {
-    color: red;
+    color: red !important;
 }
