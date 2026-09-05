@@ -153,43 +153,53 @@ audio.addEventListener('ended', () => {
     progress.style.width = '0%';
     audio.currentTime = 0;
 });
-// 7. Diskografi albüm müzikleri
+// 7. Diskografi albüm seçimi
 const albumCards = document.querySelectorAll('.album-card');
 
 const albumSongs = [
     {
         src: 'Zar%C4%B1%20Yuvarla.mp4',
-        title: 'ZARI YUVARLA'
+        title: 'ZARI YUVARLA',
+        cover: 'zariyuvarla.jpg'
     },
     {
         src: 'Suistimal.mp4',
-        title: 'SUİSTİMAL'
+        title: 'SUİSTİMAL',
+        cover: 'suistimal.jpg'
     },
     {
         src: 'Unutmad%C4%B1m.mp4',
-        title: 'UNUTMADIM'
+        title: 'UNUTMADIM',
+        cover: 'unutmadim.png'
+    },
+    {
+        src: 'I%CC%87stedig%CC%86in%20olsun.mp4',
+        title: 'İSTEDİĞİN OLSUN',
+        cover: 'gecemesaisi.jpg'
     }
 ];
 
 albumCards.forEach((card, index) => {
-    const playOverlay = card.querySelector('.play-overlay');
+    card.addEventListener('click', () => {
 
-    playOverlay.addEventListener('click', () => {
+        currentTrack = index;
+
         audio.src = albumSongs[index].src;
         document.getElementById('trackTitle').textContent = albumSongs[index].title;
 
-        audio.load();
+        document.querySelector('.track-cover').style.background =
+            `url('${albumSongs[index].cover}') center/cover no-repeat`;
 
-        audio.addEventListener('loadedmetadata', function playOnce() {
-            audio.removeEventListener('loadedmetadata', playOnce);
-            audio.play();
+        audio.pause();
+        playBtn.classList.remove('fa-pause');
+        playBtn.classList.add('fa-play');
 
-            playBtn.classList.remove('fa-play');
-            playBtn.classList.add('fa-pause');
-
-            durationTimeEl.textContent = formatTime(audio.duration);
+        document.querySelector('.player-container').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
         });
     });
+});
 });// 8. Önceki / Sonraki şarkı
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
