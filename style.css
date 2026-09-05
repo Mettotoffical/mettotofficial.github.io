@@ -733,3 +733,10 @@ section {
 .about-text p {
     color: red;
 }
+.play-overlay {
+    display: none !important;
+}
+
+.album-card {
+    cursor: pointer;
+}
