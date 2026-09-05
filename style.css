@@ -372,6 +372,7 @@ section {
     border-radius: 20px;
     font-size: 0.9rem;
     border: 1px solid var(--border-color);
+    width: fit-content;
 }
 
 /* DISCOGRAPHY (Hover & Play Simge) */
