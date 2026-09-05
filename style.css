@@ -367,12 +367,12 @@ section {
 }
 
 .tags li {
-    background: var(--card-bg);
-    padding: 8px 18px;
-    border-radius: 20px;
+    background: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
     font-size: 0.9rem;
-    border: 1px solid var(--border-color);
-    width: fit-content;
+    width: auto;
 }
 
 /* DISCOGRAPHY (Hover & Play Simge) */
