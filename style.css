@@ -225,12 +225,12 @@ body.menu-open {
 }
 
 .hero h1 {
-    font-size: 6rem;
+    font-size: 7rem;
     font-weight: 900;
-    letter-spacing: 8px;
+    letter-spacing: 18px;
     color: #c77dff;
-    text-shadow: 0 0 15px rgba(199, 125, 255, 0.8),
-                 0 0 35px rgba(157, 78, 221, 0.6);
+    text-shadow: 0 0 20px rgba(199, 125, 255, 0.9),
+                 0 0 45px rgba(157, 78, 221, 0.7);
     margin-bottom: 10px;
 }
 
