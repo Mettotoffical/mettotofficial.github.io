@@ -198,6 +198,10 @@ let currentTrack = 0;
 
 const tracks = [
     {
+    src: 'I%CC%87stedig%CC%86in%20olsun.mp4',
+    title: 'İSTEDİĞİN OLSUN'
+},
+    {
         src: 'Zar%C4%B1%20Yuvarla.mp4',
         title: 'ZARI YUVARLA'
     },
