@@ -730,3 +730,10 @@ section {
         font-size: 1.5rem;
     }
 }
+@media (max-width: 768px) {
+    body {
+        background-position: center top;
+        background-size: 100% auto;
+        background-repeat: repeat-y;
+    }
+}
