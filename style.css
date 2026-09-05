@@ -743,7 +743,3 @@ section {
 .section-title {
     color: red !important;
 }
-.hero-content {
-    position: relative !important;
-    z-index: 10 !important;
-}
