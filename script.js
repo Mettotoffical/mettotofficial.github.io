@@ -168,9 +168,16 @@ albumCards.forEach((card, index) => {
         audio.src = albumSongs[index].src;
         document.getElementById('trackTitle').textContent = albumSongs[index].title;
 
-        audio.play();
+        audio.load();
 
-        playBtn.classList.remove('fa-play');
-        playBtn.classList.add('fa-pause');
+        audio.addEventListener('loadedmetadata', function playOnce() {
+            audio.removeEventListener('loadedmetadata', playOnce);
+            audio.play();
+
+            playBtn.classList.remove('fa-play');
+            playBtn.classList.add('fa-pause');
+
+            durationTimeEl.textContent = formatTime(audio.duration);
+        });
     });
 });
