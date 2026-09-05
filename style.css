@@ -733,7 +733,8 @@ section {
 @media (max-width: 768px) {
     body {
         background-position: center top;
-        background-size: 100% auto;
-        background-repeat: repeat-y;
+        background-size: auto 100vh;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
     }
 }
