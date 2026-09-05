@@ -124,6 +124,16 @@ playBtn.addEventListener('click', () => {
     }
 });
 
+audio.addEventListener('play', () => {
+    playBtn.classList.remove('fa-play');
+    playBtn.classList.add('fa-pause');
+});
+
+audio.addEventListener('pause', () => {
+    playBtn.classList.remove('fa-pause');
+    playBtn.classList.add('fa-play');
+});
+
 audio.addEventListener('timeupdate', () => {
     const progressPercent = (audio.currentTime / audio.duration) * 100;
     progress.style.width = progressPercent + '%';
