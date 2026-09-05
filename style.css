@@ -639,29 +639,25 @@ footer {
 section {
     border-bottom: none !important;
 }
-/* HERO NEON KIRMIZI */
+/* HERO DÜZ KIRMIZI */
 .hero-subtitle {
-    color: #ff1744;
-    text-shadow: 0 0 10px #ff1744,
-                 0 0 25px #ff1744;
+    color: red;
+    text-shadow: none;
 }
 
 .hero h1 {
-    color: #ff1744;
-    text-shadow: 0 0 10px #ff1744,
-                 0 0 25px #ff1744,
-                 0 0 50px rgba(255, 23, 68, 0.8);
+    color: red;
+    text-shadow: none;
 }
 
 .hero-album-name {
-    color: #ff1744;
-    text-shadow: 0 0 10px #ff1744,
-                 0 0 25px #ff1744;
+    color: red;
+    text-shadow: none;
 }
 
 .hero-buttons .btn-primary {
-    color: #ff1744;
-    border-color: #ff1744;
-    text-shadow: 0 0 10px #ff1744;
-    box-shadow: 0 0 10px rgba(255, 23, 68, 0.5);
+    color: red;
+    border-color: red;
+    text-shadow: none;
+    box-shadow: 0 0 10px red, 0 0 25px red;
 }
