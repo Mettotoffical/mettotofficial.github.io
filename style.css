@@ -732,9 +732,9 @@ section {
 }
 @media (max-width: 768px) {
     body {
-        background-position: center -180px;
-        background-size: auto 900px;
-        background-repeat: repeat-y;
+        background-position: center top;
+        background-size: auto 100vh;
+        background-repeat: no-repeat;
         background-attachment: scroll;
     }
 }
