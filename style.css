@@ -319,7 +319,6 @@ body.menu-open {
 /* BÖLÜMLER ORTAK */
 section {
     padding: 110px 10%;
-    border-bottom: 1px solid var(--border-color);
     background: transparent;
 }
 
