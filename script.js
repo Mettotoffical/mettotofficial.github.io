@@ -143,3 +143,34 @@ audio.addEventListener('ended', () => {
     progress.style.width = '0%';
     audio.currentTime = 0;
 });
+// 7. Diskografi albüm müzikleri
+const albumCards = document.querySelectorAll('.album-card');
+
+const albumSongs = [
+    {
+        src: 'Zar%C4%B1%20Yuvarla.mp4',
+        title: 'ZARI YUVARLA'
+    },
+    {
+        src: 'Suistimal.mp4',
+        title: 'SUİSTİMAL'
+    },
+    {
+        src: 'Unutmad%C4%B1m.mp4',
+        title: 'UNUTMADIM'
+    }
+];
+
+albumCards.forEach((card, index) => {
+    const playOverlay = card.querySelector('.play-overlay');
+
+    playOverlay.addEventListener('click', () => {
+        audio.src = albumSongs[index].src;
+        document.getElementById('trackTitle').textContent = albumSongs[index].title;
+
+        audio.play();
+
+        playBtn.classList.remove('fa-play');
+        playBtn.classList.add('fa-pause');
+    });
+});
