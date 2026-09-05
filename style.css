@@ -730,3 +730,6 @@ section {
         font-size: 1.5rem;
     }
 }
+.about-text p {
+    color: red;
+}
