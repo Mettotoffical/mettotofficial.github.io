@@ -19,7 +19,7 @@ body {
     font-family: 'Inter', sans-serif;
 
     background-image: url("./background.jpg");
-    background-size: cover;
+   background-size: 100% auto;
    background-position: center top;
 background-attachment: scroll;
     background-repeat: no-repeat;
