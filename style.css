@@ -1,5 +1,5 @@
 html {
-    background: url("./background.jpg") center center / cover fixed no-repeat;
+    background: url("./background.jpg") center center / cover scroll no-repeat;
 }
 :root {
     --bg-color: #09090b;
