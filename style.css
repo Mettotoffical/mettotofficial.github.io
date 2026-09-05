@@ -668,3 +668,15 @@ section {
     text-shadow: none !important;
     box-shadow: 0 0 10px red, 0 0 25px red !important;
 }
+/* HERO YAZILARI BÜYÜT */
+.hero-subtitle {
+    font-size: 1.3rem;
+}
+
+.hero h1 {
+    font-size: 7rem;
+}
+
+.hero-album-name {
+    font-size: 1.4rem;
+}
