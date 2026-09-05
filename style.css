@@ -703,38 +703,30 @@ section {
     color: red;
 }
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 4.5rem;
-        letter-spacing: 3px;
+    body {
+        background-position: center top;
+        background-size: auto 1000px;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
     }
 
-    .hero-subtitle {
-   @media (max-width: 768px) {
     .hero h1 {
         font-size: 3.8rem;
         letter-spacing: 2px;
     }
 
     .hero-subtitle {
-        font-size: 0.95rem;
+        font-size: 1rem;
         white-space: nowrap;
     }
 
     .hero-album-name {
-        font-size: 1rem;
+        font-size: 1.1rem;
         font-weight: 800;
-        white-space: nowrap;
+        white-space: normal;
     }
 
     .btn-outline {
         font-size: 1.5rem;
-    }
-}
-@media (max-width: 768px) {
-    body {
-        background-position: center top;
-        background-size: auto 100vh;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
     }
 }
