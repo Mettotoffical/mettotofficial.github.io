@@ -199,7 +199,6 @@ albumCards.forEach((card, index) => {
             block: 'center'
         });
     });
-});
 });// 8. Önceki / Sonraki şarkı
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
