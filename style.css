@@ -628,3 +628,10 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+.hero {
+    border-bottom: none !important;
+}
+
+section {
+    border-bottom: none !important;
+}
