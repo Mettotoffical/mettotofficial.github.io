@@ -33,7 +33,6 @@ body {
     position: relative;
     animation: fadeInPage 0.8s ease-out;
 }
-
 @keyframes fadeInPage {
     from { opacity: 0; }
     to { opacity: 1; }
