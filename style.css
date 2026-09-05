@@ -709,12 +709,21 @@ section {
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
+   @media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3.8rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        white-space: nowrap;
     }
 
     .hero-album-name {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 800;
+        white-space: nowrap;
     }
 
     .btn-outline {
