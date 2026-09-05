@@ -183,7 +183,7 @@ body.menu-open {
     position: relative;
     overflow: hidden;
 
-    background: url("images/Background.jpg") center center / cover no-repeat;
+background: url("background.jpg") center center / cover no-repeat;
 }
 
 .hero-video {
