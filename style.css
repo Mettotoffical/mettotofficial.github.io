@@ -702,3 +702,22 @@ section {
     font-size: 2.2rem;
     color: red;
 }
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 4.5rem;
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-album-name {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .btn-outline {
+        font-size: 1.5rem;
+    }
+}
