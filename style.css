@@ -680,3 +680,11 @@ section {
 .hero-album-name {
     font-size: 1.4rem;
 }
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.hero-album-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
