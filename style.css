@@ -353,9 +353,10 @@ section {
 }
 
 .about-text p {
-    color: red;
+    color: red !important;
     margin-bottom: 25px;
     font-size: 1.05rem;
+}
 }
 
 .tags {
