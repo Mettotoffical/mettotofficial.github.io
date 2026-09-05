@@ -190,4 +190,56 @@ albumCards.forEach((card, index) => {
             durationTimeEl.textContent = formatTime(audio.duration);
         });
     });
+});// 8. Önceki / Sonraki şarkı
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+
+let currentTrack = 0;
+
+const tracks = [
+    {
+        src: 'Zar%C4%B1%20Yuvarla.mp4',
+        title: 'ZARI YUVARLA'
+    },
+    {
+        src: 'Suistimal.mp4',
+        title: 'SUİSTİMAL'
+    },
+    {
+        src: 'Unutmad%C4%B1m.mp4',
+        title: 'UNUTMADIM'
+    }
+];
+
+function changeTrack(index) {
+    currentTrack = index;
+
+    audio.src = tracks[currentTrack].src;
+    document.getElementById('trackTitle').textContent = tracks[currentTrack].title;
+
+    audio.load();
+    audio.play();
+
+    playBtn.classList.remove('fa-play');
+    playBtn.classList.add('fa-pause');
+}
+
+prevBtn.addEventListener('click', () => {
+    currentTrack--;
+
+    if (currentTrack < 0) {
+        currentTrack = tracks.length - 1;
+    }
+
+    changeTrack(currentTrack);
+});
+
+nextBtn.addEventListener('click', () => {
+    currentTrack++;
+
+    if (currentTrack >= tracks.length) {
+        currentTrack = 0;
+    }
+
+    changeTrack(currentTrack);
 });
