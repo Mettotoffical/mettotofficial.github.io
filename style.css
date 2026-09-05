@@ -661,3 +661,10 @@ section {
     text-shadow: none;
     box-shadow: 0 0 10px red, 0 0 25px red;
 }
+.hero-buttons .btn-primary {
+    color: red !important;
+    border-color: red !important;
+    background: transparent !important;
+    text-shadow: none !important;
+    box-shadow: 0 0 10px red, 0 0 25px red !important;
+}
