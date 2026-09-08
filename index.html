@@ -1,1103 +1,553 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doğum İzni Hesaplama</title>
 
-<title>Analık İzni Hesaplama</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<style>
-* {
-  box-sizing: border-box;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6fa;
-  color: #172033;
-}
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+    }
 
-.container {
-  max-width: 850px;
-  margin: auto;
-  padding: 20px 15px 50px;
-}
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
 
-.header {
-  background: linear-gradient(135deg, #172554, #2563eb);
-  color: white;
-  padding: 28px 22px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
 
-.header h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
-}
+    .description {
+      text-align: center;
+      color: #666;
+      margin-bottom: 25px;
+    }
 
-.header p {
-  margin: 0;
-  line-height: 1.5;
-  opacity: .9;
-}
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 18px;
-  margin-bottom: 18px;
-  box-shadow: 0 5px 20px rgba(0,0,0,.06);
-}
+    .field {
+      margin-bottom: 20px;
+    }
 
-h2 {
-  margin-top: 0;
-}
+    select,
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+    }
 
-.field {
-  margin-bottom: 20px;
-}
+    .row {
+      display: flex;
+      gap: 12px;
+    }
 
-label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 9px;
-}
+    .row .field {
+      flex: 1;
+    }
 
-select,
-input {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #d5dbe7;
-  border-radius: 11px;
-  background: white;
-  font-size: 16px;
-}
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #111827;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.week-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
+    button:hover {
+      background: #000;
+    }
 
-.info {
-  margin-top: 10px;
-  padding: 13px;
-  border-radius: 10px;
-  background: #eff6ff;
-  border-left: 4px solid #2563eb;
-  font-size: 14px;
-  line-height: 1.5;
-}
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+    }
 
-button {
-  width: 100%;
-  padding: 16px;
-  border: 0;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    .result-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
 
-button:hover {
-  background: #1d4ed8;
-}
+    .result-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
 
-.result {
-  display: none;
-}
+    .result-item:last-child {
+      border-bottom: none;
+    }
 
-.main-result {
-  padding: 20px;
-  border-radius: 15px;
-  background: #ecfdf5;
-  border: 2px solid #10b981;
-  margin-bottom: 18px;
-}
+    .important {
+      font-weight: bold;
+      font-size: 18px;
+    }
 
-.main-result .big {
-  font-size: 31px;
-  font-weight: 800;
-  color: #047857;
-  margin: 8px 0;
-}
+    .warning {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff7ed;
+      border-radius: 8px;
+      color: #9a3412;
+    }
 
-.result-box {
-  padding: 15px;
-  border-radius: 12px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  margin-bottom: 12px;
-  line-height: 1.5;
-}
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px auto;
+        padding: 12px;
+      }
 
-.result-box strong {
-  display: block;
-  margin-bottom: 5px;
-}
+      .card {
+        padding: 18px;
+      }
 
-.success {
-  padding: 15px;
-  border-radius: 10px;
-  background: #ecfdf5;
-  border-left: 4px solid #10b981;
-  line-height: 1.6;
-  margin-top: 15px;
-}
-
-.warning {
-  padding: 15px;
-  border-radius: 10px;
-  background: #fff7ed;
-  border-left: 4px solid #f97316;
-  line-height: 1.6;
-  margin-top: 15px;
-}
-
-.footer {
-  text-align: center;
-  color: #64748b;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-top: 25px;
-}
-</style>
+      .row {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
-
-  <div class="header">
-    <h1>Analık İzni Hesaplama</h1>
-    <p>
-      657 ve 4857 sayılı mevzuata göre gerçek doğum tarihi
-      ve doğum haftası üzerinden analık izni hesaplama.
-    </p>
-  </div>
-
-
-  <!-- GİRİŞ ALANLARI -->
   <div class="card">
 
-    <h2>Çalışan Bilgileri</h2>
+    <h1>Doğum İzni Hesaplama</h1>
 
+    <div class="description">
+      Doğum tarihi ve gebelik bilgilerinizi girerek doğum sonrası izin sürenizi hesaplayın.
+    </div>
+
+    <!-- KANUN -->
     <div class="field">
-      <label for="law">Çalışma statüsü</label>
-
+      <label for="law">Kanun</label>
       <select id="law">
-        <option value="657">
-          657 sayılı Devlet Memurları Kanunu
-        </option>
-
-        <option value="4857">
-          4857 sayılı İş Kanunu
-        </option>
+        <option value="657">657 Sayılı Devlet Memurları Kanunu</option>
+        <option value="4857">4857 Sayılı İş Kanunu</option>
       </select>
     </div>
 
-
+    <!-- GÖREV -->
     <div class="field">
       <label for="job">Görev</label>
-
       <select id="job">
-        <option value="ogretmen">Öğretmen</option>
-        <option value="diger">Diğer</option>
+        <option value="teacher">Öğretmen</option>
+        <option value="other">Diğer</option>
       </select>
     </div>
 
-
+    <!-- GEBELİK -->
     <div class="field">
-      <label for="pregnancy">Gebelik durumu</label>
-
+      <label for="pregnancy">Gebelik Durumu</label>
       <select id="pregnancy">
-
-        <option value="tekil">
-          Tekil gebelik
-        </option>
-
-        <option value="cogul">
-          Çoğul gebelik
-        </option>
-
+        <option value="single">Tekil Gebelik</option>
+        <option value="multiple">Çoğul Gebelik</option>
       </select>
     </div>
 
-
+    <!-- GERÇEK DOĞUM TARİHİ -->
     <div class="field">
-
-      <label for="birthDate">
-        Gerçek doğum tarihi
-      </label>
-
-      <input
-        type="date"
-        id="birthDate"
-      >
-
+      <label for="birthDate">Doğum Tarihi</label>
+      <input type="date" id="birthDate">
     </div>
 
+    <!-- GEBELİK HAFTASI -->
+    <div class="row">
 
-    <div class="field">
-
-      <label>
-        Doğum haftası
-      </label>
-
-      <div class="week-row">
-
-        <div>
-
-          <label
-            for="weeks"
-            style="font-weight:normal;"
-          >
-            Hafta
-          </label>
-
-          <input
-            type="number"
-            id="weeks"
-            min="20"
-            max="45"
-            placeholder="39"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label
-            for="days"
-            style="font-weight:normal;"
-          >
-            Gün
-          </label>
-
-          <input
-            type="number"
-            id="days"
-            min="0"
-            max="6"
-            placeholder="0"
-          >
-
-        </div>
-
+      <div class="field">
+        <label for="weeks">Gebelik Haftası</label>
+        <input
+          type="number"
+          id="weeks"
+          min="20"
+          max="45"
+          placeholder="Örn. 39"
+        >
       </div>
 
-
-      <div class="info">
-        Örneğin <strong>39 hafta 0 gün</strong>,
-        <strong>39 hafta 4 gün</strong> veya
-        <strong>40 hafta 1 gün</strong> girebilirsiniz.
-        Hesaplama doğrudan <strong>40 hafta</strong> üzerinden yapılır.
+      <div class="field">
+        <label for="days">Gebelik Günü</label>
+        <select id="days">
+          <option value="0">0 gün</option>
+          <option value="1">1 gün</option>
+          <option value="2">2 gün</option>
+          <option value="3">3 gün</option>
+          <option value="4">4 gün</option>
+          <option value="5">5 gün</option>
+          <option value="6">6 gün</option>
+        </select>
       </div>
 
     </div>
 
+    <button onclick="calculate()">HESAPLA</button>
 
-    <button onclick="calculate()">
-      HESAPLA
-    </button>
+    <!-- SONUÇ -->
+    <div id="result">
+
+      <div class="result-title">
+        Hesaplama Sonucu
+      </div>
+
+      <div class="result-item">
+        <strong>Doğum Tarihi:</strong>
+        <span id="resultBirthDate"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>Gebelik Yaşı:</strong>
+        <span id="resultGestation"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>40 Haftalık Referans Tarihi:</strong>
+        <span id="resultDueDate"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>Doğum Öncesi İzin Başlangıcı:</strong>
+        <span id="resultPrenatalStart"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>Doğum Öncesi Temel İzin:</strong>
+        <span id="resultPrenatal"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>Doğum Sonrası Temel İzin:</strong>
+        <span id="resultPostpartumBase"></span>
+      </div>
+
+      <div class="result-item">
+        <strong>Doğum Öncesinden Doğum Sonrasına Aktarılan Süre:</strong>
+        <span id="resultTransfer"></span>
+      </div>
+
+      <div class="result-item important">
+        <strong>Toplam Doğum Sonrası İzin:</strong>
+        <span id="resultPostpartum"></span>
+      </div>
+
+      <div class="result-item important">
+        <strong>Doğum Sonrası İzin Bitiş Tarihi:</strong>
+        <span id="resultPostpartumEnd"></span>
+      </div>
+
+      <div id="extraInfo"></div>
+
+    </div>
 
   </div>
-
-
-
-  <!-- SONUÇ -->
-  <div class="card result" id="result">
-
-    <h2>Hesaplama Sonucu</h2>
-
-
-    <div class="main-result">
-
-      <div>
-        Doğum sonrası kullanılabilecek analık izni
-      </div>
-
-      <div
-        class="big"
-        id="postpartumResult"
-      >
-        -
-      </div>
-
-      <div id="postpartumExplanation">
-        -
-      </div>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>Gerçek doğum tarihi</strong>
-
-      <span id="resultBirthDate">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>Doğum haftası</strong>
-
-      <span id="resultGestation">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>40 haftaya göre doğum durumu</strong>
-
-      <span id="resultDifference">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>40 haftalık esas tarih</strong>
-
-      <span id="resultDueDate">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>Doğum öncesi analık izni başlangıcı</strong>
-
-      <span id="resultPrenatalStart">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>Doğum öncesi temel izin</strong>
-
-      <span id="resultPrenatalBase">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>Doğum sonrası temel izin</strong>
-
-      <span id="resultPostpartumBase">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>
-        Erken doğum nedeniyle aktarılan süre
-      </strong>
-
-      <span id="resultTransfer">
-        -
-      </span>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <strong>
-        Doğum sonrası analık izni bitiş tarihi
-      </strong>
-
-      <span id="resultEndDate">
-        -
-      </span>
-
-    </div>
-
-
-    <div id="specialInfo"></div>
-
-  </div>
-
-
-  <div class="footer">
-    Hesaplama genel mevzuat hükümleri esas alınarak yapılmaktadır.
-    Kurum kayıtları ve kişiye özel izin durumları ayrıca değerlendirilmelidir.
-  </div>
-
 </div>
-
-
 
 <script>
 
 function addDays(date, days) {
-
   const result = new Date(date);
-
-  result.setDate(
-    result.getDate() + days
-  );
-
+  result.setDate(result.getDate() + days);
   return result;
 }
-
-
-function addMonths(date, months) {
-
-  const result = new Date(date);
-
-  result.setMonth(
-    result.getMonth() + months
-  );
-
-  return result;
-}
-
 
 function formatDate(date) {
-
-  return date.toLocaleDateString(
-    "tr-TR",
-    {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-    }
-  );
-
+  return date.toLocaleDateString("tr-TR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
 }
-
 
 function calculate() {
 
-  const law =
-    document.getElementById("law").value;
+  const law = document.getElementById("law").value;
+  const job = document.getElementById("job").value;
+  const pregnancy = document.getElementById("pregnancy").value;
 
-  const job =
-    document.getElementById("job").value;
-
-  const pregnancy =
-    document.getElementById("pregnancy").value;
-
-  const birthDateValue =
-    document.getElementById("birthDate").value;
-
-  const weeks =
-    Number(
-      document.getElementById("weeks").value
-    );
-
-  const days =
-    Number(
-      document.getElementById("days").value
-    );
-
-
-  /* KONTROLLER */
+  const birthDateValue = document.getElementById("birthDate").value;
+  const weeks = parseInt(document.getElementById("weeks").value);
+  const days = parseInt(document.getElementById("days").value);
 
   if (!birthDateValue) {
-
-    alert(
-      "Lütfen gerçek doğum tarihini girin."
-    );
-
+    alert("Lütfen doğum tarihini girin.");
     return;
   }
 
-
-  if (
-    !Number.isInteger(weeks) ||
-    weeks < 20 ||
-    weeks > 45
-  ) {
-
-    alert(
-      "Doğum haftasını 20 ile 45 arasında girin."
-    );
-
+  if (isNaN(weeks) || weeks < 20 || weeks > 45) {
+    alert("Lütfen geçerli bir gebelik haftası girin.");
     return;
   }
 
-
-  if (
-    !Number.isInteger(days) ||
-    days < 0 ||
-    days > 6
-  ) {
-
-    alert(
-      "Gün değeri 0 ile 6 arasında olmalıdır."
-    );
-
-    return;
-  }
-
-
-  /* DOĞUM TARİHİ */
-
-  const birthDate =
-    new Date(
-      birthDateValue + "T00:00:00"
-    );
-
+  const birthDate = new Date(birthDateValue + "T00:00:00");
 
   /*
-    40 HAFTA = 280 GÜN
+    40 hafta = 280 gün
   */
-
   const fullTermDays = 280;
 
-
   /*
-    Örneğin:
-
-    39 hafta 0 gün
-    = 273 gün
-
-    280 - 273
-    = 7 gün erken
+    Doğum öncesi temel izin:
+    Tekil: 8 hafta = 56 gün
+    Çoğul: 10 hafta = 70 gün
   */
-
-  const gestationDays =
-    weeks * 7 + days;
-
-
-  const difference =
-    fullTermDays - gestationDays;
-
+  const prenatalDays =
+    pregnancy === "multiple" ? 70 : 56;
 
   /*
-    40 HAFTALIK ESAS TARİH
-
-    39+0 doğumdan 7 gün sonrası
-    = 40+0 tarihi
-  */
-
-  const expectedDueDate =
-    addDays(
-      birthDate,
-      difference
-    );
-
-
-  /*
-    DOĞUM ÖNCESİ İZİN
-
-    Tekil = 8 hafta
-    Çoğul = 10 hafta
-  */
-
-  let prenatalDays;
-
-  if (pregnancy === "cogul") {
-
-    prenatalDays = 70;
-
-  } else {
-
-    prenatalDays = 56;
-
-  }
-
-
-  /*
-    DOĞUM SONRASI
-
-    Güncel mevzuata göre:
-
+    Güncel mevzuata göre doğum sonrası temel izin:
     16 hafta = 112 gün
   */
-
   const postpartumBaseDays = 112;
 
-
   /*
-    DOĞUM ÖNCESİ İZİN BAŞLANGICI
+    Doğumdaki gebelik süresi
   */
-
-  const prenatalStart =
-    addDays(
-      expectedDueDate,
-      -prenatalDays
-    );
-
+  const gestationDays = (weeks * 7) + days;
 
   /*
-    ERKEN DOĞUM AKTARIMI
+    40 haftaya göre fark
   */
-
-  let transferDays = 0;
-
-
-  if (difference > 0) {
-
-    /*
-      Doğum öncesi iznin başlaması
-      gereken gebelik günü.
-    */
-
-    const prenatalStartGestation =
-      fullTermDays - prenatalDays;
-
-
-    /*
-      Doğum öncesi izin başlamışsa:
-
-      Örneğin 39+0:
-
-      40 hafta - 39 hafta
-      = 7 gün
-
-      7 gün aktarılır.
-    */
-
-    if (
-      gestationDays >=
-      prenatalStartGestation
-    ) {
-
-      transferDays =
-        difference;
-
-    }
-
-
-    /*
-      Doğum, doğum öncesi iznin
-      başlamasından daha önce olmuşsa
-      kullanılmayan süre ayrıca hesaplanır.
-    */
-
-    else {
-
-      transferDays =
-        prenatalDays +
-        (
-          prenatalStartGestation -
-          gestationDays
-        );
-
-    }
-
-  }
-
+  const difference = fullTermDays - gestationDays;
 
   /*
-    GEÇ DOĞUM
-
+    40 haftalık referans doğum tarihi.
     Örneğin:
-
-    40+1
-
-    difference = -1
-
-    Aktarım = 0
-
-    Doğum sonrası izinden
-    1 gün düşülmez.
+    39+0 doğum → 7 gün eklenir.
+    40+1 doğum → 1 gün çıkarılır.
   */
-
-  if (difference <= 0) {
-
-    transferDays = 0;
-
-  }
-
-
-  /*
-    TOPLAM DOĞUM SONRASI İZİN
-  */
-
-  const totalPostpartumDays =
-    postpartumBaseDays +
-    transferDays;
-
-
-  /*
-    BİTİŞ TARİHİ
-  */
-
-  const postpartumEnd =
-    addDays(
-      birthDate,
-      totalPostpartumDays - 1
-    );
-
-
-  /* SONUÇLARI YAZ */
-
-  document.getElementById(
-    "resultBirthDate"
-  ).textContent =
-    formatDate(birthDate);
-
-
-  document.getElementById(
-    "resultGestation"
-  ).textContent =
-    ${weeks} hafta ${days} gün;
-
-
-  /*
-    ERKEN / GEÇ / TAM ZAMANINDA
-  */
-
-  if (difference > 0) {
-
-    document.getElementById(
-      "resultDifference"
-    ).innerHTML =
-      `<strong>${difference} gün erken</strong><br>
-       Doğum 40 haftalık esas tarihten ${difference} gün önce gerçekleşmiştir.`;
-
-  }
-
-  else if (difference < 0) {
-
-    const lateDays =
-      Math.abs(difference);
-
-    document.getElementById(
-      "resultDifference"
-    ).innerHTML =
-      `<strong>${lateDays} gün geç</strong><br>
-       Doğum 40 haftalık esas tarihten ${lateDays} gün sonra gerçekleşmiştir.
-       Bu süre doğum sonrası izinden düşülmez.`;
-
-  }
-
-  else {
-
-    document.getElementById(
-      "resultDifference"
-    ).innerHTML =
-      `<strong>40 hafta 0 gün</strong><br>
-       Doğum 40 haftalık esas tarihte gerçekleşmiştir.`;
-
-  }
-
-
-  document.getElementById(
-    "resultDueDate"
-  ).textContent =
-    formatDate(expectedDueDate);
-
-
-  document.getElementById(
-    "resultPrenatalStart"
-  ).textContent =
-    formatDate(prenatalStart);
-
-
-  document.getElementById(
-    "resultPrenatalBase"
-  ).textContent =
-    ${prenatalDays} gün (${prenatalDays / 7} hafta);
-
-
-  document.getElementById(
-    "resultPostpartumBase"
-  ).textContent =
-    112 gün (16 hafta);
-
-
-  document.getElementById(
-    "resultTransfer"
-  ).textContent =
-    ${transferDays} gün;
-
-
-  document.getElementById(
-    "resultPostpartumResult"
+  const expectedDueDate = addDays(
+    birthDate,
+    difference
   );
 
-
-  document.getElementById(
-    "postpartumResult"
-  ).textContent =
-    ${totalPostpartumDays} gün;
-
+  /*
+    Doğum öncesi izin başlangıcı
+  */
+  const prenatalStart = addDays(
+    expectedDueDate,
+    -prenatalDays
+  );
 
   /*
-    AÇIKLAMA
+    Doğum öncesi iznin başladığı gebelik haftası
+    Tekil: 32. hafta
+    Çoğul: 30. hafta
   */
-
-  let explanation = "";
-
-
-  if (difference > 0) {
-
-    explanation =
-      `Doğum ${difference} gün erken gerçekleştiği için ` +
-      `${transferDays} günlük kullanılmayan doğum öncesi süre ` +
-      doğum sonrasına aktarılmıştır.<br><br> +
-
-      `<strong>112 gün temel izin + ` +
-      `${transferDays} gün aktarım = ` +
-      ${totalPostpartumDays} gün</strong>;
-
-  }
-
-  else if (difference < 0) {
-
-    const lateDays =
-      Math.abs(difference);
-
-    explanation =
-      `Doğum ${lateDays} gün geç gerçekleşmiştir. ` +
-      `Geç doğum nedeniyle doğum sonrası izninden ` +
-      kesinti yapılmamıştır.<br><br> +
-
-      <strong>Toplam: ${totalPostpartumDays} gün</strong>;
-
-  }
-
-  else {
-
-    explanation =
-      Doğum 40 hafta 0 günde gerçekleşmiştir.<br><br> +
-
-      <strong>Toplam: ${totalPostpartumDays} gün</strong>;
-
-  }
-
-
-  document.getElementById(
-    "postpartumExplanation"
-  ).innerHTML =
-    explanation;
-
-
-  document.getElementById(
-    "resultEndDate"
-  ).textContent =
-    formatDate(postpartumEnd);
-
+  const prenatalStartGestation =
+    fullTermDays - prenatalDays;
 
   /*
-    657 / 4857 EK BİLGİ
+    Doğum öncesinden doğum sonrasına aktarılacak gün
+  */
+  let transferDays = 0;
+
+  /*
+    Doğum 40 haftadan önce gerçekleşmişse
+  */
+  if (gestationDays < fullTermDays) {
+
+    /*
+      Doğum, doğum öncesi iznin başlangıcından
+      sonra gerçekleşmişse kullanılmayan süre
+      doğum sonrasına aktarılır.
+    */
+    if (gestationDays >= prenatalStartGestation) {
+
+      transferDays =
+        fullTermDays - gestationDays;
+
+    } else {
+
+      /*
+        Doğum öncesi izin başlamadan doğum gerçekleşmişse,
+        doğum öncesi izin süresinin tamamı + başlangıç
+        tarihine kadar olan süre doğum sonrasına aktarılır.
+      */
+      transferDays =
+        prenatalDays +
+        (prenatalStartGestation - gestationDays);
+    }
+  }
+
+  /*
+    40 haftadan sonra doğum:
+    Geç doğum nedeniyle doğum sonrası izinden gün düşülmez.
+  */
+  if (gestationDays >= fullTermDays) {
+    transferDays = 0;
+  }
+
+  /*
+    Toplam doğum sonrası izin
+  */
+  const totalPostpartumDays =
+    postpartumBaseDays + transferDays;
+
+  /*
+    İzin bitiş tarihi
+    Başlangıç günü 1. gün kabul edilir.
+  */
+  const postpartumEndDate = addDays(
+    birthDate,
+    totalPostpartumDays - 1
+  );
+
+  /*
+    Sonuçları ekrana yazdır
   */
 
-  const specialInfo =
-    document.getElementById("specialInfo");
+  document.getElementById("resultBirthDate").textContent =
+    formatDate(birthDate);
 
+  document.getElementById("resultGestation").textContent =
+    weeks + " hafta " + days + " gün";
+
+  document.getElementById("resultDueDate").textContent =
+    formatDate(expectedDueDate);
+
+  document.getElementById("resultPrenatalStart").textContent =
+    formatDate(prenatalStart);
+
+  document.getElementById("resultPrenatal").textContent =
+    (prenatalDays / 7) + " hafta (" +
+    prenatalDays + " gün)";
+
+  document.getElementById("resultPostpartumBase").textContent =
+    "16 hafta (112 gün)";
+
+  document.getElementById("resultTransfer").textContent =
+    transferDays + " gün";
+
+  document.getElementById("resultPostpartum").textContent =
+    totalPostpartumDays +
+    " gün (" +
+    Math.floor(totalPostpartumDays / 7) +
+    " hafta" +
+    (totalPostpartumDays % 7 !== 0
+      ? " " + (totalPostpartumDays % 7) + " gün"
+      : "") +
+    ")";
+
+  document.getElementById("resultPostpartumEnd").textContent =
+    formatDate(postpartumEndDate);
+
+  /*
+    Kanuna göre ek bilgi
+  */
+  let extraHTML = "";
 
   if (law === "657") {
 
-    /*
-      657:
-      Doğum sonrası analık izninden sonra
-      24 aya kadar aylıksız izin.
-    */
-
-    const unpaidStart =
-      addDays(
-        postpartumEnd,
-        1
-      );
-
-
-    const unpaidEnd =
-      addDays(
-        addMonths(
-          unpaidStart,
-          24
-        ),
-        -1
-      );
-
-
-    specialInfo.innerHTML = `
-
-      <div class="success">
-
-        <strong>
-          657 sayılı Kanun
-        </strong>
-
-        <br><br>
-
-        Doğum sonrası analık izni bitişi:
-
-        <strong>
-          ${formatDate(postpartumEnd)}
-        </strong>
-
-        <br><br>
-
-        Talep edilmesi halinde
-        24 aya kadar aylıksız izin
-        hakkı ayrıca kullanılabilir.
-
-        <br><br>
-
-        <strong>
-          Aylıksız izin başlangıcı:
-        </strong>
-
-        ${formatDate(unpaidStart)}
-
-        <br>
-
-        <strong>
-          24 aylık dönemin sonu:
-        </strong>
-
-        ${formatDate(unpaidEnd)}
-
-      </div>
-
-    `;
-
-  }
-
-
-  else {
-
-    /*
-      4857:
-      Analık izni sonrasında
-      6 aya kadar ücretsiz izin.
-    */
-
-    const unpaidStart =
-      addDays(
-        postpartumEnd,
-        1
-      );
-
-
-    const unpaidEnd =
-      addDays(
-        addMonths(
-          unpaidStart,
-          6
-        ),
-        -1
-      );
-
-
-    specialInfo.innerHTML = `
-
-      <div class="success">
-
-        <strong>
-          4857 sayılı İş Kanunu
-        </strong>
-
-        <br><br>
-
-        Doğum sonrası analık izni bitişi:
-
-        <strong>
-          ${formatDate(postpartumEnd)}
-        </strong>
-
-        <br><br>
-
-        Kanundaki şartlar çerçevesinde
-        analık izni sonrasında
-        6 aya kadar ücretsiz izin
-        hakkı ayrıca değerlendirilebilir.
-
-        <br><br>
-
-        <strong>
-          Ücretsiz izin başlangıcı:
-        </strong>
-
-        ${formatDate(unpaidStart)}
-
-        <br>
-
-        <strong>
-          6 aylık dönemin sonu:
-        </strong>
-
-        ${formatDate(unpaidEnd)}
-
-      </div>
-
-    `;
-
-  }
-
-
-  /*
-    ÖĞRETMEN UYARISI
-  */
-
-  if (job === "ogretmen") {
-
-    specialInfo.innerHTML += `
-
+    extraHTML += `
       <div class="warning">
-
-        <strong>
-          Öğretmenler için:
-        </strong>
-
-        <br><br>
-
-        Bu hesaplama kanuni analık izni
-        süresini doğum tarihi ve gebelik
-        haftasına göre hesaplar.
-
-        <br><br>
-
-        MEB eğitim-öğretim takvimi,
-        fiilen çalışılan günler ve
-        kurum kayıtlarına bağlı özel
-        durumlar ayrıca değerlendirilmelidir.
-
+        <strong>657 sayılı Kanun:</strong><br>
+        Doğum sonrası analık izninin bitiminden sonra,
+        şartları kapsamında 24 aya kadar aylıksız izin
+        hakkı bulunmaktadır.
       </div>
+    `;
 
+  } else {
+
+    extraHTML += `
+      <div class="warning">
+        <strong>4857 sayılı İş Kanunu:</strong><br>
+        Analık izninin bitiminden sonra mevzuattaki şartlar
+        kapsamında 6 aya kadar ücretsiz izin hakkı
+        bulunmaktadır.
+      </div>
     `;
 
   }
 
+  /*
+    Öğretmenler için bilgilendirme
+  */
+  if (job === "teacher") {
+
+    extraHTML += `
+      <div class="warning">
+        <strong>Öğretmenler için:</strong><br>
+        Doğum öncesi dönemin eğitim-öğretim takvimi,
+        fiilen çalışma ve diğer izin kayıtları bakımından
+        ayrıca değerlendirilmesi gerekebilir.
+      </div>
+    `;
+
+  }
 
   /*
-    SONUCU GÖSTER
+    Erken/geç doğum açıklaması
   */
+  if (difference > 0) {
 
-  document.getElementById(
-    "result"
-  ).style.display = "block";
+    extraHTML += `
+      <div class="result-item">
+        <strong>40 haftaya göre durum:</strong>
+        Doğum ${difference} gün erken gerçekleşmiştir.
+        Bu süre doğum sonrası izne aktarılmıştır.
+      </div>
+    `;
 
+  } else if (difference < 0) {
 
-  document.getElementById(
-    "result"
-  ).scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+    extraHTML += `
+      <div class="result-item">
+        <strong>40 haftaya göre durum:</strong>
+        Doğum ${Math.abs(difference)} gün geç gerçekleşmiştir.
+        Geç doğum nedeniyle doğum sonrası izinden gün düşülmemiştir.
+      </div>
+    `;
 
+  } else {
+
+    extraHTML += `
+      <div class="result-item">
+        <strong>40 haftaya göre durum:</strong>
+        Doğum tam 40. haftada gerçekleşmiştir.
+      </div>
+    `;
+
+  }
+
+  document.getElementById("extraInfo").innerHTML =
+    extraHTML;
+
+  document.getElementById("result").style.display =
+    "block";
 }
 
 </script>
