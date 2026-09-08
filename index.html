@@ -1,213 +1,1012 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METTOT | Independent Artist & Producer</title>
-    
-    <!-- SEO & Open Graph Etiketleri -->
-    <meta name="description" content="METTOT resmi web sitesi. Yeni albüm yayında, diskografi, müzikler ve iletişim bilgileri.">
-    <meta property="og:title" content="METTOT | Independent Artist">
-    <meta property="og:description" content="Modern sokak kültürünü elektronik altyapılarla harmanlayan özgün müzik.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80">
-    
-    <!-- Favicon -->
-   <link rel="icon" type="image/png" href="logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Harici CSS -->
-    <link rel="stylesheet" href="style.css">
+  <title>Analık İzni Hesaplama | 657 - 4857</title>
+
+  <meta name="description"
+        content="657 ve 4857 sayılı mevzuata göre analık izni hesaplama aracı. Gerçek doğum tarihi ve doğum haftasına göre erken veya geç doğum hesabı yapar.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f6fb;
+      color: #172033;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 25px 16px 50px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #172554, #2563eb);
+      color: white;
+      padding: 30px 24px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+    }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .header p {
+      margin: 0;
+      opacity: .9;
+      line-height: 1.5;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d5dbea;
+      border-radius: 10px;
+      font-size: 16px;
+      background: white;
+      outline: none;
+    }
+
+    select:focus,
+    input:focus {
+      border-color: #2563eb;
+    }
+
+    .week-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .info {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 13px 15px;
+      border-radius: 8px;
+      line-height: 1.5;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+      background: #2563eb;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .result {
+      display: none;
+    }
+
+    .result-title {
+      color: #172554;
+      margin-bottom: 18px;
+    }
+
+    .result-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+    }
+
+    .result-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #334155;
+    }
+
+    .main-result {
+      background: #ecfdf5;
+      border: 2px solid #10b981;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .main-result .big {
+      font-size: 30px;
+      font-weight: 800;
+      color: #047857;
+      margin: 8px 0;
+    }
+
+    .warning {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 15px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .success {
+      background: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 15px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 23px;
+      }
+
+      .week-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- MOUSE IŞIĞI -->
-    <div class="mouse-glow" id="mouseGlow"></div>
+<div class="container">
 
-    <!-- HEADER / NAVBAR -->
-    <header id="header">
-        <a href="#home" class="logo">METTOT</a>
-        <ul class="nav-links">
-            <li><a href="#home" class="nav-link active" data-section="home">HOME</a></li>
-            <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
-            <li><a href="#music" class="nav-link" data-section="music">MUSIC</a></li>
-            <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
-        </ul>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </header>
+  <div class="header">
+    <h1>Analık İzni Hesaplama</h1>
+    <p>
+      657 ve 4857 sayılı mevzuata göre gerçek doğum tarihi
+      ve doğum haftası üzerinden hesaplama.
+    </p>
+  </div>
 
-    <!-- MOBİL MENÜ -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#home" class="mob-link">HOME</a>
-        <a href="#about" class="mob-link">ABOUT</a>
-        <a href="#music" class="mob-link">MUSIC</a>
-        <a href="#contact" class="mob-link">CONTACT</a>
+  <!-- BİLGİLER -->
+  <div class="card">
+
+    <h2>Çalışan Bilgileri</h2>
+
+    <div class="field">
+      <label for="law">Çalışma statüsü</label>
+
+      <select id="law">
+        <option value="657">657 sayılı Devlet Memurları Kanunu</option>
+        <option value="4857">4857 sayılı İş Kanunu</option>
+      </select>
     </div>
 
-    <!-- HERO SECTION (Video Arka Plan & Detaylı İçerik) -->
-    <section id="home" class="hero">
+    <div class="field">
+      <label for="job">Görev</label>
 
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="hero-subtitle">YENİ ALBÜM • İstanBUL⏳ </span>
-            <h1>METTOT</h1>
-            <p class="hero-album-name">"ZARI YUVARLA" - DİNLEMEYE BAŞLA</p>
-            <div class="hero-buttons">
-                <a href="#music" class="btn btn-primary ripple-btn"><i class="fa-solid fa-play"></i> DİNLE</a>
-                <a href="#about" class="scroll-down-arrow">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+      <select id="job">
+        <option value="ogretmen">Öğretmen</option>
+        <option value="diger">Diğer</option>
+      </select>
+    </div>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="reveal">
-        <h2 class="section-title">ABOUT</h2>
-        <div class="about-content">
-            <div class="about-image"></div>
-            <div class="about-text">
-                <p>METTOT, Mettot, özellikle 2025 ve 2026 yıllarında ardı ardına yayınladığı teklilerle (single) dijital platformlarda dinleyici kitlesini genişletmiştir:Unutmadım (Haziran 2025): Sanatçının çıkış yaptığı ve alternatif listelerde kendine yer bulan 3 dakika 30 saniyelik duygusal indie-alternatif parçasıdır.Suistimal (Eylül 2025): Dinamik yapısıyla Apple Music ve Amazon Music listelerinde dikkat çeken bir diğer çalışmasıdır.İstediğin Olsun (Nisan 2026): Çıkışından önce TikTok platformunda ön izleme videolarıyla viral etkileşim yakalayan hareketli bir modern alternatif parçadır.Zarı Yuvarla (Haziran 2026): Sanatçının diskografisine eklenen, sözleri ve ritmiyle sosyal medyadaki video akımlarında sıkça fon müziği olarak kullanılan en güncel hitlerinden biridir</p>
-                <ul class="tags">
-                    <li>Rapçi</li>
-                    <li>Prodüktör</li>
-                    <li>Şarkı Yazarı</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline ripple-btn" style="display:inline-block;">İletişime Geç</a>
-            </div>
-        </div>
-    </section>
+    <div class="field">
+      <label for="pregnancy">Gebelik</label>
 
-    <!-- DISCOGRAPHY SECTION (Hover & Play Simge) -->
-  <section id="music" class="reveal">
-    <h2 class="section-title">DİSKOGRAFİ</h2>
+      <select id="pregnancy">
+        <option value="tekil">Tekil gebelik</option>
+        <option value="cogul">Çoğul gebelik</option>
+      </select>
+    </div>
 
-    <div class="discography-grid">
+    <div class="field">
+      <label for="birthDate">Gerçek doğum tarihi</label>
 
-        <div class="album-card" data-index="0">
-            <div class="album-img" style="background: url('zariyuvarla.jpg') center/cover no-repeat;"></div>
-            <div class="album-info">
-                <h3>ZARI YUVARLA</h3>
-                <p>Stüdyo Albümü • 2026</p>
-            </div>
-        </div>
+      <input
+        type="date"
+        id="birthDate"
+      >
+    </div>
 
-        <div class="album-card" data-index="1">
-            <div class="album-img" style="background: url('suistimal.jpg') center/cover no-repeat;"></div>
-            <div class="album-info">
-                <h3>SUİSTİMAL</h3>
-                <p>Single • 2026</p>
-            </div>
+    <div class="field">
+
+      <label>Doğum haftası</label>
+
+      <div class="week-row">
+
+        <div>
+          <label for="weeks" style="font-weight:normal;">
+            Hafta
+          </label>
+
+          <input
+            type="number"
+            id="weeks"
+            min="20"
+            max="45"
+            placeholder="Örn. 39"
+          >
         </div>
 
-        <div class="album-card" data-index="2">
-            <div class="album-img" style="background: url('unutmadim.png') center/cover no-repeat;"></div>
-            <div class="album-info">
-                <h3>UNUTMADIM</h3>
-                <p>Single • 2025</p>
-            </div>
+        <div>
+          <label for="days" style="font-weight:normal;">
+            Gün
+          </label>
+
+          <input
+            type="number"
+            id="days"
+            min="0"
+            max="6"
+            placeholder="Örn. 0"
+          >
         </div>
 
-        <div class="album-card" data-index="3">
-            <div class="album-img" style="background: url('gecemesaisi.jpg') center top/cover no-repeat;"></div>
-            <div class="album-info">
-                <h3>İSTEDİĞİN OLSUN</h3>
-                <p>Single • 2026</p>
-            </div>
-        </div>
+      </div>
+
+      <div class="info">
+        Örnek: <strong>39 hafta 0 gün</strong>,
+        <strong>39 hafta 4 gün</strong> veya
+        <strong>40 hafta 1 gün</strong>.
+        Hesaplama doğrudan 40 hafta üzerinden yapılır.
+      </div>
 
     </div>
-</section>
-    <!-- MÜZİK OYNATICI SECTION (Gerçek Çalışan HTML5 Audio) -->
-    <section class="reveal">
-        <h2 class="section-title">MÜZİK OYNATICI</h2>
-        <div class="player-container">
-<audio id="audioPlayer" src="I%CC%87stedig%CC%86in%20olsun.mp4"></audio>
-            <div class="player-track-info">
-                <div class="track-cover" style="background: url('gecemesaisi.jpg') center/cover no-repeat;"></div>
-                <div>
-                    <h3 id="trackTitle">İSTEDİĞİN OLSUN</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">METTOT</p>
-                </div>
-            </div>
-            <div class="progress-area">
-                <div class="progress-bar" id="progressBar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div class="time-stamps">
-                    <span id="currentTime">00:00</span>
-                    <span id="durationTime">03:00</span>
-                </div>
-            </div>
-            <div class="player-controls">
-                <i class="fa-solid fa-backward-step" id="prevBtn"></i>
-                <i class="fa-solid fa-play play-btn" id="playBtn"></i>
-                <i class="fa-solid fa-forward-step" id="nextBtn"></i>
-            </div>
-           <div class="platforms">
-    <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736?si=XjQGIGKtTCGO4_wYpnfnYg" target="_blank">
-        <i class="fa-brands fa-spotify"></i> Spotify
-    </a>
 
-    <a href="https://music.apple.com/tr/artist/mettot/1817702629" target="_blank">
-        <i class="fa-brands fa-apple"></i> Apple Music
-    </a>
+    <button onclick="calculate()">
+      HESAPLA
+    </button>
 
-    <a href="https://www.youtube.com/@METTOT-SX" target="_blank">
-        <i class="fa-brands fa-youtube"></i> YouTube Music
-    </a>
+  </div>
+
+
+  <!-- SONUÇ -->
+  <div class="card result" id="result">
+
+    <h2 class="result-title">
+      Hesaplama Sonucu
+    </h2>
+
+    <div class="main-result">
+
+      <div>
+        Doğum sonrası kullanılabilecek analık izni
+      </div>
+
+      <div class="big" id="postpartumResult">
+        -
+      </div>
+
+      <div id="postpartumExplanation">
+        -
+      </div>
+
+    </div>
+
+
+    <div class="result-box">
+      <strong>Gerçek doğum tarihi</strong>
+      <span id="resultBirthDate">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Doğum haftası</strong>
+      <span id="resultGestation">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>40 haftalık esas tarihe göre durum</strong>
+      <span id="resultDifference">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>40 haftalık beklenen doğum tarihi</strong>
+      <span id="resultDueDate">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Doğum öncesi analık izninin başlangıcı</strong>
+      <span id="resultPrenatalStart">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Doğum öncesi temel izin</strong>
+      <span id="resultPrenatalBase">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Doğum sonrası temel izin</strong>
+      <span id="resultPostpartumBase">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Erken doğum nedeniyle doğum sonrasına aktarılan süre</strong>
+      <span id="resultTransfer">-</span>
+    </div>
+
+
+    <div class="result-box">
+      <strong>Doğum sonrası analık izninin bitiş tarihi</strong>
+      <span id="resultEndDate">-</span>
+    </div>
+
+
+    <div id="specialInfo"></div>
+
+  </div>
+
+
+  <div class="footer-note">
+    Bu hesaplama yürürlükteki genel analık izni hükümleri esas alınarak
+    yapılmaktadır. Kurum tarafından ayrıca uygulanabilecek özel
+    izin/çalışma kayıtları ayrıca değerlendirilmelidir.
+  </div>
+
 </div>
+
+
+<script>
+
+  /*
+    ==========================================================
+    ANALIK İZNİ HESAPLAMA MANTIĞI
+    ==========================================================
+
+    40 hafta = 280 gün esas alınır.
+
+    657 / 4857:
+    Tekil gebelik:
+      Doğum öncesi = 8 hafta = 56 gün
+      Doğum sonrası = 16 hafta = 112 gün
+
+    Çoğul gebelik:
+      Doğum öncesi = 10 hafta = 70 gün
+      Doğum sonrası = 16 hafta = 112 gün
+
+    Erken doğum:
+      Kullanılmayan doğum öncesi süre doğum sonrasına eklenir.
+
+    Geç doğum:
+      Geçen günler doğum sonrası izinden düşülmez.
+  */
+
+
+  function addDays(date, days) {
+
+    const result = new Date(date);
+
+    result.setDate(result.getDate() + days);
+
+    return result;
+  }
+
+
+  function addMonths(date, months) {
+
+    const result = new Date(date);
+
+    result.setMonth(result.getMonth() + months);
+
+    return result;
+  }
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString("tr-TR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
+
+  }
+
+
+  function calculate() {
+
+    const law =
+      document.getElementById("law").value;
+
+    const pregnancy =
+      document.getElementById("pregnancy").value;
+
+    const birthDateValue =
+      document.getElementById("birthDate").value;
+
+    const weeks =
+      Number(document.getElementById("weeks").value);
+
+    const days =
+      Number(document.getElementById("days").value);
+
+
+    /*
+      KONTROLLER
+    */
+
+    if (!birthDateValue) {
+
+      alert("Lütfen gerçek doğum tarihini girin.");
+
+      return;
+
+    }
+
+
+    if (
+      !Number.isInteger(weeks) ||
+      weeks < 20 ||
+      weeks > 45
+    ) {
+
+      alert("Doğum haftasını 20 ile 45 arasında girin.");
+
+      return;
+
+    }
+
+
+    if (
+      !Number.isInteger(days) ||
+      days < 0 ||
+      days > 6
+    ) {
+
+      alert("Doğum günü 0 ile 6 arasında olmalıdır.");
+
+      return;
+
+    }
+
+
+    /*
+      DOĞUM TARİHİ
+    */
+
+    const birthDate =
+      new Date(birthDateValue + "T00:00:00");
+
+
+    /*
+      40 HAFTA = 280 GÜN
+    */
+
+    const fullTermDays = 40 * 7;
+
+    const gestationDays =
+      weeks * 7 + days;
+
+
+    /*
+      POZİTİF:
+      erken doğum
+
+      NEGATİF:
+      geç doğum
+    */
+
+    const difference =
+      fullTermDays - gestationDays;
+
+
+    /*
+      BEKLENEN 40 HAFTALIK DOĞUM TARİHİ
+
+      Örneğin:
+
+      39+0 doğum
+      +7 gün
+      = beklenen 40+0 tarihi
+
+      40+1 doğum
+      -1 gün
+      = beklenen 40+0 tarihi
+    */
+
+    const expectedDueDate =
+      addDays(birthDate, difference);
+
+
+    /*
+      DOĞUM ÖNCESİ SÜRE
+    */
+
+    let prenatalDays;
+
+    if (pregnancy === "cogul") {
+
+      prenatalDays = 10 * 7;
+
+    } else {
+
+      prenatalDays = 8 * 7;
+
+    }
+
+
+    /*
+      DOĞUM SONRASI TEMEL SÜRE
+
+      2026 mevzuatı:
+      16 hafta = 112 gün
+    */
+
+    const postpartumBaseDays =
+      16 * 7;
+
+
+    /*
+      DOĞUM ÖNCESİ İZNİN BAŞLANGICI
+    */
+
+    const prenatalStart =
+      addDays(
+        expectedDueDate,
+        -prenatalDays
+      );
+
+
+    /*
+      ERKEN DOĞUM AKTARIMI
+
+      Normal durumda:
+
+      39+0
+      40 - 39 = 1 hafta
+      = 7 gün aktarılır.
+
+      Ancak doğum, doğum öncesi iznin
+      başlaması gereken tarihten de önceyse,
+      kullanılmayan doğum öncesi süre
+      buna göre hesaplanır.
+    */
+
+    let transferDays = 0;
+
+
+    if (difference > 0) {
+
+      const prenatalStartGestation =
+        fullTermDays - prenatalDays;
+
+
+      /*
+        Doğum öncesi iznin başlamasından
+        SONRA doğum olmuşsa:
+
+        aktarılacak süre = 40 hafta - doğum haftası
+      */
+
+      if (gestationDays >= prenatalStartGestation) {
+
+        transferDays = difference;
+
+      }
+
+      /*
+        Doğum öncesi iznin başlamasından
+        ÖNCE doğum olmuşsa:
+
+        kullanılmayan doğum öncesi izin
+        + doğum tarihi ile izin başlangıcı
+        arasındaki süre
+      */
+
+      else {
+
+        transferDays =
+          prenatalDays +
+          (
+            prenatalStartGestation -
+            gestationDays
+          );
+
+      }
+
+    }
+
+
+    /*
+      GEÇ DOĞUMDA:
+
+      difference < 0
+
+      Aktarım yapılmaz.
+
+      Doğum sonrası temel izin
+      azaltılmaz.
+    */
+
+
+    if (difference <= 0) {
+
+      transferDays = 0;
+
+    }
+
+
+    /*
+      TOPLAM DOĞUM SONRASI İZİN
+    */
+
+    const totalPostpartumDays =
+      postpartumBaseDays +
+      transferDays;
+
+
+    /*
+      DOĞUM SONRASI İZİN BİTİŞİ
+
+      İlk gün doğum günü olduğu için
+      -1 kullanıyoruz.
+    */
+
+    const postpartumEnd =
+      addDays(
+        birthDate,
+        totalPostpartumDays - 1
+      );
+
+
+    /*
+      EKRANA YAZDIR
+    */
+
+    document.getElementById("resultBirthDate")
+      .textContent =
+      formatDate(birthDate);
+
+
+    document.getElementById("resultGestation")
+      .textContent =
+      ${weeks} hafta ${days} gün;
+
+
+    /*
+      ERKEN / GEÇ DOĞUM AÇIKLAMASI
+    */
+
+    const differenceElement =
+      document.getElementById("resultDifference");
+
+
+    if (difference > 0) {
+
+      differenceElement.innerHTML =
+        `<strong>${difference} gün erken doğum</strong><br>
+         40 haftalık esas tarihe göre doğum ${difference} gün erken gerçekleşmiştir.`;
+
+    }
+
+    else if (difference < 0) {
+
+      const lateDays =
+        Math.abs(difference);
+
+      differenceElement.innerHTML =
+        `<strong>${lateDays} gün geç doğum</strong><br>
+         40 haftalık esas tarihe göre doğum ${lateDays} gün geç gerçekleşmiştir.
+         Bu süre doğum sonrası analık izninden düşülmez.`;
+
+    }
+
+    else {
+
+      differenceElement.innerHTML =
+        `<strong>40 hafta 0 gün</strong><br>
+         Doğum 40 haftalık esas tarihte gerçekleşmiştir.`;
+
+    }
+
+
+    document.getElementById("resultDueDate")
+      .textContent =
+      formatDate(expectedDueDate);
+
+
+    document.getElementById("resultPrenatalStart")
+      .textContent =
+      formatDate(prenatalStart);
+
+
+    document.getElementById("resultPrenatalBase")
+      .textContent =
+      ${prenatalDays} gün (${prenatalDays / 7} hafta);
+
+
+    document.getElementById("resultPostpartumBase")
+      .textContent =
+      ${postpartumBaseDays} gün (16 hafta);
+
+
+    /*
+      AKTARIM
+    */
+
+    if (transferDays > 0) {
+
+      document.getElementById("resultTransfer")
+        .textContent =
+        ${transferDays} gün;
+
+    } else {
+
+      document.getElementById("resultTransfer")
+        .textContent =
+        "0 gün";
+
+    }
+
+
+    /*
+      ANA SONUÇ
+    */
+
+    document.getElementById("postpartumResult")
+      .textContent =
+      ${totalPostpartumDays} gün;
+
+
+    let explanation = "";
+
+    if (difference > 0) {
+
+      explanation =
+        `Doğum ${difference} gün erken gerçekleştiği için ` +
+        `${transferDays} günlük kullanılmayan doğum öncesi süre ` +
+        `doğum sonrasına aktarılmıştır. ` +
+        `${postpartumBaseDays} gün temel doğum sonrası izin + ` +
+        `${transferDays} gün aktarım = ` +
+        <strong>${totalPostpartumDays} gün</strong>.;
+
+    }
+
+    else if (difference < 0) {
+
+      const lateDays =
+        Math.abs(difference);
+
+      explanation =
+        `Doğum ${lateDays} gün geç gerçekleşmiştir. ` +
+        `Geç doğum nedeniyle doğum sonrası temel izin süresinden ` +
+        `kesinti yapılmamıştır. ` +
+        `Toplam doğum sonrası analık izni ` +
+        <strong>${totalPostpartumDays} gündür</strong>.;
+
+    }
+
+    else {
+
+      explanation =
+        `Doğum 40 hafta 0 günde gerçekleşmiştir. ` +
+        `Temel doğum sonrası analık izni ` +
+        <strong>${totalPostpartumDays} gündür</strong>.;
+
+    }
+
+
+    document.getElementById("postpartumExplanation")
+      .innerHTML =
+      explanation;
+
+
+    document.getElementById("resultEndDate")
+      .textContent =
+      formatDate(postpartumEnd);
+
+
+    /*
+      657 / 4857'YE GÖRE EK BİLGİ
+    */
+
+    const specialInfo =
+      document.getElementById("specialInfo");
+
+
+    if (law === "657") {
+
+      /*
+        657'de doğum sonrası analık izni
+        bittikten sonra kadın memura
+        talebi üzerine 24 aya kadar
+        aylıksız izin verilebilir.
+      */
+
+      const unpaidStart =
+        addDays(postpartumEnd, 1);
+
+      const unpaidEndBeforeSubtract =
+        addMonths(unpaidStart, 24);
+
+      const unpaidEnd =
+        addDays(
+          unpaidEndBeforeSubtract,
+          -1
+        );
+
+
+      specialInfo.innerHTML = `
+
+        <div class="success">
+
+          <strong>657 sayılı Kanun kapsamında:</strong><br><br>
+
+          Doğum sonrası analık izni bitiş tarihi:
+          <strong>${formatDate(postpartumEnd)}</strong>
+
+          <br><br>
+
+          Talep edilmesi halinde 24 aya kadar
+          aylıksız izin dönemi başlayabilir.
+
+          <br><br>
+
+          <strong>Aylıksız izin başlangıcı:</strong>
+          ${formatDate(unpaidStart)}
+
+          <br>
+
+          <strong>24 aylık sürenin sonu:</strong>
+          ${formatDate(unpaidEnd)}
+
         </div>
-    </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="reveal">
-        <h2 class="section-title">İLETİŞİM</h2>
-        <div class="contact-content">
-            <<div class="social-icons">
-    <a href="https://www.instagram.com/enessjordan/?utm_source=ig_web_button_share_sheet" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
+      `;
 
-    <a href="https://open.spotify.com/intl-tr/artist/6xi4UQoVjPLTld9Fu12736?si=XjQGIGKtTCGO4_wYpnfnYg" target="_blank">
-        <i class="fa-brands fa-spotify"></i>
-    </a>
+    }
 
-    <a href="https://www.youtube.com/@METTOT-SX" target="_blank">
-        <i class="fa-brands fa-youtube"></i>
-    </a>
+    else {
 
-    <a href="https://www.tiktok.com/@_mettot_?is_from_webapp=1&sender_device=pc" target="_blank">
-        <i class="fa-brands fa-tiktok"></i>
-    </a>
-</div>
-            <a href="mailto:info@mettot.com" class="email-link">info@mettot.com</a>
+      /*
+        4857'de doğum sonrası analık izni
+        sonrasında 6 aya kadar ücretsiz izin
+        hakkı ayrıca değerlendirilir.
+      */
+
+      const unpaidStart =
+        addDays(postpartumEnd, 1);
+
+      const unpaidEndBeforeSubtract =
+        addMonths(unpaidStart, 6);
+
+      const unpaidEnd =
+        addDays(
+          unpaidEndBeforeSubtract,
+          -1
+        );
+
+
+      specialInfo.innerHTML = `
+
+        <div class="success">
+
+          <strong>4857 sayılı İş Kanunu kapsamında:</strong><br><br>
+
+          Doğum sonrası analık izni bitiş tarihi:
+          <strong>${formatDate(postpartumEnd)}</strong>
+
+          <br><br>
+
+          Analık izninin ardından kanundaki şartlar
+          çerçevesinde 6 aya kadar ücretsiz izin
+          hakkı ayrıca değerlendirilebilir.
+
+          <br><br>
+
+          <strong>6 aylık dönemin başlangıcı:</strong>
+          ${formatDate(unpaidStart)}
+
+          <br>
+
+          <strong>6 aylık dönemin sonu:</strong>
+          ${formatDate(unpaidEnd)}
+
         </div>
-    </section>
 
-    <!-- FOOTER (Düzeltilmiş font-size) -->
-    <footer>
-        <div class="footer-content">
-            <ul class="footer-links">
-                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                <li><a href="https://spotify.com" target="_blank">Spotify</a></li>
-                <li><a href="https://apple.com" target="_blank">Apple Music</a></li>
-                <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
-                <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
-                <li><a href="mailto:info@mettot.com">E-mail</a></li>
-            </ul>
-            <div class="footer-copy">
-                <p>&copy; 2026 METTOT. Tüm hakları saklıdır.</p>
-            </div>
+      `;
+
+    }
+
+
+    /*
+      ÖNEMLİ UYARI
+    */
+
+    if (document.getElementById("job").value === "ogretmen") {
+
+      specialInfo.innerHTML += `
+
+        <div class="warning">
+
+          <strong>Öğretmenler için önemli:</strong><br><br>
+
+          Bu hesaplama, doğum haftasına göre kanuni
+          analık izni süresini hesaplar.
+
+          MEB'e özgü eğitim-öğretim takvimi,
+          fiilen çalışılan günler ve kurum kayıtlarından
+          kaynaklanan özel durumlar ayrıca değerlendirilmelidir.
+
+          Bu nedenle burada herhangi bir okul tatilini
+          otomatik olarak "çalışılmamış gün" kabul edip
+          izinden düşürmüyoruz.
+
         </div>
-    </footer>
 
-    <!-- Harici JavaScript -->
-    <script src="script.js"></script>
+      `;
+
+    }
+
+
+    /*
+      SONUCU GÖSTER
+    */
+
+    document.getElementById("result")
+      .style.display = "block";
+
+
+    /*
+      SONUCA KAYDIR
+    */
+
+    document.getElementById("result")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+  }
+
+</script>
+
 </body>
 </html>
