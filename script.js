@@ -256,3 +256,11 @@ nextBtn.addEventListener('click', () => {
 
     changeTrack(currentTrack);
 });
+document.querySelectorAll('#music .album-card').forEach(card => {
+    card.addEventListener('click', () => {
+        document.getElementById('player').scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
