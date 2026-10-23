@@ -94,7 +94,21 @@
   <section id="music" class="reveal">
     <h2 class="section-title">DİSKOGRAFİ</h2>
 
-    <div class="discography-grid">
+    
+#music .discography-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 16px;
+    row-gap: 16px;
+    align-items: start;
+}
+
+#music .album-card {
+    margin: 0;
+    height: auto;
+    align-self: start;
+}
+
 
         <div class="album-card" data-index="0">
             <div class="album-img" style="background: url('zariyuvarla.jpg') center/cover no-repeat;"></div>
