@@ -236,3 +236,18 @@
 .album-card {
     margin-bottom: 12px;
 }
+
+/* Albüm kartlarını birbirinden ayır */
+#music .discography-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+    gap: 30px !important;
+    row-gap: 30px !important;
+    align-items: start !important;
+}
+
+#music .album-card {
+    margin: 0 0 20px 0 !important;
+    height: auto !important;
+    align-self: start !important;
+}
