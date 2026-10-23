@@ -743,3 +743,14 @@ section {
 .section-title {
     color: red !important;
 }
+/* Mobilde albüm kartları arasına boşluk koy */
+@media (max-width: 768px) {
+    #music .discography-grid {
+        gap: 24px !important;
+        row-gap: 24px !important;
+    }
+
+    #music .album-card {
+        margin-bottom: 0 !important;
+    }
+}
